@@ -32,7 +32,7 @@
     
     function removeClass(cssClasses, cssClass){
       var rxp = new RegExp(cssClass + '\\s*', 'gi');
-      return cssClasses.replace(rxp, '').trim();
+      return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
     }
 
     $container.style.perspective      = config.perspective + "px";
