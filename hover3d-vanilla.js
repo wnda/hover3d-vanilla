@@ -147,12 +147,12 @@
         return enter();
       });
       
-      $container.attachEvent("onmousemove",function(){
-        return enter();
+      $container.attachEvent("onmousemove",function(event){
+        return move(event);
       });
       
       $container.attachEvent("onmouseleave",function(){
-        return enter();
+        return leave();
       });
     }
     
