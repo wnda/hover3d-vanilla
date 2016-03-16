@@ -22,6 +22,7 @@ Then below the library, create a script element to call the function and pass in
           invert        : false,       // default: false
           shine         : true,        // default: false
           persist       : true,        // default: false
+          position      : false,       // default: "relative"
           hoverInClass  : "hovered",   // default: false
           hoverClass    : "hovering",  // default: false
           hoverOutClass : "left"       // default: false
@@ -42,6 +43,7 @@ sensitivity | integer | 20 | Mouse movement sensitivity, larger number is less s
 invert | boolean | false | Default behavior is the element will follow the mouse, look like it facing the mouse
 shine | boolean | false | Add shining layer
 persist | boolean | false | Transformed elements retain their transformations on mouseleave
+position | string | false | Sometimes, you might want to apply the effect to an absolute/fixed position element. Use this to declare the positioning required or leave it unconfigured to roll with `position: relative` by default
 hoverInClass | string | hover-in | Helper class when mouse hover in the element, will be removed after 300ms
 hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 300ms
 hoverClass | string | hover-3d | Helper class when the mouse is hovering the element
