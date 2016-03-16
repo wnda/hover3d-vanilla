@@ -47,7 +47,33 @@
     $container.style.oTransformStyle      = "preserve-3d";
     $container.style.transformStyle       = "preserve-3d";
     
-    $target.style.position            = "relative";
+    $container.style.webkitBackfaceVisibility = "hidden";
+    $container.style.mozBackfaceVisibility    = "hidden";
+    $container.style.msBackfaceVisibility     = "hidden";
+    $container.style.oBackfaceVisibility      = "hidden";
+    $container.style.backfaceVisibility       = "hidden";
+    
+    $target.style.webkitPerspective = config.perspective;
+    $target.style.mozPerspective    = config.perspective;
+    $target.style.msPerspective     = config.perspective;
+    $target.style.oPerspective      = config.perspective;
+    $target.style.perspective       = config.perspective + "px";
+    
+    $target.style.webkitTransformStyle = "preserve-3d";
+    $target.style.mozTransformStyle    = "preserve-3d";
+    $target.style.msTransformStyle     = "preserve-3d";
+    $target.style.oTransformStyle      = "preserve-3d";
+    $target.style.transformStyle       = "preserve-3d";
+    
+    $target.style.webkitBackfaceVisibility = "hidden";
+    $target.style.mozBackfaceVisibility    = "hidden";
+    $target.style.msBackfaceVisibility     = "hidden";
+    $target.style.oBackfaceVisibility      = "hidden";
+    $target.style.backfaceVisibility       = "hidden";
+    
+    $target.style.willChange = "transform";
+    
+    $target.style.position = "relative";
     
     if (config.shine){
       var $shine            = document.createElement('div');
@@ -60,7 +86,6 @@
       $shine.style.zIndex   = 9;
       $target.appendChild($shine);
     }
-
     
     function enter(){
       
@@ -96,20 +121,6 @@
           ang    = theta * 180 / Math.PI - 90,
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
       
-      $target.style.webkitPerspective = config.perspective;
-      $target.style.mozPerspective    = config.perspective;
-      $target.style.msPerspective     = config.perspective;
-      $target.style.oPerspective      = config.perspective;
-      $target.style.perspective       = config.perspective + "px";
-      $target.style.perspective       = config.perspective + "px";
-      $target.style.transformStyle    = "preserve-3d";
-      
-      $target.style.webkitTransformStyle = "preserve-3d";
-      $target.style.mozTransformStyle    = "preserve-3d";
-      $target.style.msTransformStyle     = "preserve-3d";
-      $target.style.oTransformStyle      = "preserve-3d";
-      $target.style.transformStyle       = "preserve-3d";
-      
       $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       $target.style.msTransform          = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
@@ -124,21 +135,6 @@
     function leave(){
                         
       if (!config.persist){
-        
-        $target.style.webkitPerspective = config.perspective;
-        $target.style.mozPerspective    = config.perspective;
-        $target.style.msPerspective     = config.perspective;
-        $target.style.oPerspective      = config.perspective;
-        $target.style.perspective       = config.perspective + "px";
-        $target.style.perspective       = config.perspective + "px";
-        $target.style.transformStyle    = "preserve-3d";
-      
-        $target.style.webkitTransformStyle = "preserve-3d";
-        $target.style.mozTransformStyle    = "preserve-3d";
-        $target.style.msTransformStyle     = "preserve-3d";
-        $target.style.oTransformStyle      = "preserve-3d";
-        $target.style.transformStyle       = "preserve-3d";
-        
         $target.style.webkitTransform = "rotateX(0) rotateY(0)";
         $target.style.mozTransform    = "rotateX(0) rotateY(0)";
         $target.style.msTransform     = "rotateX(0) rotateY(0)";
