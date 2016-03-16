@@ -86,9 +86,7 @@
     position: relative;
     width: calc(var(--cell-width) - 16px);
     margin: var(--grid-margin);
-    padding-bottom: calc(var(--cell-width) - 16px);
-    background-color: var(--cell-bg);
-    border-top: 1px solid hsl(240,4%,63%)
+    padding-bottom: calc(var(--cell-width) - 16px)
   }
   
   .contents {
@@ -126,6 +124,13 @@
       width: calc(var(--cell-width) / 4  - 16px);
       padding-bottom: calc(var(--cell-width) / 4  - 16px)
     }
+  }
+  .contents{
+    background-image:url(https://i.imgur.com/ZNm5BD3.jpg);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    z-index:100
   }
 </style>
 
