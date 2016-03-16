@@ -1,4 +1,4 @@
-# hover3d in vanilla Java Script
+# hover3d in vanilla JavaScript
 port of [jQuery-hover3d](https://github.com/ariona/hover3d)
 
 this is a port of [ariona](https://github.com/ariona)'s [excellent jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3D space.
@@ -42,3 +42,7 @@ Breakdown of options:
     hoverInClass  : apply a CSS class on mouseenter and remove after 1s
     hoverClass    : apply a CSS class on (first) mousemove
     hoverOutClass : apply a CSS class on mouseleave and remove after 1s
+
+Compatibility:
+
+Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. Support everywhere else is green. attachEvent is conditionally used for IE8, and a polyfill for .trim() is used.
