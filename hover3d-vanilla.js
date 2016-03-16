@@ -48,11 +48,11 @@
     $container.style.oTransformStyle      = "preserve-3d";
     $container.style.transformStyle       = "preserve-3d";
     
-    $container.style.webkitBackfaceVisibility = "hidden";
-    $container.style.mozBackfaceVisibility    = "hidden";
-    $container.style.msBackfaceVisibility     = "hidden";
-    $container.style.oBackfaceVisibility      = "hidden";
-    $container.style.backfaceVisibility       = "hidden";
+    //$container.style.webkitBackfaceVisibility = "hidden";
+    //$container.style.mozBackfaceVisibility    = "hidden";
+    //$container.style.msBackfaceVisibility     = "hidden";
+    //$container.style.oBackfaceVisibility      = "hidden";
+    //$container.style.backfaceVisibility       = "hidden";
     
     $target.style.webkitPerspective = config.perspective;
     $target.style.mozPerspective    = config.perspective;
