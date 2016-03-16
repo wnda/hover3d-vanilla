@@ -31,6 +31,8 @@ Initiate and configure:
       );
     </script>
 
+Breakdown of options:
+
     selector      : using .querySelectorAll(), hover3d-vanilla can be applied to multiple elements at once by supplying a comma-delimited list of selectors. For browsers that do not support .querySelectoAll(), .getElementsByTagName() or a manually constructed array of .getElementById() could be used instead.
     perspective   : set the initial perspective value in px
     sensitivity   : set the sensitivity or amount by which the element transforms on mousemove
