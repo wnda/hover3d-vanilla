@@ -15,15 +15,15 @@ Initiate and configure:
     <script>
       hover3d(
         {
-          selector:      ".selector1,#selector2,selector3",
-          perspective   : 1000         // default: 1000
-          sensitivity   : 20           // default: 20
-          invert        : false        // default: false
-          shine         : true         // default: false
-          persist       : true         // default: false
-          hoverInClass  : false,       // default: false
+          selector:      ".selector1", // default: null
+          perspective   : 1000,        // default: 1000
+          sensitivity   : 20,          // default: 20
+          invert        : false,       // default: false
+          shine         : true,        // default: false
+          persist       : true,        // default: false
+          hoverInClass  : "hovered",   // default: false
           hoverClass    : "hovering",  // default: false
-          hoverOutClass : "false"      // default: false
+          hoverOutClass : "left"       // default: false
         }
       );
     </script>
@@ -53,10 +53,16 @@ Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
 12 | 4 | 10 | 10 | 15
 
+Vendor prefixes are used via their respective JavaScript APIs.
+
 If [transforms were to be polyfilled (ha)](http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/), the JS, the story is a little less gloomy:
 
 Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
 1 | 3.2 | 3.5 | 8 | 10
 
-Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. Support everywhere else is green. attachEvent is conditionally used for IE8, and a polyfill for .trim() is used. This is all irrelevant because CSS3 transforms already act as a bar to entry.
+Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. 
+
+Support everywhere else is green. `.attachEvent()` is conditionally used for IE8, and a polyfill for .trim() is used. 
+
+This is all irrelevant, of course, because CSS3 transforms already act as a bar to entry.
