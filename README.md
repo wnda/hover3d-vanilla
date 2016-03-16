@@ -30,6 +30,8 @@ Initiate and configure:
         }
       );
     </script>
+    
+No CSS is required as the `perspective` and `transform` changes are made programmatically. Additional effects are up to you to decide.
 
 Breakdown of options:
 
