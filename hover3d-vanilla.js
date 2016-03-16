@@ -199,7 +199,3 @@
     
   window.hover3d=hover3d;
 })();
-
-hover3d({
-  selector: "#YOUR,.SELECTORS,GO>HERE"
-});
