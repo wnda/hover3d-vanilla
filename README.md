@@ -50,6 +50,14 @@ hoverClass | string | hover-3d | Helper class when the mouse is hovering the ele
 
 Compatibility
 -------------
+Compatibility for the actual CSS is as follows:
+
+Chrome | Safari | Firefox | IE | Opera
+------ | ------ | ------- | ----- | -----
+12 | All | 10 | 10 | 15
+
+
+For the JS, the story is a little less gloomy:
 
 Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
