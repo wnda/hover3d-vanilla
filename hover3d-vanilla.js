@@ -23,21 +23,22 @@
       var $target    = $targets[j],
           $container = $target.parentNode;
           
-      handleHover($target,$container,config);
+      handleHover($target, $container,config);
     }
     
   }
     
-  function handleHover($target,$container,config){
+  function handleHover($target, $container, config){
     
-    function removeClass(cssClasses,cssClass){
+    function removeClass(cssClasses, cssClass){
       var rxp = new RegExp(cssClass + '\\s*', 'gi');
       return cssClasses.replace(rxp, '').trim();
     }
 
-    $container.style.perspective      = config.perspective+"px";
+    $container.style.perspective      = config.perspective + "px";
     $container.style.transformStyle   = "preserve-3d";
-    $target.style.perspective         = config.perspective+"px";
+    
+    $target.style.perspective         = config.perspective + "px";
     $target.style.transformStyle      = "preserve-3d";
     $target.style.position            = "relative";
     
@@ -56,18 +57,18 @@
     
     function enter(){
       
-      if (config.hoverClass&&config.hoverInClass){
+      if (config.hoverClass && config.hoverInClass){
         $target.className += ' ' + config.hoverClass + ' ' + config.hoverInClass;
         
         setTimeout(function(){
-          $target.className=removeClass($target.className,config.hoverInClass);
+          $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
       
       } else if (config.hoverClass){
         $target.className += ' ' + config.hoverInClass;
         
         setTimeout(function(){
-          $target.className=removeClass($target.className,config.hoverInClass);
+          $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
         
       } else if (config.hoverInClass){
@@ -80,17 +81,17 @@
            
       var w      = $container.offsetWidth,
           h      = $container.offsetHeight,
-          ax     = config.invert ?  ( w / 2 - event.offsetX)/config.sensitivity : -( w / 2 - event.offsetX)/config.sensitivity,
-          ay     = config.invert ? -( h / 2 - event.offsetY)/config.sensitivity :  ( h / 2 - event.offsetY)/config.sensitivity,
+          ax     = config.invert ?  (w / 2 - event.offsetX) / config.sensitivity : -(w / 2 - event.offsetX)/config.sensitivity,
+          ay     = config.invert ? -(h / 2 - event.offsetY) / config.sensitivity :  (h / 2 - event.offsetY)/config.sensitivity,
           dy     = event.offsetY - h / 2,
           dx     = event.offsetX - w / 2,
           theta  = Math.atan2(dy,dx),
           ang    = theta * 180 / Math.PI - 90,
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
       
-      $target.style.perspective=config.perspective+"px";
-      $target.style.transformStyle="preserve-3d";
-      $target.style.transform="rotateY("+ax+"deg) rotateX("+ay+"deg)";
+      $target.style.perspective    = config.perspective + "px";
+      $target.style.transformStyle = "preserve-3d";
+      $target.style.transform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
         $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(255,255,255,'+ event.offsetY / h * 0.5 +') 0%,rgba(255,255,255,0) 80%)';
@@ -100,25 +101,27 @@
     function leave(){
                         
       if (!config.persist){
-        $target.style.perspective=config.perspective+"px";
-        $target.style.transformStyle="preserve-3d";
-        $target.style.transform= "rotateX(0) rotateY(0)";
+        $target.style.perspective    = config.perspective + "px";
+        $target.style.transformStyle = "preserve-3d";
+        $target.style.transform      = "rotateX(0) rotateY(0)";
       }
       
-      if (config.hoverClass&&config.hoverOutClass){
+      if (config.hoverClass && config.hoverOutClass){
         $target.className += ' ' + config.hoverOutClass;
-        $target.className=removeClass($target.className,config.hoverClass);
+        $target.className = removeClass($target.className,config.hoverClass);
+        
         setTimeout(function(){
-          $target.className=removeClass($target.className,config.hoverOutClass);
+          $target.className = removeClass($target.className,config.hoverOutClass);
         }, 1000);
       
       } else if (config.hoverClass){
-        $target.className=removeClass($target.className,config.hoverClass);
+        $target.className = removeClass($target.className,config.hoverClass);
         
       } else if (config.hoverOutClass){
         $target.className += ' ' + config.hoverOutClass;
+        
         setTimeout(function(){
-          $target.className=removeClass($target.className,config.hoverOutClass);
+          $target.className = removeClass($target.className,config.hoverOutClass);
         }, 1000);
       }
       
