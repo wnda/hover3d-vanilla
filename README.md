@@ -33,7 +33,8 @@ Initiate and configure:
     
 No CSS is required as the `perspective` and `transform` changes are made programmatically. Additional effects are up to you to decide.
 
-Breakdown of options:
+Breakdown of options
+--------------------
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
@@ -47,6 +48,7 @@ hoverInClass | string | hover-in | Helper class when mouse hover in the element,
 hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 300ms
 hoverClass | string | hover-3d | Helper class when the mouse is hovering the element
 
-Compatibility:
+Compatibility
+-------------
 
 Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. Support everywhere else is green. attachEvent is conditionally used for IE8, and a polyfill for .trim() is used.
