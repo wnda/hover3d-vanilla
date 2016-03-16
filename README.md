@@ -56,12 +56,10 @@ Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
 12 | All | 10 | 10 | 15
 
-
-For the JS, the story is a little less gloomy:
+If [transforms were to be polyfilled (ha)](http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/), the JS, the story is a little less gloomy:
 
 Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
 1 | 3.2 | 3.5 | 8 | 10
 
-
-Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. Support everywhere else is green. attachEvent is conditionally used for IE8, and a polyfill for .trim() is used.
+Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. Support everywhere else is green. attachEvent is conditionally used for IE8, and a polyfill for .trim() is used. This is all irrelevant because CSS3 transforms already act as a bar to entry.
