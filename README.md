@@ -9,7 +9,12 @@ The implementation differs slightly, and more control has been added.
 
 To use
 ------
+Include the script in your HTML:
+
     <script src="/hover3d-vanilla.min.js"></script>
+
+Initiate and configure:
+
     <script>
       hover3d(
         {
@@ -25,3 +30,13 @@ To use
         }
       );
     </script>
+
+    selector      : using .querySelectorAll(), hover3d-vanilla can be applied to multiple elements at once by supplying a comma-delimited list of selectors. For browsers that do not support .querySelectoAll(), .getElementsByTagName() or a manually constructed array of .getElementById() could be used instead.
+    perspective   : set the initial perspective value in px
+    sensitivity   : set the sensitivity or amount by which the element transforms on mousemove
+    invert        : optionally invert the direction of transformation
+    shine         : optionally add a linear-gradient overlay representing lighting in 3 dimensions
+    persist       : optionally enable transformed elements to retain their last transformed state on mouseleave
+    hoverInClass  : apply a CSS class on mouseenter and remove after 1s
+    hoverClass    : apply a CSS class on (first) mousemove
+    hoverOutClass : apply a CSS class on mouseleave and remove after 1s
