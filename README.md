@@ -67,3 +67,7 @@ Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in
 Support everywhere else is green. `.attachEvent()` is conditionally used for IE8, and a polyfill for .trim() is used. 
 
 This is all irrelevant, of course, because CSS3 transforms already act as a bar to entry.
+
+Roadmap
+-------
+- [ ] Programmatically set `backface-visibility: hidden` and `will-change: transform` to optimise repaint performance 
