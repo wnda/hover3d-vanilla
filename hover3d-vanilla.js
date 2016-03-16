@@ -1,4 +1,4 @@
-(function(){
+!function(){
   
   function hover3d(options){
     
@@ -195,4 +195,4 @@
   }
     
   window.hover3d=hover3d;
-})();
+}();
