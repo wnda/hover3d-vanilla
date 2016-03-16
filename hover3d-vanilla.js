@@ -34,12 +34,25 @@
       var rxp = new RegExp(cssClass + '\\s*', 'gi');
       return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
     }
-
-    $container.style.perspective      = config.perspective + "px";
-    $container.style.transformStyle   = "preserve-3d";
     
-    $target.style.perspective         = config.perspective + "px";
-    $target.style.transformStyle      = "preserve-3d";
+    function setVendor(element, property, value) {
+      element.style["webkit" + property] = value;
+      element.style["moz" + property] = value;
+      element.style["ms" + property] = value;
+      element.style["o" + property] = value;
+    }
+    $container.style["webkit-perspective"] = config.perspective;
+    $container.style["moz-perspective"]    = config.perspective;
+    $container.style["ms-perspective"]     = config.perspective;
+    $container.style["o-perspective"]      = config.perspective;
+    $container.style.perspective           = config.perspective + "px";
+    
+    $container.style["webkit-transformStyle"] = config.perspective;
+    $container.style["moz-transformStyle"]    = config.perspective;
+    $container.style["ms-transformStyle"]     = config.perspective;
+    $container.style["o-transformStyle"]      = config.perspective;
+    $container.style.transformStyle           = "preserve-3d";
+    
     $target.style.position            = "relative";
     
     if (config.shine){
