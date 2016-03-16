@@ -127,19 +127,34 @@
       
     }
     
-    $container.addEventListener("mouseenter", function(){
-      return enter();
-    });
-    
-    $container.addEventListener("mousemove", function(event){
-      return move(event);
-    });
-    
-    $container.addEventListener("mouseleave", function(){
-      return leave();
-    });
+    if(document.addEventListener){
       
-  }
+      $container.addEventListener("mouseenter", function(){
+        return enter();
+      });
+    
+      $container.addEventListener("mousemove", function(event){
+        return move(event);
+      });
+      
+      $container.addEventListener("mouseleave", function(){
+        return leave();
+      });
+    
+    } else {
+      
+      $container.attachEvent("onmouseenter",function(){
+        return enter();
+      });
+      
+      $container.attachEvent("onmousemove",function(){
+        return enter();
+      });
+      
+      $container.attachEvent("onmouseleave",function(){
+        return enter();
+      });
+    }
     
   window.hover3d=hover3d;
 })();
