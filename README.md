@@ -33,15 +33,17 @@ Initiate and configure:
 
 Breakdown of options:
 
-    selector      : using .querySelectorAll(), hover3d-vanilla can be applied to multiple elements at once by supplying a comma-delimited list of selectors. For browsers that do not support .querySelectoAll(), .getElementsByTagName() or a manually constructed array of .getElementById() could be used instead.
-    perspective   : set the initial perspective value in px
-    sensitivity   : set the sensitivity or amount by which the element transforms on mousemove
-    invert        : optionally invert the direction of transformation
-    shine         : optionally add a linear-gradient overlay representing lighting in 3 dimensions
-    persist       : optionally enable transformed elements to retain their last transformed state on mouseleave
-    hoverInClass  : apply a CSS class on mouseenter and remove after 1s
-    hoverClass    : apply a CSS class on (first) mousemove
-    hoverOutClass : apply a CSS class on mouseleave and remove after 1s
+Option | Type | Default | Description
+------ | ---- | ------- | -----------
+selector | string | null | Selector for element that will be the 3d card
+perspective | integer | 1000 | Perspective value for 3d space
+sensitivity | integer | 20 | Mouse movement sensitivity, larger number is less sensitive
+invert | boolean | false | Default behavior is the element will follow the mouse, look like it facing the mouse
+shine | boolean | false | Add shining layer
+persist | boolean | false | Transformed elements retain their transformations on mouseleave
+hoverInClass | string | hover-in | Helper class when mouse hover in the element, will be removed after 300ms
+hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 300ms
+hoverClass | string | hover-3d | Helper class when the mouse is hovering the element
 
 Compatibility:
 
