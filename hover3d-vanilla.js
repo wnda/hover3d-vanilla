@@ -1,5 +1,5 @@
 !function(){
-  
+  "use strict";
   function hover3d(options){
     
     var config =
