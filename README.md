@@ -1,11 +1,8 @@
 # hover3d in vanilla JavaScript
-port of [jQuery-hover3d](https://github.com/ariona/hover3d)
 
-this is a port of [ariona](https://github.com/ariona)'s [excellent jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3D space.
+This is a port of [ariona](https://github.com/ariona)'s excellent [jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3 dimensional space with a parallax effect.
 
-I made this mostly because I don't like using jQuery.
-
-The implementation differs slightly, and more control has been added.
+I made this mostly because I don't like using jQuery. The implementation differs slightly: it's obviously less pretty than jQuery code, but more control has been added (additional features are also the subject of a PR to the jQuery original).
 
 To use
 ------
