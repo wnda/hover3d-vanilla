@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+<title>
+  CSS variables in a grid system
+</title>
+<style>
+  @charset "UTF-8";
+  
+  @font-face{
+    font-family: 'FaktPro';
+    font-display: fallback;
+    font-weight: 400;
+    font-style: normal;
+    font-variant: normal;
+    src: url("https://dl.dropboxusercontent.com/u/32029178/FontCSS/FaktPro-Blond_gdi.woff") format("woff")
+  }
+  
+  @font-face {
+    font-family: 'FaktPro';
+    font-display: fallback;
+    font-weight: 700;
+    font-style: normal;
+    font-variant: normal;
+    src: url("https://dl.dropboxusercontent.com/u/32029178/FontCSS/FaktPro-SemiBold_gdi.woff") format("woff")
+  }
+  
+  :root {
+    --grid-margin: 8px;
+    --grid-bleed: -8px;
+    --cell-width: 100%;
+    --base-color: hsl(240,60%,6.9%);
+    --cell-bg: hsl(240,4%,91%)
+  }
+  
+  :root,html,body {
+    font: 400 16px/1.27 'FaktPro', Roboto, Helmet, Freesans, sans-serif;
+    overflow-x: hidden;
+    text-rendering: optimizeSpeed
+  }
+  
+  *,:before,:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0 none;
+    box-shadow: none;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--base-color)
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent
+  }
+  
+  .container,.grid,.grid:after,.cell {
+    display: block
+  }
+  
+  .container {
+    padding: calc(var(--grid-margin) * 2);
+    margin: 0 auto
+  }
+  
+  .grid { 
+    margin: var(--grid-bleed)
+  }
+  
+  .grid:after {
+    content: '';
+    clear: both
+  }
+  
+  .cell {
+    float: left;
+    position: relative;
+    width: calc(var(--cell-width) - 16px);
+    margin: var(--grid-margin);
+    padding-bottom: calc(var(--cell-width) - 16px);
+    background-color: var(--cell-bg);
+    border-top: 1px solid hsl(240,4%,63%)
+  }
+  
+  .contents {
+    position: absolute;
+    top: var(--grid-margin);
+    left: var(--grid-margin);
+    bottom: var(--grid-margin);
+    right: var(--grid-margin);
+    overflow: hidden
+  }
+  
+  @media (min-width:480px){
+    .cell {
+      width: calc(var(--cell-width) / 2  - 16px);
+      padding-bottom: calc(var(--cell-width) / 2  - 16px)
+    }
+  }
+  
+  @media (min-width:720px){
+    .cell {
+      width: calc(var(--cell-width) / 3  - 16px);
+      padding-bottom: calc(var(--cell-width) / 3  - 16px)
+    }
+  }
+  
+  @media (min-width:950px){
+    .cell {
+      width: calc(var(--cell-width) / 3  - 16px);
+      padding-bottom: calc(var(--cell-width) / 3  - 16px)
+    }
+  }
+  
+  @media (min-width:1170px){
+    .cell {
+      width: calc(var(--cell-width) / 4  - 16px);
+      padding-bottom: calc(var(--cell-width) / 4  - 16px)
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="grid">
+    <div class="cell">
+      <div class="contents">
+        <h1>CSS custom variables in a grid system!</h1>
+        <h3>Because why not?</h3>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+    <div class="cell">
+      <div class="contents">
+        Cell
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+!function(){function p(a,c,b){function d(a,b){return a.replace(new RegExp(b+"\\s*","gi"),"").replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,"")}function e(){b.hoverClass&&b.hoverInClass?(a.className+=" "+b.hoverClass+" "+b.hoverInClass,setTimeout(function(){a.className=d(a.className,b.hoverInClass)},1E3)):b.hoverClass?(a.className+=" "+b.hoverInClass,setTimeout(function(){a.className=d(a.className,b.hoverInClass)},1E3)):b.hoverInClass&&(a.className+=" "+b.hoverClass)}function m(g){var d=c.offsetWidth,e=c.offsetHeight,h=b.invert?(d/2-g.offsetX)/b.sensitivity:-(d/2-g.offsetX)/b.sensitivity,k=b.invert?-(e/2-g.offsetY)/b.sensitivity:(e/2-g.offsetY)/b.sensitivity,d=180*Math.atan2(g.offsetY-e/2,g.offsetX-d/2)/Math.PI-90,l=0>d?l=d+360:l=d;a.style.webkitTransform="rotateY("+h+"deg) rotateX("+k+"deg)";a.style.mozTransform="rotateY("+h+"deg) rotateX("+k+"deg)";a.style.msTransform="rotateY("+h+"deg) rotateX("+k+"deg)";a.style.oTransform="rotateY("+h+"deg) rotateX("+k+"deg)";a.style.transform="rotateY("+h+"deg) rotateX("+k+"deg)";b.shine&&(f.style.backgroundImage="linear-gradient("+l+"deg,rgba(255,255,255,"+g.offsetY/e*.5+") 0%,rgba(255,255,255,0) 80%)")}function n(){b.persist||(a.style.webkitTransform="rotateX(0) rotateY(0)",a.style.mozTransform="rotateX(0) rotateY(0)",a.style.msTransform="rotateX(0) rotateY(0)",a.style.oTransform="rotateX(0) rotateY(0)",a.style.transform="rotateX(0) rotateY(0)");b.hoverClass&&b.hoverOutClass?(a.className+=" "+b.hoverOutClass,a.className=d(a.className,b.hoverClass),setTimeout(function(){a.className=d(a.className,b.hoverOutClass)},1E3)):b.hoverClass?a.className=d(a.className,b.hoverClass):b.hoverOutClass&&(a.className+=" "+b.hoverOutClass,setTimeout(function(){a.className=d(a.className,b.hoverOutClass)},1E3))}c.style.webkitPerspective=b.perspective;c.style.mozPerspective=b.perspective;c.style.msPerspective=b.perspective;c.style.oPerspective=b.perspective;c.style.perspective=b.perspective+"px";c.style.webkitTransformStyle="preserve-3d";c.style.mozTransformStyle="preserve-3d";c.style.msTransformStyle="preserve-3d";c.style.oTransformStyle="preserve-3d";c.style.transformStyle="preserve-3d";c.style.webkitBackfaceVisibility="hidden";c.style.mozBackfaceVisibility="hidden";c.style.msBackfaceVisibility="hidden";c.style.oBackfaceVisibility="hidden";c.style.backfaceVisibility="hidden";a.style.webkitPerspective=b.perspective;a.style.mozPerspective=b.perspective;a.style.msPerspective=b.perspective;a.style.oPerspective=b.perspective;a.style.perspective=b.perspective+"px";a.style.webkitTransformStyle="preserve-3d";a.style.mozTransformStyle="preserve-3d";a.style.msTransformStyle="preserve-3d";a.style.oTransformStyle="preserve-3d";a.style.transformStyle="preserve-3d";a.style.webkitBackfaceVisibility="hidden";a.style.mozBackfaceVisibility="hidden";a.style.msBackfaceVisibility="hidden";a.style.oBackfaceVisibility="hidden";a.style.backfaceVisibility="hidden";a.style.willChange="transform";a.style.position="relative";if(b.shine){var f=document.createElement("div");f.className="shine";f.style.position="absolute";f.style.top=0;f.style.left=0;f.style.bottom=0;f.style.right=0;f.style.zIndex=9;a.appendChild(f)}document.addEventListener?(c.addEventListener("mouseenter",function(){return e()}),c.addEventListener("mousemove",function(a){return m(a)}),c.addEventListener("mouseleave",function(){return n()})):(c.attachEvent("onmouseenter",function(){return e()}),c.attachEvent("onmousemove",function(a){return m(a)}),c.attachEvent("onmouseleave",function(){return n()}))}window.hover3d=function(a){a={selector:a.selector,perspective:1E3,sensitivity:20,invert:a.invert,shine:a.shine,persist:a.persist,hoverInClass:a.hoverInClass,hoverOutClass:a.hoverOutClass,hoverClass:a.hoverClass};for(var c=document.querySelectorAll(a.selector),b=c.length,d=0;b>d;d++){var e=c[d];p(e,e.parentNode,a)}}}();
+hover3d({selector:".contents"});
+</script>
+</html>
