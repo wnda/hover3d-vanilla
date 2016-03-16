@@ -6,15 +6,16 @@ I made this mostly because I don't like using jQuery. The implementation differs
 
 To use
 ------
-Include the script in your HTML:
+Include the script in your HTML, at the bottom of the `<body>` element (or `<html>` element if you're rolling without a `<head>` and `<body>`) like so:
 
     <script src="/hover3d-vanilla.min.js"></script>
 
-Initiate and configure:
+Then below the library, create a script element to call the function and pass in the configuration object:
 
     <script>
       hover3d(
         {
+          // Only 'selector' is mandatory
           selector:      ".selector1", // default: null
           perspective   : 1000,        // default: 1000
           sensitivity   : 20,          // default: 20
