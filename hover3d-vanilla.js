@@ -10,6 +10,7 @@
         invert        : false       || options.invert,
         shine         : false       || options.shine,
         persist       : false       || options.persist,
+        position      : "relative"  || options.position,
         hoverInClass  : false       || options.hoverInClass,
         hoverOutClass : false       || options.hoverOutClass,
         hoverClass    : false       || options.hoverClass
@@ -73,7 +74,7 @@
     
     $target.style.willChange = "transform";
     
-    $target.style.position = "relative";
+    $target.style.position = config.position;
     
     if (config.shine){
       var $shine            = document.createElement('div');
