@@ -50,6 +50,7 @@ hoverClass | string | hover-3d | Helper class when the mouse is hovering the ele
 
 Compatibility
 -------------
+
 Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | -- | -----
 1 | 3.2 (525.3) | 3.5 (1.9.1) | 8 | 10
