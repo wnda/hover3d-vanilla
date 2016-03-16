@@ -54,7 +54,7 @@ Compatibility for the actual CSS is as follows:
 
 Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
-12 | All | 10 | 10 | 15
+12 | 4 | 10 | 10 | 15
 
 If [transforms were to be polyfilled (ha)](http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/), the JS, the story is a little less gloomy:
 
