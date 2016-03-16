@@ -71,3 +71,4 @@ This is all irrelevant, of course, because CSS3 transforms already act as a bar 
 Roadmap
 -------
 - [ ] Programmatically set `backface-visibility: hidden` and `will-change: transform` to optimise repaint performance 
+- [ ] Closure Compiler aggressively reduces the lib to 1KB gzipped. Refactoring might be a good idea.
