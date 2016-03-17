@@ -209,19 +209,11 @@
     
     } else {
       
-      $container.attachEvent("onmouseenter",function(){
-        return enter();
-      });
+      console.warn("hover3d is incompatible with your browser as it does not support CSS3 3D transformation");
       
-      $container.attachEvent("onmousemove",function(event){
-        return move(event);
-      });
-      
-      $container.attachEvent("onmouseleave",function(){
-        return leave();
-      });
     }
   }
-    
+  
+  // Expose lib
   window.hover3d=hover3d;
 }();
