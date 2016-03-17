@@ -98,14 +98,14 @@
       $shine.style.zIndex   = 9;
       
       if (config.transition && typeof config.transition === "object"){
-        $shine.style.willChange               = config.transition.prop;
-        $shine.style.transitionProperty       = config.transition.prop;
+        $shine.style.willChange               = "background-image";
+        $shine.style.transitionProperty       = "background-image";
         $shine.style.transitionDuration       = config.transition.duration;
         $shine.style.transitionTimingFunction = config.transition.timing;
         $shine.style.transitionDelay          = config.transition.delay;
       } else {
-        $shine.style.willChange               = "transform";
-        $shine.style.transitionProperty       = "transform";
+        $shine.style.willChange               = "background-image";
+        $shine.style.transitionProperty       = "background-image";
         $shine.style.transitionDuration       = "0.2s";
         $shine.style.transitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
         // Do not set a delay by default:
@@ -160,15 +160,16 @@
     }
     
     function leave(){
-      if (config.shine){
-        $shine.style.backgroundImage='none';
-      }
-      
+
       if (!config.persist){
         $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
         $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
         $target.style.msTransform     = "rotateX(0deg) rotateY(0deg)";
         $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
+        
+        if (config.shine){
+          $shine.style.backgroundImage='none';
+        }
       }
       
       if (config.hoverClass && config.hoverOutClass){
