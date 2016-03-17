@@ -59,15 +59,15 @@
     $target.style.mozTransform         = "rotateY(0deg) rotateX(0deg)";
     $target.style.transform            = "rotateY(0deg) rotateX(0deg)";
     
-    // Hide the mirror face in 3D space for higher framerate
-    $target.style.webkitBackfaceVisibility = "hidden";
-    $target.style.mozBackfaceVisibility    = "hidden";
-    $target.style.backfaceVisibility       = "hidden";
+    if (!window.chrome){
+      $target.style.webkitBackfaceVisibility = "hidden";
+      $target.style.mozBackfaceVisibility    = "hidden";
+    }
     
     // Enable the user to specify that the target element is absolute or fixed position
     if (config.position && typeof config.position === "object"){
       $target.style.position = config.position.type;
-      $target.style.zIndex   = config.position.stackIndex;
+      $target.style.zIndex   = config.position.zindex;
     } else {
       $target.style.position = "relative";
     }
