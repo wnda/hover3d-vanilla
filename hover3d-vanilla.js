@@ -75,11 +75,11 @@
     
     // Important: check that the variable passed in userConfig is an array
     if (config.transition && config.transition === Object){
-      $target.style.willChange               = config.transition.prop;            // "string"
-      $target.style.transitionProperty       = config.transition.prop;           // "string"
-      $target.style.transitionDuration       = config.transition.duration+"s";  // integer
-      $target.style.transitionTimingFunction = config.transition.timing;       // "string"
-      $target.style.transitionDelay          = config.transition.delay+"s";   // integer
+      $target.style.willChange               = config.transition.prop;
+      $target.style.transitionProperty       = config.transition.prop;
+      $target.style.transitionDuration       = "0."+config.transition.duration+"s";
+      $target.style.transitionTimingFunction = config.transition.timing;
+      $target.style.transitionDelay          = "0."+config.transition.delay+"s";
     } else {
       $target.style.willChange               = "transform";
       $target.style.transitionProperty       = "transform";
