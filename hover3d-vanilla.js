@@ -65,8 +65,9 @@
     $target.style.backfaceVisibility       = "hidden";
     
     // Enable the user to specify that the target element is absolute or fixed position
-    if (config.position){
-      $target.style.position = config.position;
+    if (config.position && typeof config.position === "object"){
+      $target.style.position = config.position.type;
+      $target.style.zIndex   = config.position.stackIndex;
     } else {
       $target.style.position = "relative";
     }
