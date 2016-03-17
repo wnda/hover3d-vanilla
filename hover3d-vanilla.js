@@ -74,7 +74,7 @@
     }
     
     // Important: check that the variable passed in userConfig is an array
-    if (config.transition && config.transition === Object){
+    if (config.transition){
       $target.style.willChange               = config.transition.prop;
       $target.style.transitionProperty       = config.transition.prop;
       $target.style.transitionDuration       = "0."+config.transition.duration+"s";
