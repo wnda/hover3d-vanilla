@@ -77,9 +77,9 @@
     if (config.transition){
       $target.style.willChange               = config.transition.prop;
       $target.style.transitionProperty       = config.transition.prop;
-      $target.style.transitionDuration       = "0."+config.transition.duration+"s";
+      $target.style.transitionDuration       = config.transition.duration;
       $target.style.transitionTimingFunction = config.transition.timing;
-      $target.style.transitionDelay          = "0."+config.transition.delay+"s";
+      $target.style.transitionDelay          = config.transition.delay;
     } else {
       $target.style.willChange               = "transform";
       $target.style.transitionProperty       = "transform";
