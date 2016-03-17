@@ -55,19 +55,16 @@
     
     // Important: this tells the browser which is the frontface
     // Without this, some browsers may interpret the frontface as the backface
-    $target.style.webkitTransform      = "rotateY(0) rotateX(0)";
-    $target.style.mozTransform         = "rotateY(0) rotateX(0)";
-    $target.style.msTransform          = "rotateY(0) rotateX(0)";
-    $target.style.transform            = "rotateY(0) rotateX(0)";
+    $target.style.webkitTransform      = "rotateY(0deg) rotateX(0deg)";
+    $target.style.mozTransform         = "rotateY(0deg) rotateX(0deg)";
+    $target.style.msTransform          = "rotateY(0deg) rotateX(0deg)";
+    $target.style.transform            = "rotateY(0deg) rotateX(0deg)";
     
     // Hide the mirror face in 3D space for higher framerate
     $target.style.webkitBackfaceVisibility = "hidden";
     $target.style.mozBackfaceVisibility    = "hidden";
     $target.style.msBackfaceVisibility     = "hidden";
     $target.style.backfaceVisibility       = "hidden";
-    
-    // Enable hardware acceleration (Blink)
-    $target.style.willChange = "transform";
     
     // Enable the user to specify that the target element is absolute or fixed position
     if (config.position){
@@ -78,11 +75,13 @@
     
     // Important: check that the variable passed in userConfig is an array
     if (config.transition && config.transition === Array){
-      $target.style.transitionProperty       = config.transition[0];     // specify "all" to enable transition for hover effects
+      $target.style.willChange               = config.transition[0];     // "string"
+      $target.style.transitionProperty       = config.transition[0];     // "string"
       $target.style.transitionDuration       = config.transition[1]+"s"; // integer
-      $target.style.transitionTimingFunction = config.transition[2];     // string
+      $target.style.transitionTimingFunction = config.transition[2];     // "string"
       $target.style.transitionDelay          = config.transition[3]+"s"; // integer
     } else {
+      $target.style.willChange               = "transform";
       $target.style.transitionProperty       = "transform";
       $target.style.transitionDuration       = "0.2s";
       $target.style.transitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
@@ -149,10 +148,10 @@
     function leave(){
                         
       if (!config.persist){
-        $target.style.webkitTransform = "rotateX(0) rotateY(0)";
-        $target.style.mozTransform    = "rotateX(0) rotateY(0)";
-        $target.style.msTransform     = "rotateX(0) rotateY(0)";
-        $target.style.transform       = "rotateX(0) rotateY(0)";
+        $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
+        $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
+        $target.style.msTransform     = "rotateX(0deg) rotateY(0deg)";
+        $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
       }
       
       if (config.hoverClass && config.hoverOutClass){
