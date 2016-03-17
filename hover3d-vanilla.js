@@ -57,13 +57,11 @@
     // Without this, some browsers may interpret the frontface as the backface
     $target.style.webkitTransform      = "rotateY(0deg) rotateX(0deg)";
     $target.style.mozTransform         = "rotateY(0deg) rotateX(0deg)";
-    $target.style.msTransform          = "rotateY(0deg) rotateX(0deg)";
     $target.style.transform            = "rotateY(0deg) rotateX(0deg)";
     
     // Hide the mirror face in 3D space for higher framerate
     $target.style.webkitBackfaceVisibility = "hidden";
     $target.style.mozBackfaceVisibility    = "hidden";
-    $target.style.msBackfaceVisibility     = "hidden";
     $target.style.backfaceVisibility       = "hidden";
     
     // Enable the user to specify that the target element is absolute or fixed position
@@ -141,7 +139,7 @@
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
-        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(255,255,255,'+ event.offsetY / h * 0.5 +') 0%,rgba(255,255,255,0) 80%)';
+        $shine.style.backgroundImage='linear-gradient('+angle+'deg,hsla(0,0%,90%,'+ event.offsetY / h * 0.5 +') 0%,transparent 90%)';
       }
     }
     
