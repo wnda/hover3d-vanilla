@@ -96,6 +96,22 @@
       $shine.style.bottom   = 0;
       $shine.style.right    = 0;
       $shine.style.zIndex   = 9;
+      
+      if (config.transition && typeof config.transition === "object"){
+        $shine.style.willChange               = config.transition.prop;
+        $shine.style.transitionProperty       = config.transition.prop;
+        $shine.style.transitionDuration       = config.transition.duration;
+        $shine.style.transitionTimingFunction = config.transition.timing;
+        $shine.style.transitionDelay          = config.transition.delay;
+      } else {
+        $shine.style.willChange               = "transform";
+        $shine.style.transitionProperty       = "transform";
+        $shine.style.transitionDuration       = "0.2s";
+        $shine.style.transitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
+        // Do not set a delay by default:
+        // $shine.style.transitionDelay          = "0";
+      }
+      
       $target.appendChild($shine);
     }
     
@@ -139,12 +155,15 @@
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
-        $shine.style.backgroundImage='linear-gradient('+angle+'deg,hsla(0,0%,90%,'+ event.offsetY / h * 0.5 +') 0%,transparent 90%)';
+        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(230,230,230,'+ event.offsetY / h * 0.5 +') 0%,transparent 80%)';
       }
     }
     
     function leave(){
-                        
+      if (config.shine){
+        $shine.style.backgroundImage='none';
+      }
+      
       if (!config.persist){
         $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
         $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
