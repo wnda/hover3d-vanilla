@@ -293,10 +293,6 @@
         if (config.shine){
           $shine.style.opacity  = 0;
           
-          if(!config.transition || typeof config.transition !== "object"){
-            $shine.style.backgroundImage = 'none';
-            
-          }
         }
       }
       
