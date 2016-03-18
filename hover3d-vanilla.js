@@ -10,6 +10,8 @@
           perspective   : 1000        || options.perspective,
           sensitivity   : 20          || options.sensitivity,
           invert        : false       || options.invert,
+          scale         : false       || options.scale,
+          shadow        : false       || options.shadow,
           shine         : false       || options.shine,
           persist       : false       || options.persist,
           position      : false       || options.position,
@@ -117,6 +119,56 @@
 
     }
     
+    if (config.shadow){
+      var $shadow                   = document.createElement('div');
+      $shadow.className             = "shadow";
+      $shadow.style.position        = "absolute";
+      $shadow.style.top             = "5%";
+      $shadow.style.left            = "5%";
+      $shadow.style.bottom          = 0;
+      $shadow.style.right           = "5%";
+      $shadow.style.zIndex          = 1;
+      $shadow.style.webkitBoxShadow = "0 8px 30px rgba(14,21,47,0.6)";
+      $shadow.style.boxShadow       = "0 8px 30px rgba(14,21,47,0.6)";
+      
+      if (config.transition && typeof config.transition === "object"){
+        
+        $shadow.style.willChange                     = "box-shadow,transform";
+        
+        $shadow.style.webkitTransitionProperty       = "-webkit-box-shadow";
+        $shadow.style.webkitTransitionDuration       = config.transition.duration;
+        $shadow.style.webkitTransitionTimingFunction = config.transition.timing;
+        $shadow.style.webkitTransitionDelay          = config.transition.delay;
+        
+        $shadow.style.transitionProperty             = "box-shadow";
+        $shadow.style.transitionDuration             = config.transition.duration;
+        $shadow.style.transitionTimingFunction       = config.transition.timing;
+        $shadow.style.transitionDelay                = config.transition.delay;
+        
+      } else {
+        
+        $shadow.style.willChange                     = "box-shadow,transform";
+        
+        $shadow.style.webkitTransitionProperty       = "box-shadow";
+        $shadow.style.webkitTransitionDuration       = "0.2s";
+        $shadow.style.webkitTransitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
+        
+        $shadow.style.mozTransitionProperty          = "box-shadow";
+        $shadow.style.mozTransitionDuration          = "0.2s";
+        $shadow.style.mozTransitionTimingFunction    = "cubic-bezier(0.3,1,0.2,1)";
+        
+        $shadow.style.transitionProperty             = "box-shadow";
+        $shadow.style.transitionDuration             = "0.2s";
+        $shadow.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
+        // Do not set a delay by default:
+        // $shadow.style.transitionDelay          = "0";
+        
+      }
+      
+      $target.appendChild($shadow);
+      
+    }
+    
     if (config.shine){
       var $shine            = document.createElement('div');
       $shine.className      = "shine";
@@ -204,9 +256,20 @@
           ang    = theta * 180 / Math.PI - 90,
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
       
-      $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
-      $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
-      $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+      if (config.scale){
+        $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
+        $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
+        $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
+      } else {
+        $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+        $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+        $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+      }
+      
+      if (config.shadow){
+        $shadow.style.webkitBoxShadow = "0 45px 100px rgba(14,21,47,0.4), 0 16px 40px rgba(14,21,47,0.4)";
+        $shadow.style.boxShadow       = "0 45px 100px rgba(14,21,47,0.4), 0 16px 40px rgba(14,21,47,0.4)";
+      }
       
       if (config.shine){
         $shine.style.opacity         = 1;
