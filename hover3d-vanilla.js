@@ -267,8 +267,6 @@
       // because CSS3 transforms in 3D are not supported until IE10+
       // Also, any other browser which does not support addEventListener is unlikely 
       // to support CSS transforms.
-      
-      // Fold silently:
       console.warn("hover3d is incompatible with your browser as it does not support 3D transformation");
     }
   }
