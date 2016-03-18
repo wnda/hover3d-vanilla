@@ -52,8 +52,8 @@ sensitivity | integer | 20 | Mouse movement sensitivity, larger number is less s
 invert | boolean | false | Default behavior is the element will follow the mouse, look like it facing the mouse
 shine | boolean | false | Add shining layer
 persist | boolean | false | Transformed elements retain their transformations on mouseleave
-position | object | false | Sometimes, you might want to apply the effect to an absolute/fixed position element. Use this to declare the positioning required or leave it unconfigured to roll with `position: relative` by default
-transition | object | false | The transition object is automatically configured, but this object allows custom control over which properties have a transition applied, the duration, timing-function and, if desired, the delay.
+position | object | false | Sometimes, you might want to apply the hover3d effects to absolute/fixed position elements. Use this to declare the position method and z-index required, or leave it unconfigured to roll with `position: relative` by default. Example: `position: { method: "absolute", z:5 }`
+transition | object | false | The transition object is automatically configured, but this object allows custom control over which properties have a transition applied, the duration, timing-function and, if desired, the delay. Example: `transition: { prop: "transform,border-color", duration: "0.2s", timing: "cubic-bezier(.4,1,.2,1), delay:"0"}`
 hoverInClass | string | hover-in | Helper class when mouse hover in the element, will be removed after 300ms
 hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 300ms
 hoverClass | string | hover-3d | Helper class when the mouse is hovering the element
