@@ -123,10 +123,10 @@
       var $shadow                   = document.createElement('div');
       $shadow.className             = "shadow";
       $shadow.style.position        = "absolute";
-      $shadow.style.top             = "5%";
-      $shadow.style.left            = "5%";
+      $shadow.style.top             = 0;
+      $shadow.style.left            = 0;
       $shadow.style.bottom          = 0;
-      $shadow.style.right           = "5%";
+      $shadow.style.right           = 0;
       $shadow.style.zIndex          = 1;
       $shadow.style.webkitBoxShadow = "0 8px 30px rgba(14,21,47,0.6)";
       $shadow.style.boxShadow       = "0 8px 30px rgba(14,21,47,0.6)";
@@ -278,8 +278,14 @@
     }
     
     function leave(){
-
+      
+      if (config.shadow){
+        $shadow.style.webkitBoxShadow = "0 8px 30px rgba(14,21,47,0.6)";
+        $shadow.style.boxShadow       = "0 8px 30px rgba(14,21,47,0.6)";
+      }
+      
       if (!config.persist){
+        
         $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
         $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
         $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
