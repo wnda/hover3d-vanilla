@@ -2,6 +2,8 @@
   "use strict";
   function hover3d(options){
     
+    if (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined){
+    
     var config =
       {
         selector      : null        || options.selector,
@@ -26,6 +28,10 @@
           $container = $target.parentNode;
           
       handleHover($target, $container,config);
+    }
+    } else {
+      console.warn("Your browser does not appear to support CSS 3D transformation");
+      return;
     }
     
   }
@@ -263,11 +269,9 @@
     
     } else {
       
-      // addEventListener lands in IE9; no point accommodating for IE8 with attachEvent
-      // because CSS3 transforms in 3D are not supported until IE10+
-      // Also, any other browser which does not support addEventListener is unlikely 
-      // to support CSS transforms.
-      console.warn("hover3d is incompatible with your browser as it does not support 3D transformation");
+      // Also, any other browser which does not support addEventListener
+      // is unlikely to support CSS transforms.
+      console.warn("hover3d is incompatible with your browser");
     }
   }
   
