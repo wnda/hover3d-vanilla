@@ -270,7 +270,6 @@
       
       // Fold silently:
       console.warn("hover3d is incompatible with your browser as it does not support 3D transformation");
-      
     }
   }
   
