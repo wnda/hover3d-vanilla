@@ -10,9 +10,13 @@
 @font-face{font-family:'SofiaPro';font-display:fallback;font-weight:400;font-style:normal;font-variant:normal;src:url("https://wnda.github.io/picuse-concept/SofiaProRegular.woff") format("woff")}
 @font-face{font-family:'SofiaPro';font-display:fallback;font-weight:700;font-style:normal;font-variant:normal;src:url("https://wnda.github.io/picuse-concept/SofiaProBold.woff") format("woff")}
 :root,html,body {
-font: 400 16px/1.27 "SofiaPro",Roboto, -apple-system, caption, sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 1.27;
+font-family: "SofiaPro",Roboto, -apple-system, caption, sans-serif;
 overflow-x: hidden;
-text-rendering: optimizeSpeed
+text-rendering: optimizeSpeed;
+-webkit-font-smoothing: antialiased
 }
 
 *,:before,:after {
@@ -23,6 +27,7 @@ border: 0;
 outline: 0 none;
 box-shadow: none;
 text-decoration: none;
+text-rendering: optimizeSpeed;
 -webkit-font-smoothing: antialiased
 }
 
