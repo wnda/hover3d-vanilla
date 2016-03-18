@@ -97,15 +97,18 @@
       $shine.style.bottom   = 0;
       $shine.style.right    = 0;
       $shine.style.zIndex   = 9;
+      $shine.style.webkitTransform = "rotateY(0deg) rotateX(0deg)";
+      $shine.style.mozTransform    = "rotateY(0deg) rotateX(0deg)";
+      $shine.style.transform       = "rotateY(0deg) rotateX(0deg)";
       
       if (config.transition && typeof config.transition === "object"){
-        $shine.style.willChange               = "background-image";
+        $shine.style.willChange               = "background-image,transform";
         $shine.style.transitionProperty       = "background-image";
         $shine.style.transitionDuration       = config.transition.duration;
         $shine.style.transitionTimingFunction = config.transition.timing;
         $shine.style.transitionDelay          = config.transition.delay;
       } else {
-        $shine.style.willChange               = "background-image";
+        $shine.style.willChange               = "background-image,transform";
         $shine.style.transitionProperty       = "background-image";
         $shine.style.transitionDuration       = "0.2s";
         $shine.style.transitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
