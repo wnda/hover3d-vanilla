@@ -216,7 +216,7 @@
         $target.style.msTransform     = "rotateX(0deg) rotateY(0deg)";
         $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
         
-        if (config.shine)){
+        if (config.shine){
           $shine.style.opacity  = 0;
           
           if(!config.transition || typeof config.transition !== "object"){
