@@ -156,7 +156,7 @@
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
-        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(230,230,230,'+ (1 / (event.offsetY / h / 0.5)) +') 0%,transparent 80%)';
+        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(230,230,230,'+ (-(event.offsetY / h * 0.5)) +') 0%,transparent 80%)';
       }
     }
     
