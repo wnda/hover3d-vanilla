@@ -2,30 +2,36 @@
   "use strict";
   function hover3d(options){
     
-    var config =
-      {
-        selector      : null        || options.selector,
-        perspective   : 1000        || options.perspective,
-        sensitivity   : 20          || options.sensitivity,
-        invert        : false       || options.invert,
-        shine         : false       || options.shine,
-        persist       : false       || options.persist,
-        position      : false       || options.position,
-        transition    : false       || options.transition,
-        hoverInClass  : false       || options.hoverInClass,
-        hoverOutClass : false       || options.hoverOutClass,
-        hoverClass    : false       || options.hoverClass
-      };
-   
-    var $targets = document.querySelectorAll(config.selector),
-        i     = $targets.length,
-        j     = 0;
+    if (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined){
     
-    for( ; i > j; j++){
-      var $target    = $targets[j],
-          $container = $target.parentNode;
-          
-      handleHover($target, $container,config);
+      var config =
+        {
+          selector      : null        || options.selector,
+          perspective   : 1000        || options.perspective,
+          sensitivity   : 20          || options.sensitivity,
+          invert        : false       || options.invert,
+          shine         : false       || options.shine,
+          persist       : false       || options.persist,
+          position      : false       || options.position,
+          transition    : false       || options.transition,
+          hoverInClass  : false       || options.hoverInClass,
+          hoverOutClass : false       || options.hoverOutClass,
+          hoverClass    : false       || options.hoverClass
+        };
+     
+      var $targets = document.querySelectorAll(config.selector),
+          i     = $targets.length,
+          j     = 0;
+      
+      for( ; i > j; j++){
+        var $target    = $targets[j],
+            $container = $target.parentNode;
+            
+        handleHover($target, $container,config);
+      }
+    } else {
+      console.warn("Your browser does not appear to support CSS 3D transformation");
+      return;
     }
     
   }
@@ -61,6 +67,7 @@
     if (!window.chrome){
       $target.style.webkitBackfaceVisibility = "hidden";
       $target.style.mozBackfaceVisibility    = "hidden";
+      $target.style.backfaceVisibility       = "hidden";
     }
     
     // Enable the user to specify that the target element is absolute or fixed position
@@ -199,7 +206,6 @@
       
       $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
-      $target.style.msTransform          = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
@@ -213,7 +219,6 @@
       if (!config.persist){
         $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
         $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
-        $target.style.msTransform     = "rotateX(0deg) rotateY(0deg)";
         $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
         
         if (config.shine){
@@ -263,11 +268,9 @@
     
     } else {
       
-      // addEventListener lands in IE9; no point accommodating for IE8 with attachEvent
-      // because CSS3 transforms in 3D are not supported until IE10+
-      // Also, any other browser which does not support addEventListener is unlikely 
-      // to support CSS transforms.
-      console.warn("hover3d is incompatible with your browser as it does not support 3D transformation");
+      // Also, any other browser which does not support addEventListener
+      // is unlikely to support CSS transforms.
+      console.warn("hover3d is incompatible with your browser");
     }
   }
   
