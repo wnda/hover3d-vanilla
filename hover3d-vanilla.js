@@ -67,6 +67,7 @@
     if (!window.chrome){
       $target.style.webkitBackfaceVisibility = "hidden";
       $target.style.mozBackfaceVisibility    = "hidden";
+      $target.style.backfaceVisibility       = "hidden";
     }
     
     // Enable the user to specify that the target element is absolute or fixed position
@@ -205,7 +206,6 @@
       
       $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
-      $target.style.msTransform          = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
@@ -219,7 +219,6 @@
       if (!config.persist){
         $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
         $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
-        $target.style.msTransform     = "rotateX(0deg) rotateY(0deg)";
         $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
         
         if (config.shine){
