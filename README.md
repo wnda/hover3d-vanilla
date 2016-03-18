@@ -73,4 +73,4 @@ Roadmap
 - [x] Programmatically set `backface-visibility: hidden` and `will-change: transform` to optimise repaint performance
     - These settings are currently only set in Safari and Firefox, due to a bug in mobile Chrome which causes background-images to be invisible with `backface-visibility: hidden` 
 - [ ] Open up timing configuration for hover-in, hover and hover-out classes by expanding the current method to accept an object
-- [ ] Change the strategy for handling older browsers from not adding the hover event listeners to not executing at all. This should be done like so: `if (document.webkitTransform || document.mozTransform || document.transform){ // execute }`
+- [ ] Change the strategy for handling older browsers from not adding the hover event listeners to not executing at all. This should be done like so: `if (document.body.style.webkitTransform !== undefined || document.body.style.mozTransform !== undefined || document.body.style.transform !== undefined){ // execute }`
