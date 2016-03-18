@@ -1,8 +1,8 @@
 # hover3d in vanilla JavaScript
 
-This is a port of [ariona](https://github.com/ariona)'s excellent [jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3 dimensional space with a parallax effect.
+This is both a port and extension of [ariona](https://github.com/ariona)'s excellent [jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3 dimensional space with a parallax effect.
 
-I made this mostly because I don't like using jQuery. The implementation differs slightly: it's obviously less pretty than jQuery code, but more control has been added (additional features are also the subject of a PR to the jQuery original).
+I made this mostly because I don't like using jQuery, but it later grew into the more configurable library that it is today as I desired additional features. The implementation takes care to cater to , but more control has been added (additional features are also the subject of a PR to the jQuery original).
 
 To use
 ------
@@ -43,7 +43,8 @@ sensitivity | integer | 20 | Mouse movement sensitivity, larger number is less s
 invert | boolean | false | Default behavior is the element will follow the mouse, look like it facing the mouse
 shine | boolean | false | Add shining layer
 persist | boolean | false | Transformed elements retain their transformations on mouseleave
-position | string | false | Sometimes, you might want to apply the effect to an absolute/fixed position element. Use this to declare the positioning required or leave it unconfigured to roll with `position: relative` by default
+position | object | false | Sometimes, you might want to apply the effect to an absolute/fixed position element. Use this to declare the positioning required or leave it unconfigured to roll with `position: relative` by default
+transition | object | false | The transition object is automatically configured, but this object allows custom control over which properties have a transition applied, the duration, timing-function and, if desired, the delay.
 hoverInClass | string | hover-in | Helper class when mouse hover in the element, will be removed after 300ms
 hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 300ms
 hoverClass | string | hover-3d | Helper class when the mouse is hovering the element
