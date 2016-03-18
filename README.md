@@ -22,7 +22,8 @@ Then below the library, create a script element to call the function and pass in
           invert        : false,       // default: false
           shine         : true,        // default: false
           persist       : true,        // default: false
-          position      : false,       // default: "relative"
+          position      : {method:"",z:""},       // default: "relative"
+          transition    : {prop:"",duration:"",timing:"",delay:""},       // default: false
           hoverInClass  : "hovered",   // default: false
           hoverClass    : "hovering",  // default: false
           hoverOutClass : "left"       // default: false
