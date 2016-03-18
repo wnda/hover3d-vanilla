@@ -263,7 +263,11 @@
     
     } else {
       
-      console.warn("hover3d is incompatible with your browser as it does not support CSS3 3D transformation");
+      // addEventListener lands in IE9; no point accommodating for IE8 with attachEvent
+      // because CSS3 transforms in 3D are not supported until IE10+
+      // Also, any other browser which does not support addEventListener is unlikely 
+      // to support CSS transforms
+      console.warn("hover3d is incompatible with your browser as it does not support 3D transformation");
       
     }
   }
