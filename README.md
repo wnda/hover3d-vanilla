@@ -16,17 +16,25 @@ Then below the library, create a script element to call the function and pass in
       hover3d(
         {
           // Only 'selector' is mandatory
-          selector:      ".selector1", // default: null
-          perspective   : 1000,        // default: 1000
-          sensitivity   : 20,          // default: 20
-          invert        : false,       // default: false
-          shine         : true,        // default: false
-          persist       : true,        // default: false
-          position      : {method:"",z:""},       // default: "relative"
-          transition    : {prop:"",duration:"",timing:"",delay:""},       // default: false
-          hoverInClass  : "hovered",   // default: false
-          hoverClass    : "hovering",  // default: false
-          hoverOutClass : "left"       // default: false
+          selector      : ".selector1",
+          perspective   : 1000,
+          sensitivity   : 20,
+          invert        : false,
+          shine         : true,
+          persist       : false,
+          position      : {
+                            method    : "absolute",
+                            z         : "5"
+                          },
+          transition    : {
+                            prop      : "transform,border-color",
+                            duration  : "0.2s",
+                            timing    : "ease",
+                            delay     : "0"
+                          },
+          hoverInClass  : "hovered",
+          hoverClass    : "hovering",
+          hoverOutClass : "left"
         }
       );
     </script>
