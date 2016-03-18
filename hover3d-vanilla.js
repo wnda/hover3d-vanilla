@@ -142,8 +142,8 @@
            
       var w      = $container.offsetWidth,
           h      = $container.offsetHeight,
-          ax     = config.invert ?  (w / 2 - event.offsetX) / config.sensitivity : -(w / 2 - event.offsetX)/config.sensitivity,
-          ay     = config.invert ? -(h / 2 - event.offsetY) / config.sensitivity :  (h / 2 - event.offsetY)/config.sensitivity,
+          ax     = config.invert ? -(w / 2 - event.offsetX) / config.sensitivity :  (w / 2 - event.offsetX) / config.sensitivity,
+          ay     = config.invert ?  (h / 2 - event.offsetY) / config.sensitivity : -(h / 2 - event.offsetY) / config.sensitivity,
           dy     = event.offsetY - h / 2,
           dx     = event.offsetX - w / 2,
           theta  = Math.atan2(dy,dx),
@@ -156,7 +156,7 @@
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
-        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(230,230,230,'+ event.offsetY / h +') 0%,transparent 80%)';
+        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(230,230,230,'+ event.offsetY / h * 0.5 +') 0%,transparent 80%)';
       }
     }
     
