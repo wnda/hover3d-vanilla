@@ -1,8 +1,8 @@
 # hover3d in vanilla JavaScript
 
-This is a port of [ariona](https://github.com/ariona)'s excellent [jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3 dimensional space with a parallax effect.
+This is both a port and extension of [ariona](https://github.com/ariona)'s excellent [jQuery hover3d plugin](https://github.com/ariona/hover3d) for animating elements in 3 dimensional space with a parallax effect.
 
-I made this mostly because I don't like using jQuery. The implementation differs slightly: it's obviously less pretty than jQuery code, but more control has been added (additional features are also the subject of a PR to the jQuery original).
+I made this mostly because I don't like using jQuery, but it later grew into the more configurable library that it is today as I desired additional features. The implementation takes care to cater to , but more control has been added (additional features are also the subject of a PR to the jQuery original).
 
 To use
 ------
@@ -16,15 +16,25 @@ Then below the library, create a script element to call the function and pass in
       hover3d(
         {
           // Only 'selector' is mandatory
-          selector:      ".selector1", // default: null
-          perspective   : 1000,        // default: 1000
-          sensitivity   : 20,          // default: 20
-          invert        : false,       // default: false
-          shine         : true,        // default: false
-          persist       : true,        // default: false
-          hoverInClass  : "hovered",   // default: false
-          hoverClass    : "hovering",  // default: false
-          hoverOutClass : "left"       // default: false
+          selector      : ".selector1",
+          perspective   : 1000,
+          sensitivity   : 20,
+          invert        : false,
+          shine         : true,
+          persist       : false,
+          position      : {
+                            method    : "absolute",
+                            z         : "5"
+                          },
+          transition    : {
+                            prop      : "transform,border-color",
+                            duration  : "0.2s",
+                            timing    : "ease",
+                            delay     : "0"
+                          },
+          hoverInClass  : "hovered",
+          hoverClass    : "hovering",
+          hoverOutClass : "left"
         }
       );
     </script>
@@ -42,33 +52,25 @@ sensitivity | integer | 20 | Mouse movement sensitivity, larger number is less s
 invert | boolean | false | Default behavior is the element will follow the mouse, look like it facing the mouse
 shine | boolean | false | Add shining layer
 persist | boolean | false | Transformed elements retain their transformations on mouseleave
-hoverInClass | string | hover-in | Helper class when mouse hover in the element, will be removed after 300ms
-hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 300ms
+position | object | false | Sometimes, you might want to apply the hover3d effects to absolute/fixed position elements. Use this to declare the position method and z-index required, or leave it unconfigured to roll with `position: relative` by default. Example: `position: { method: "absolute", z:5 }`
+transition | object | false | The transition object is automatically configured, but this object allows custom control over which properties have a transition applied, the duration, timing-function and, if desired, the delay. Example: `transition: { prop: "transform,border-color", duration: "0.2s", timing: "cubic-bezier(.4,1,.2,1), delay:"0"}`
+hoverInClass | string | hover-in | Helper class when mouse hover in the element, will be removed after 100ms
+hoverOutClass | string | hover-out | Helper class when mouse hover Out the element, will be removed after 100ms
 hoverClass | string | hover-3d | Helper class when the mouse is hovering the element
 
 Compatibility
 -------------
-Compatibility for the actual CSS is as follows:
+Compatibility is as follows:
 
 Chrome | Safari | Firefox | IE | Opera
 ------ | ------ | ------- | ----- | -----
 12 | 4 | 10 | 10 | 15
 
-Vendor prefixes are used via their respective JavaScript APIs.
-
-If [transforms were to be polyfilled (ha)](http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/), the JS, the story is a little less gloomy:
-
-Chrome | Safari | Firefox | IE | Opera
------- | ------ | ------- | ----- | -----
-1 | 3.2 | 3.5 | 8 | 10
-
-Reliance on `.querySelectorAll()` pushes the lowest IE support to IE8, though in IE8 only classes, IDs and HTML4/XHTML1 tags are usable. 
-
-Support everywhere else is green. `.attachEvent()` is conditionally used for IE8, and a polyfill for .trim() is used. 
-
-This is all irrelevant, of course, because CSS3 transforms already act as a bar to entry.
+This is due to 3D transformations not being supported in older browsers. In older browsers, the function does not attach the event listeners. See the roadmap for future plans to handle older browsers better.
 
 Roadmap
 -------
-- [x] Programmatically set `backface-visibility: hidden` and `will-change: transform` to optimise repaint performance 
-- [ ] Closure Compiler aggressively reduces the lib to 1KB gzipped. Refactoring might be a good idea.
+- [x] Programmatically set `backface-visibility: hidden` and `will-change: transform` to optimise repaint performance
+    - These settings are currently only set in Safari and Firefox, due to a bug in mobile Chrome which causes background-images to be invisible with `backface-visibility: hidden` 
+- [ ] Open up timing configuration for hover-in, hover and hover-out classes by expanding the current method to accept an object
+- [ ] Change the strategy for handling older browsers from not adding the hover event listeners to not executing at all. This should be done like so: `if (document.body.style.webkitTransform !== undefined || document.body.style.mozTransform !== undefined || document.body.style.transform !== undefined){ // execute }`
