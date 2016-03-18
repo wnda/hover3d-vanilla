@@ -37,27 +37,26 @@
       return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
     }
     
-    // This is important to prevent the element being rendered 2D
-    $container.style.webkitPerspective = config.perspective + "px";
-    $container.style.mozPerspective    = config.perspective + "px";
-    $container.style.perspective       = config.perspective + "px";
+    $container.style.webkitPerspective    = config.perspective + "px";
     $container.style.webkitTransformStyle = "preserve-3d";
+    
+    $container.style.mozPerspective       = config.perspective + "px";
     $container.style.mozTransformStyle    = "preserve-3d";
+    
+    $container.style.perspective          = config.perspective + "px";
     $container.style.transformStyle       = "preserve-3d";
     
-    // This is important to prevent the element being rendered 2D
-    $target.style.webkitPerspective = config.perspective + "px";
-    $target.style.mozPerspective    = config.perspective + "px";
-    $target.style.perspective       = config.perspective + "px";
-    $target.style.webkitTransformStyle = "preserve-3d";
-    $target.style.mozTransformStyle    = "preserve-3d";
-    $target.style.transformStyle       = "preserve-3d";
+    $target.style.webkitPerspective       = config.perspective + "px";
+    $target.style.webkitTransformStyle    = "preserve-3d";
+    $target.style.webkitTransform         = "rotateY(0deg) rotateX(0deg)";
     
-    // Important: this tells the browser which is the frontface
-    // Without this, some browsers may interpret the frontface as the backface
-    $target.style.webkitTransform      = "rotateY(0deg) rotateX(0deg)";
-    $target.style.mozTransform         = "rotateY(0deg) rotateX(0deg)";
-    $target.style.transform            = "rotateY(0deg) rotateX(0deg)";
+    $target.style.mozPerspective          = config.perspective + "px";
+    $target.style.mozTransformStyle       = "preserve-3d";
+    $target.style.mozTransform            = "rotateY(0deg) rotateX(0deg)";
+    
+    $target.style.perspective             = config.perspective + "px";
+    $target.style.transformStyle          = "preserve-3d";
+    $target.style.transform               = "rotateY(0deg) rotateX(0deg)";
     
     if (!window.chrome){
       $target.style.webkitBackfaceVisibility = "hidden";
@@ -74,18 +73,41 @@
     
     // Important: check that the variable passed in userConfig is an array
     if (config.transition && typeof config.transition === "object"){
-      $target.style.willChange               = config.transition.prop;
-      $target.style.transitionProperty       = config.transition.prop;
-      $target.style.transitionDuration       = config.transition.duration;
-      $target.style.transitionTimingFunction = config.transition.timing;
-      $target.style.transitionDelay          = config.transition.delay;
+      
+      $target.style.willChange                     = config.transition.prop;
+      
+      $target.style.webkitTransitionProperty       = config.transition.prop;
+      $target.style.webkitTransitionDuration       = config.transition.duration;
+      $target.style.webkitTransitionTimingFunction = config.transition.timing;
+      $target.style.webkitTransitionDelay          = config.transition.delay;
+      
+      $target.style.mozTransitionProperty          = config.transition.prop;
+      $target.style.mozTransitionDuration          = config.transition.duration;
+      $target.style.mozTransitionTimingFunction    = config.transition.timing;
+      $target.style.mozTransitionDelay             = config.transition.delay;
+      
+      $target.style.transitionProperty             = config.transition.prop;
+      $target.style.transitionDuration             = config.transition.duration;
+      $target.style.transitionTimingFunction       = config.transition.timing;
+      $target.style.transitionDelay                = config.transition.delay;
+    
     } else {
-      $target.style.willChange               = "transform";
-      $target.style.transitionProperty       = "transform";
-      $target.style.transitionDuration       = "0.2s";
-      $target.style.transitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
+      $target.style.willChange                     = "transform";
+      
+      $target.style.webkitTransitionProperty       = "transform";
+      $target.style.webkitTransitionDuration       = "0.2s";
+      $target.style.webkitTransitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
+      
+      $target.style.mozTransitionProperty          = "transform";
+      $target.style.mozTransitionDuration          = "0.2s";
+      $target.style.mozTransitionTimingFunction    = "cubic-bezier(0.3,1,0.2,1)";
+      
+      $target.style.transitionProperty             = "transform";
+      $target.style.transitionDuration             = "0.2s";
+      $target.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
       // Do not set a delay by default:
       // $target.style.transitionDelay          = "0";
+
     }
     
     if (config.shine){
@@ -97,23 +119,45 @@
       $shine.style.bottom   = 0;
       $shine.style.right    = 0;
       $shine.style.zIndex   = 9;
-      $shine.style.webkitTransform = "rotateY(0deg) rotateX(0deg)";
-      $shine.style.mozTransform    = "rotateY(0deg) rotateX(0deg)";
-      $shine.style.transform       = "rotateY(0deg) rotateX(0deg)";
+      $shine.style.opacity  = 0;
       
       if (config.transition && typeof config.transition === "object"){
-        $shine.style.willChange               = "background-image,transform";
-        $shine.style.transitionProperty       = "background-image";
-        $shine.style.transitionDuration       = config.transition.duration;
-        $shine.style.transitionTimingFunction = config.transition.timing;
-        $shine.style.transitionDelay          = config.transition.delay;
+        
+        $shine.style.willChange                     = "opacity,transform";
+        
+        $shine.style.webkitTransitionProperty       = "opacity";
+        $shine.style.webkitTransitionDuration       = config.transition.duration;
+        $shine.style.webkitTransitionTimingFunction = config.transition.timing;
+        $shine.style.webkitTransitionDelay          = config.transition.delay;
+        
+        $shine.style.mozTransitionProperty          = "opacity";
+        $shine.style.mozTransitionDuration          = config.transition.duration;
+        $shine.style.mozTransitionTimingFunction    = config.transition.timing;
+        $shine.style.mozTransitionDelay             = config.transition.delay;
+        
+        $shine.style.transitionProperty             = "opacity";
+        $shine.style.transitionDuration             = config.transition.duration;
+        $shine.style.transitionTimingFunction       = config.transition.timing;
+        $shine.style.transitionDelay                = config.transition.delay;
+        
       } else {
-        $shine.style.willChange               = "background-image,transform";
-        $shine.style.transitionProperty       = "background-image";
-        $shine.style.transitionDuration       = "0.2s";
-        $shine.style.transitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
+        
+        $shine.style.willChange                     = "opacity,transform";
+        
+        $shine.style.webkitTransitionProperty       = "opacity";
+        $shine.style.webkitTransitionDuration       = "0.2s";
+        $shine.style.webkitTransitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
+        
+        $shine.style.mozTransitionProperty          = "opacity";
+        $shine.style.mozTransitionDuration          = "0.2s";
+        $shine.style.mozTransitionTimingFunction    = "cubic-bezier(0.3,1,0.2,1)";
+        
+        $shine.style.transitionProperty             = "opacity";
+        $shine.style.transitionDuration             = "0.2s";
+        $shine.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
         // Do not set a delay by default:
         // $shine.style.transitionDelay          = "0";
+        
       }
       
       $target.appendChild($shine);
@@ -159,7 +203,8 @@
       $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       
       if (config.shine){
-        $shine.style.backgroundImage='linear-gradient('+angle+'deg,rgba(230,230,230,'+ event.offsetY / h * 0.5 +') 0%,transparent 80%)';
+        $shine.style.opacity         = 1;
+        $shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ event.offsetY / h * 0.5 +') 0%,transparent 80%)';
       }
     }
     
