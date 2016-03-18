@@ -128,8 +128,8 @@
       $shadow.style.bottom          = 0;
       $shadow.style.right           = 0;
       $shadow.style.zIndex          = 1;
-      $shadow.style.webkitBoxShadow = "0 8px 30px rgba(14,21,47,0.6)";
-      $shadow.style.boxShadow       = "0 8px 30px rgba(14,21,47,0.6)";
+      $shadow.style.webkitBoxShadow = "0 6px 18px rgba(14,21,47,0.6)";
+      $shadow.style.boxShadow       = "0 6px 18px rgba(14,21,47,0.6)";
       
       if (config.transition && typeof config.transition === "object"){
         
@@ -267,8 +267,8 @@
       }
       
       if (config.shadow){
-        $shadow.style.webkitBoxShadow = "0 45px 100px rgba(14,21,47,0.4), 0 16px 40px rgba(14,21,47,0.4)";
-        $shadow.style.boxShadow       = "0 45px 100px rgba(14,21,47,0.4), 0 16px 40px rgba(14,21,47,0.4)";
+        $shadow.style.webkitBoxShadow = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
+        $shadow.style.boxShadow       = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
       }
       
       if (config.shine){
@@ -280,8 +280,8 @@
     function leave(){
       
       if (config.shadow){
-        $shadow.style.webkitBoxShadow = "0 8px 30px rgba(14,21,47,0.6)";
-        $shadow.style.boxShadow       = "0 8px 30px rgba(14,21,47,0.6)";
+        $shadow.style.webkitBoxShadow = "0 6px 18px rgba(14,21,47,0.6)";
+        $shadow.style.boxShadow       = "0 6px 18px rgba(14,21,47,0.6)";
       }
       
       if (!config.persist){
