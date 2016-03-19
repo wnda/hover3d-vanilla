@@ -277,12 +277,21 @@
     
     if(config.touchEnabled){
       $container.addEventListener("touchstart", function(){
+        if (window.preventScroll){
+          window.preventScroll = true;
+        }
         return enter();
       });
       $container.addEventListener("touchmove", function(e){
+        if (window.preventScroll){
+						e.preventDefault();
+				}
         return move(e);
       });
       $container.addEventListener("touchend", function(){
+        if (window.preventScroll){
+          window.preventScroll = false;
+        }
         return leave();
       });
     } 
