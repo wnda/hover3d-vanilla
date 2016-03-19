@@ -2,8 +2,6 @@
   "use strict";
   function hovera(options){
 
-    if (document.addEventListener){
-    
       function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
       }
@@ -36,11 +34,6 @@
   
         handleHover($target, $container,config);
       }
-    } 
-    else {
-      console.warn("hover3d-vanilla is incompatible with your browser.");
-      return;
-    }
   }
     
   function handleHover($target, $container, config){
