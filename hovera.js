@@ -9,18 +9,18 @@
       var config =
         {
           selector      : null    || options.selector,
-          perspective   : false   || options.perspective,
-          sensitivity   : false   || options.sensitivity,
+          perspective   : null    || options.perspective,
+          sensitivity   : null    || options.sensitivity,
           invert        : false   || options.invert,
           scale         : false   || options.scale,
           shadow        : false   || options.shadow,
           shine         : false   || options.shine,
           persist       : false   || options.persist,
-          position      : false   || options.position,
-          transition    : false   || options.transition,
-          hoverInClass  : false   || options.hoverInClass,
-          hoverOutClass : false   || options.hoverOutClass,
-          hoverClass    : false   || options.hoverClass,
+          position      : null    || options.position,
+          transition    : null    || options.transition,
+          hoverInClass  : null    || options.hoverInClass,
+          hoverOutClass : null    || options.hoverOutClass,
+          hoverClass    : null    || options.hoverClass,
           touchEnabled  : touch()
         };
 
@@ -114,7 +114,7 @@
     
     function getUnit(t){
       if(t > 1 && t <= 50){
-      	  return "0."+t+"s";
+      	return "0."+t+"s";
       }
       else if(t > 50){
       	return t+"ms";
