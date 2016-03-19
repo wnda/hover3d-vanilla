@@ -1,6 +1,6 @@
 !function(){
   "use strict";
-  function hover3d(options){
+  function hovera(options){
 
     if (document.addEventListener){
     
@@ -309,5 +309,5 @@
   }
   
   // Expose lib
-  window.hover3d=hover3d;
+  window.hovera=hovera;
 }();
