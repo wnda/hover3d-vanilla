@@ -1,8 +1,8 @@
 !function(){
   "use strict";
   function hover3d(options){
-    
-    if (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined){
+
+    if (document.addEventListener && (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined)){
     
       function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
@@ -38,7 +38,7 @@
       }
 
     } else {
-      console.warn("Your browser does not appear to support CSS 3D transformation");
+      console.warn("hover3d-vanilla is incompatible with your browser.");
       return;
     }
     
@@ -66,7 +66,7 @@
         trsfrmstyle = ["transformStyle","webkitTransformStyle","mozTransformStyle"],
         trsfrm      = ["transform","webkitTransform","mozTransform"],
         bfcvis      = ["backfaceVisibility","webkitBackfaceVisibility","mozBackfaceVisibility"],
-        wllChng     = ["willChange"]
+        wllChng     = ["willChange"],
         trnstnPrp   = ["transitionProperty","webkitTransitionProperty","mozTransitionProperty"],
         trnstnDrt   = ["transitionDuration","webkitTransitionDuration","mozTransitionDuration"],
         trnstnTf    = ["transitionTimingFunction","webkitTransitionTimingFunction","mozTransitionTimingFunction"],
@@ -89,7 +89,8 @@
       $target.style[transformStyleProp]      = "preserve-3d";
       $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
     
-    if (!window.chrome){
+    // Handle Chrome Mobile bug
+    if (!config.touchEnabled && !window.chrome){
       $target.style[backfaceVisProp]         = "hidden";
     }
     
@@ -101,21 +102,18 @@
     }
     
     if (config.transition && typeof config.transition === "object"){
-      
       $target.style[willChangeProp]              = config.transition.prop;
       $target.style[transitionPropertyProp]      = config.transition.prop;
       $target.style[transitionDurationProp]      = config.transition.duration;
       $target.style[transitionTimingProp]        = config.transition.timing;
       $target.style[transitionDelayProp]         = config.transition.delay;
-    
-    } else {
-      
+    } 
+    else {
       $target.style[willChangeProp]              = "transform";
       $target.style[transitionPropertyProp]      = "transform";
       $target.style[transitionDurationProp]      = "0.2s";
       $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
       $target.style[transitionDelayProp]         = 0;
-    
     }
     
     if (config.shadow){
@@ -130,24 +128,19 @@
       $shadow.style[boxShadowProp] = "0 6px 18px rgba(14,21,47,0.6)";  
 
       if (config.transition && typeof config.transition === "object"){
-        
         $shadow.style[willChangeProp]              = "box-shadow,transform";
         $shadow.style[transitionPropertyProp]      = "box-shadow";
         $shadow.style[transitionDurationProp]      = config.transition.duration;
         $shadow.style[transitionTimingProp]        = config.transition.timing;
         $shadow.style[transitionDelayProp]         = config.transition.delay;
-
-      } else {
-        
+      }
+      else {
         $shadow.style[willChangeProp]              = "box-shadow,transform";
         $shadow.style[transitionPropertyProp]      = "box-shadow";
         $shadow.style[transitionDurationProp]      = "0.2s";
         $shadow.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
-
       }
-      
       $target.appendChild($shadow);
-      
     }
     
     if (config.shine){
@@ -162,46 +155,38 @@
       $shine.style.opacity  = 0;
       
       if (config.transition && typeof config.transition === "object"){
-        
         $shine.style[willChangeProp]              = "opacity,transform";
         $shine.style[transitionPropertyProp]      = "opacity";
         $shine.style[transitionDurationProp]      = config.transition.duration;
         $shine.style[transitionTimingProp]        = config.transition.timing;
         $shine.style[transitionDelayProp]         = config.transition.delay;
-        
-      } else {
-        
+      }
+      else {
         $shine.style[willChangeProp]              = "box-shadow,transform";
         $shine.style[transitionPropertyProp]      = "box-shadow";
         $shine.style[transitionDurationProp]      = "0.2s";
         $shine.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
-
       }
-      
       $target.appendChild($shine);
-      
     }
     
     function enter(){
       
       if (config.hoverClass && config.hoverInClass){
         $target.className += ' ' + config.hoverClass + ' ' + config.hoverInClass;
-        
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
-      
-      } else if (config.hoverClass){
+      } 
+      else if (config.hoverClass){
         $target.className += ' ' + config.hoverInClass;
-        
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
-        
-      } else if (config.hoverInClass){
+      } 
+      else if (config.hoverInClass){
         $target.className += ' ' + config.hoverClass;
       }
-      
     }
       
     function move(e){
@@ -219,20 +204,20 @@
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
       
       if (config.scale){
-        $target.style[transformProp]      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
-      } else {
-        $target.style[transformProp]      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
+      }
+      else {
+        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       }
       
       if (config.shadow){
-        $shadow.style[boxShadowProp]  = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
+        $shadow.style[boxShadowProp] = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
       }
-      
+
       if (config.shine){
         $shine.style.opacity         = 1;
         $shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ oy / h * 0.5 +') 0%,transparent 80%)';
       }
-      
     }
     
     function leave(){
@@ -242,70 +227,53 @@
       }
       
       if (!config.persist){
-        
         $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg)";
-        
+  
         if (config.shine){
           $shine.style.opacity        = 0;
         }
-        
       }
       
       if (config.hoverClass && config.hoverOutClass){
         $target.className += ' ' + config.hoverOutClass;
         $target.className = removeClass($target.className,config.hoverClass);
-        
-        setTimeout(function(){
-          $target.className = removeClass($target.className,config.hoverOutClass);
-        }, 1000);
-      
-      } else if (config.hoverClass){
-        $target.className = removeClass($target.className,config.hoverClass);
-        
-      } else if (config.hoverOutClass){
-        $target.className += ' ' + config.hoverOutClass;
-        
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverOutClass);
         }, 1000);
       }
-      
+      else if (config.hoverClass){
+        $target.className = removeClass($target.className,config.hoverClass);
+      }
+      else if (config.hoverOutClass){
+        $target.className += ' ' + config.hoverOutClass;
+        setTimeout(function(){
+          $target.className = removeClass($target.className,config.hoverOutClass);
+        }, 1000);
+      }
     }
     
     if(config.touchEnabled){
-
-      $container.addEventListener('touchstart', function(){
+      $container.addEventListener("touchstart", function(){
         return enter();
       });
-      
-      $container.addEventListener('touchmove', function(e){
+      $container.addEventListener("touchmove", function(e){
         return move(e);
       });
-      
-      $container.addEventListener('touchend', function(){
+      $container.addEventListener("touchend", function(){
         return leave();
       });
-      
-    } else if(document.addEventListener){
-      
+    } 
+    else {
       $container.addEventListener("mouseenter", function(){
         return enter();
       });
-    
       $container.addEventListener("mousemove", function(e){
         return move(e);
       });
-      
       $container.addEventListener("mouseleave", function(){
         return leave();
       });
-    
-    } else {
-      
-      console.warn("hover3d is incompatible with your browser");
-      
     }
-    
   }
   
   // Expose lib
