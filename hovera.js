@@ -113,18 +113,14 @@
     }
     
     function getUnit(t){
-      switch(t){
-      	case > 1 && <= 50:
-      	  return "0."+t+"s"
-      	  break;
-      	
-      	case > 50:
-      	  return t+"ms";
-      	  break;
-      	
-      	default:
-      	  return t+"s";
-      	  break;
+      if(t > 1 && t <= 50){
+      	  return "0."+t+"s";
+      }
+      else if(t > 50){
+      	return t+"ms";
+      }
+      else {
+      	return t+"s";
       }
     }
     
