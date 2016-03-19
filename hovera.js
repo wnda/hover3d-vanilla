@@ -309,5 +309,5 @@
   }
   
   // Expose lib
-  window.hover3d=hover3d;
+  window.hovera=hovera;
 }();
