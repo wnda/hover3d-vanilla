@@ -11,8 +11,8 @@
       var config =
         {
           selector      : null    || options.selector,
-          perspective   : 1000    || options.perspective,
-          sensitivity   : 20      || options.sensitivity,
+          perspective   : false   || options.perspective,
+          sensitivity   : false   || options.sensitivity,
           invert        : false   || options.invert,
           scale         : false   || options.scale,
           shadow        : false   || options.shadow,
@@ -81,14 +81,29 @@
         transitionDurationProp   = getProp(trnstnDrt),
         transitionTimingProp     = getProp(trnstnTf),
         transitionDelayProp      = getProp(trnstnDl),
-        boxShadowProp            = getProp(bxShdw);
-           
-      $container.style[perspectiveProp]      = config.perspective + "px";
-      $target.style[perspectiveProp]         = config.perspective + "px";
-      $container.style[transformStyleProp]   = "preserve-3d";
-      $target.style[transformStyleProp]      = "preserve-3d";
-      $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
+        boxShadowProp            = getProp(bxShdw),
+        sensitivity              = 0;
+      
+    $container.style[transformStyleProp]   = "preserve-3d";
+    $target.style[transformStyleProp]      = "preserve-3d";
+    $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
     
+    if (config.perspective && typeof config.perspective === "string"){
+      $container.style[perspectiveProp] = config.perspective;
+      $target.style[perspectiveProp]    = config.perspective;
+    } 
+    else {
+      $container.style[perspectiveProp] = "1000px";
+      $target.style[perspectiveProp]    = "1000px";
+    }
+    
+    if (config.sensitivity && typeof config.sensitivity === "integer"){
+      sensitivity = config.sensitivity;
+    } 
+    else {
+      sensitivity = 20;
+    }
+      
     // Handle Chrome Mobile bug
     if (config.touchEnabled && window.chrome){
       $target.style[backfaceVisProp]         = "initial";
@@ -199,8 +214,8 @@
           h      = $container.offsetHeight,
           ox     = config.touchEnabled ? e.touches[0].offsetX : e.offsetX,
           oy     = config.touchEnabled ? e.touches[0].offsetY : e.offsetY,
-          ax     = config.invert ? -(w / 2 - ox) / config.sensitivity :  (w / 2 - ox) / config.sensitivity,
-          ay     = config.invert ?  (h / 2 - oy) / config.sensitivity : -(h / 2 - oy) / config.sensitivity,
+          ax     = config.invert ? -(w / 2 - ox) / sensitivity :  (w / 2 - ox) / sensitivity,
+          ay     = config.invert ?  (h / 2 - oy) / sensitivity : -(h / 2 - oy) / sensitivity,
           dy     = oy - h / 2,
           dx     = ox - w / 2,
           theta  = Math.atan2(dy,dx),
