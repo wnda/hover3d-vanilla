@@ -17,8 +17,8 @@ scale         |     false       | `boolean`          | `true`
 shadow        |     false       | `boolean`          | `true`
 shine         |     false       | `boolean`          | `true`
 persist       |     false       | `boolean`          | `false`
-position      |     false       | `{ object }`       | `{<br>method: "absolute", <br>zindex: 5<br>}`
-transition    |     false       | `{ object }`       | `{<br>property: "transform, background-color",<br>duration: "0.2",<br>timing: "cubic-bezier(0.3,1,0.2,1)"<br>}`
+position      |     false       | `{ object }`       | `{`<br>`method: "absolute",`<br>`zindex: 5`<br>`}`
+transition    |     false       | `{ object }`       | `{`<br>`property: "transform, background-color",`<br>`duration: "0.2",`<br>`timing: "cubic-bezier(0.3,1,0.2,1)"`<br>`}`
 hoverInClass  |     false       | `"string"`         | `hover-in`
 hoverOutClass |     false       | `"string"`         | `hover-out`
 hoverClass    |     false       | `"string"`         | `hovering`
