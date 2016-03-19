@@ -2,8 +2,6 @@
   "use strict";
   function hovera(options){
     
-    if (window.addEventListener){
-    	
       function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
       }
@@ -36,10 +34,6 @@
   
         handleHover($target, $container,config);
       }
-    } else {
-      console.warn("Incompatible browser");
-      return;
-    }
   }
     
   function handleHover($target, $container, config){
