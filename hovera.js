@@ -2,7 +2,7 @@
   "use strict";
   function hover3d(options){
 
-    if (document.addEventListener && (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined)){
+    if (document.addEventListener){
     
       function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
@@ -36,12 +36,11 @@
   
         handleHover($target, $container,config);
       }
-
-    } else {
+    } 
+    else {
       console.warn("hover3d-vanilla is incompatible with your browser.");
       return;
     }
-    
   }
     
   function handleHover($target, $container, config){
@@ -216,8 +215,9 @@
       
       var w      = $container.offsetWidth,
           h      = $container.offsetHeight,
-          ox     = config.touchEnabled ? e.touches[0].offsetX : e.offsetX,
-          oy     = config.touchEnabled ? e.touches[0].offsetY : e.offsetY,
+          rect   = $target.getBoundingClientRect(),
+          ox     = config.touchEnabled ? e.touches[0].clientX - rect.left : e.offsetX,
+          oy     = config.touchEnabled ? e.touches[0].clientY - rect.top : e.offsetY,
           ax     = config.invert ? -(w / 2 - ox) / sensitivity :  (w / 2 - ox) / sensitivity,
           ay     = config.invert ?  (h / 2 - oy) / sensitivity : -(h / 2 - oy) / sensitivity,
           dy     = oy - h / 2,
@@ -277,12 +277,21 @@
     
     if(config.touchEnabled){
       $container.addEventListener("touchstart", function(){
+        if (window.preventScroll){
+          window.preventScroll = true;
+        }
         return enter();
       });
       $container.addEventListener("touchmove", function(e){
+        if (window.preventScroll){
+						e.preventDefault();
+				}
         return move(e);
       });
       $container.addEventListener("touchend", function(){
+        if (window.preventScroll){
+          window.preventScroll = false;
+        }
         return leave();
       });
     } 
