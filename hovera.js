@@ -54,16 +54,16 @@
       return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
     }
     
-    var persp       = ["perspective","webkitPerspective","mozPerspective"],
-        trsfrmstyle = ["transformStyle","webkitTransformStyle","mozTransformStyle"],
-        trsfrm      = ["transform","webkitTransform","mozTransform"],
-        bfcvis      = ["backfaceVisibility","webkitBackfaceVisibility","mozBackfaceVisibility"],
-        wllChng     = ["willChange"],
-        trnstnPrp   = ["transitionProperty","webkitTransitionProperty","mozTransitionProperty"],
-        trnstnDrt   = ["transitionDuration","webkitTransitionDuration","mozTransitionDuration"],
-        trnstnTf    = ["transitionTimingFunction","webkitTransitionTimingFunction","mozTransitionTimingFunction"],
-        trnstnDl    = ["transitionDelay","webkitTransitionDelay","mozTransitionDelay"],
-        bxShdw      = ["boxShadow","webkitBoxShadow","mozBoxShadow"],
+    var persp                    = ["perspective","webkitPerspective","mozPerspective"],
+        trsfrmstyle              = ["transformStyle","webkitTransformStyle","mozTransformStyle"],
+        trsfrm                   = ["transform","webkitTransform","mozTransform"],
+        bfcvis                   = ["backfaceVisibility","webkitBackfaceVisibility","mozBackfaceVisibility"],
+        wllChng                  = ["willChange"],
+        trnstnPrp                = ["transitionProperty","webkitTransitionProperty","mozTransitionProperty"],
+        trnstnDrt                = ["transitionDuration","webkitTransitionDuration","mozTransitionDuration"],
+        trnstnTf                 = ["transitionTimingFunction","webkitTransitionTimingFunction","mozTransitionTimingFunction"],
+        trnstnDl                 = ["transitionDelay","webkitTransitionDelay","mozTransitionDelay"],
+        bxShdw                   = ["boxShadow","webkitBoxShadow","mozBoxShadow"],
         perspectiveProp          = getProp(persp),
         transformStyleProp       = getProp(trsfrmstyle),
         transformProp            = getProp(trsfrm),
@@ -131,17 +131,23 @@
     function getTFunc(tf){
       var tfl = tf.length;
       if (tf.constructor !== Array){
-      	console.warn("Bad input");
-      	return "cubic-bezier(0.3,1,0.2,1)";
+      	console.warn("Bad input: expected array");
+      	return "none";
       }
       else if (tfl === 4){
       	// we need to check that each member of the array is a number
       	// future business
-      	return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
+      	if (typeof tf[0] === "number" && typeof tf[1] === "number" && typeof tf[2] === "number" && typeof tf[3] === "number"){
+      	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
+      	} 
+      	else {
+      	  console.warn("Bad input: expected four numbers");
+      	  return "none";
+      	}
       }
       else{
-      	console.warn("Bad input");
-      	return "cubic-bezier(0.3,1,0.2,1)";
+      	console.warn("Bad input: expected four values");
+      	return "none";
       }
     }
     
