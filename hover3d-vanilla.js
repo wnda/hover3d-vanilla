@@ -46,36 +46,51 @@
     
   function handleHover($target, $container, config){
     
+    function getProp(props) {
+      var i = props.length,
+          j = 0;
+        for ( ; i > j; j++) {
+            if (typeof document.body.style[props[j]] !== "undefined") {
+                return props[j];
+            }
+        }
+        return null;
+    }
+    
     function removeClass(cssClasses, cssClass){
       var rxp = new RegExp(cssClass + '\\s*', 'gi');
       return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
     }
     
-    $container.style.webkitPerspective    = config.perspective + "px";
-    $container.style.webkitTransformStyle = "preserve-3d";
-    
-    $container.style.mozPerspective       = config.perspective + "px";
-    $container.style.mozTransformStyle    = "preserve-3d";
-    
-    $container.style.perspective          = config.perspective + "px";
-    $container.style.transformStyle       = "preserve-3d";
-    
-    $target.style.webkitPerspective       = config.perspective + "px";
-    $target.style.webkitTransformStyle    = "preserve-3d";
-    $target.style.webkitTransform         = "rotateY(0deg) rotateX(0deg)";
-    
-    $target.style.mozPerspective          = config.perspective + "px";
-    $target.style.mozTransformStyle       = "preserve-3d";
-    $target.style.mozTransform            = "rotateY(0deg) rotateX(0deg)";
-    
-    $target.style.perspective             = config.perspective + "px";
-    $target.style.transformStyle          = "preserve-3d";
-    $target.style.transform               = "rotateY(0deg) rotateX(0deg)";
+    var persp       = ["perspective","webkitPerspective","mozPerspective"],
+        trsfrmstyle = ["transformStyle","webkitTransformStyle","mozTransformStyle"],
+        trsfrm      = ["transform","webkitTransform","mozTransform"],
+        bfcvis      = ["backfaceVisibility","webkitBackfaceVisibility","mozBackfaceVisibility"],
+        wllChng     = ["willChange"]
+        trnstnPrp   = ["transitionProperty","webkitTransitionProperty","mozTransitionProperty"],
+        trnstnDrt   = ["transitionDuration","webkitTransitionDuration","mozTransitionDuration"],
+        trnstnTf    = ["transitionTimingFunction","webkitTransitionTimingFunction","mozTransitionTimingFunction"],
+        trnstnDl    = ["transitionDelay","webkitTransitionDelay","mozTransitionDelay"],
+        bxShdw      = ["boxShadow","webkitBoxShadow","mozBoxShadow"],
+        perspectiveProp          = getProp(persp),
+        transformStyleProp       = getProp(trsfrmstyle),
+        transformProp            = getProp(trsfrm),
+        backfaceVisProp          = getProp(bfcvis),
+        willChangeProp           = getProp(wllChng),
+        transitionPropertyProp   = getProp(trnstnPrp),
+        transitionDuraProp       = getProp(trnstnDrt),
+        transitionTimingProp     = getProp(trnstnTf),
+        transitionDelayProp      = getProp(trnstnDl),
+        boxShadowProp            = getProp(bxShdw);
+           
+      $container.style[perspectiveProp]      = config.perspective + "px";
+      $target.style[perspectiveProp]         = config.perspective + "px";
+      $container.style[transformStyleProp]   = "preserve-3d";
+      $target.style[transformStyleProp]      = "preserve-3d";
+      $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
     
     if (!window.chrome){
-      $target.style.webkitBackfaceVisibility = "hidden";
-      $target.style.mozBackfaceVisibility    = "hidden";
-      $target.style.backfaceVisibility       = "hidden";
+      $target.style[backfaceVisProp]         = "hidden";
     }
     
     if (config.position && typeof config.position === "object"){
@@ -87,81 +102,47 @@
     
     if (config.transition && typeof config.transition === "object"){
       
-      $target.style.willChange                     = config.transition.prop;
-      
-      $target.style.webkitTransitionProperty       = config.transition.prop;
-      $target.style.webkitTransitionDuration       = config.transition.duration;
-      $target.style.webkitTransitionTimingFunction = config.transition.timing;
-      $target.style.webkitTransitionDelay          = config.transition.delay;
-      
-      $target.style.mozTransitionProperty          = config.transition.prop;
-      $target.style.mozTransitionDuration          = config.transition.duration;
-      $target.style.mozTransitionTimingFunction    = config.transition.timing;
-      $target.style.mozTransitionDelay             = config.transition.delay;
-      
-      $target.style.transitionProperty             = config.transition.prop;
-      $target.style.transitionDuration             = config.transition.duration;
-      $target.style.transitionTimingFunction       = config.transition.timing;
-      $target.style.transitionDelay                = config.transition.delay;
+      $target.style[willChangeProp]              = config.transition.prop;
+      $target.style[transitionPropertyProp]      = config.transition.prop;
+      $target.style[transitionDurationProp]      = config.transition.duration;
+      $target.style[transitionTimingProp]        = config.transition.timing;
+      $target.style[transitionDelayProp]         = config.transition.delay;
     
     } else {
-      $target.style.willChange                     = "transform";
       
-      $target.style.webkitTransitionProperty       = "transform";
-      $target.style.webkitTransitionDuration       = "0.2s";
-      $target.style.webkitTransitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
-      
-      $target.style.mozTransitionProperty          = "transform";
-      $target.style.mozTransitionDuration          = "0.2s";
-      $target.style.mozTransitionTimingFunction    = "cubic-bezier(0.3,1,0.2,1)";
-      
-      $target.style.transitionProperty             = "transform";
-      $target.style.transitionDuration             = "0.2s";
-      $target.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
+      $target.style[willChangeProp]              = "transform";
+      $target.style[transitionPropertyProp]      = "transform";
+      $target.style[transitionDurationProp]      = "0.2s";
+      $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
+      $target.style[transitionDelayProp]         = 0;
     
     }
     
     if (config.shadow){
-      var $shadow                   = document.createElement('div');
-      $shadow.className             = "shadow";
-      $shadow.style.position        = "absolute";
-      $shadow.style.top             = 0;
-      $shadow.style.left            = 0;
-      $shadow.style.bottom          = 0;
-      $shadow.style.right           = 0;
-      $shadow.style.zIndex          = 1;
-      $shadow.style.webkitBoxShadow = "0 6px 18px rgba(14,21,47,0.6)";
-      $shadow.style.boxShadow       = "0 6px 18px rgba(14,21,47,0.6)";
-      
+      var $shadow                    = document.createElement('div');
+      $shadow.className              = "shadow";
+      $shadow.style.position         = "absolute";
+      $shadow.style.top              = 0;
+      $shadow.style.left             = 0;
+      $shadow.style.bottom           = 0;
+      $shadow.style.right            = 0;
+      $shadow.style.zIndex           = 1;
+      $shadow.style[boxShadowProp] = "0 6px 18px rgba(14,21,47,0.6)";  
+
       if (config.transition && typeof config.transition === "object"){
         
-        $shadow.style.willChange                     = "box-shadow,transform";
-        
-        $shadow.style.webkitTransitionProperty       = "-webkit-box-shadow";
-        $shadow.style.webkitTransitionDuration       = config.transition.duration;
-        $shadow.style.webkitTransitionTimingFunction = config.transition.timing;
-        $shadow.style.webkitTransitionDelay          = config.transition.delay;
-        
-        $shadow.style.transitionProperty             = "box-shadow";
-        $shadow.style.transitionDuration             = config.transition.duration;
-        $shadow.style.transitionTimingFunction       = config.transition.timing;
-        $shadow.style.transitionDelay                = config.transition.delay;
-        
+        $shadow.style[willChangeProp]              = "box-shadow,transform";
+        $shadow.style[transitionPropertyProp]      = "box-shadow";
+        $shadow.style[transitionDurationProp]      = config.transition.duration;
+        $shadow.style[transitionTimingProp]        = config.transition.timing;
+        $shadow.style[transitionDelayProp]         = config.transition.delay;
+
       } else {
         
-        $shadow.style.willChange                     = "box-shadow,transform";
-        
-        $shadow.style.webkitTransitionProperty       = "box-shadow";
-        $shadow.style.webkitTransitionDuration       = "0.2s";
-        $shadow.style.webkitTransitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
-        
-        $shadow.style.mozTransitionProperty          = "box-shadow";
-        $shadow.style.mozTransitionDuration          = "0.2s";
-        $shadow.style.mozTransitionTimingFunction    = "cubic-bezier(0.3,1,0.2,1)";
-        
-        $shadow.style.transitionProperty             = "box-shadow";
-        $shadow.style.transitionDuration             = "0.2s";
-        $shadow.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
+        $shadow.style[willChangeProp]              = "box-shadow,transform";
+        $shadow.style[transitionPropertyProp]      = "box-shadow";
+        $shadow.style[transitionDurationProp]      = "0.2s";
+        $shadow.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
 
       }
       
@@ -182,38 +163,18 @@
       
       if (config.transition && typeof config.transition === "object"){
         
-        $shine.style.willChange                     = "opacity,transform";
-        
-        $shine.style.webkitTransitionProperty       = "opacity";
-        $shine.style.webkitTransitionDuration       = config.transition.duration;
-        $shine.style.webkitTransitionTimingFunction = config.transition.timing;
-        $shine.style.webkitTransitionDelay          = config.transition.delay;
-        
-        $shine.style.mozTransitionProperty          = "opacity";
-        $shine.style.mozTransitionDuration          = config.transition.duration;
-        $shine.style.mozTransitionTimingFunction    = config.transition.timing;
-        $shine.style.mozTransitionDelay             = config.transition.delay;
-        
-        $shine.style.transitionProperty             = "opacity";
-        $shine.style.transitionDuration             = config.transition.duration;
-        $shine.style.transitionTimingFunction       = config.transition.timing;
-        $shine.style.transitionDelay                = config.transition.delay;
+        $shine.style[willChangeProp]              = "opacity,transform";
+        $shine.style[transitionPropertyProp]      = "opacity";
+        $shine.style[transitionDurationProp]      = config.transition.duration;
+        $shine.style[transitionTimingProp]        = config.transition.timing;
+        $shine.style[transitionDelayProp]         = config.transition.delay;
         
       } else {
         
-        $shine.style.willChange                     = "opacity,transform";
-        
-        $shine.style.webkitTransitionProperty       = "opacity";
-        $shine.style.webkitTransitionDuration       = "0.2s";
-        $shine.style.webkitTransitionTimingFunction = "cubic-bezier(0.3,1,0.2,1)";
-        
-        $shine.style.mozTransitionProperty          = "opacity";
-        $shine.style.mozTransitionDuration          = "0.2s";
-        $shine.style.mozTransitionTimingFunction    = "cubic-bezier(0.3,1,0.2,1)";
-        
-        $shine.style.transitionProperty             = "opacity";
-        $shine.style.transitionDuration             = "0.2s";
-        $shine.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
+        $shine.style[willChangeProp]              = "box-shadow,transform";
+        $shine.style[transitionPropertyProp]      = "box-shadow";
+        $shine.style[transitionDurationProp]      = "0.2s";
+        $shine.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
 
       }
       
@@ -258,18 +219,13 @@
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
       
       if (config.scale){
-        $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
-        $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
-        $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
+        $target.style[transformProp]      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
       } else {
-        $target.style.webkitTransform      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
-        $target.style.mozTransform         = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
-        $target.style.transform            = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+        $target.style[transformProp]      = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       }
       
       if (config.shadow){
-        $shadow.style.webkitBoxShadow = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
-        $shadow.style.boxShadow       = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
+        $shadow.style[boxShadowProp]  = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
       }
       
       if (config.shine){
@@ -282,15 +238,12 @@
     function leave(){
       
       if (config.shadow){
-        $shadow.style.webkitBoxShadow = "0 6px 18px rgba(14,21,47,0.6)";
-        $shadow.style.boxShadow       = "0 6px 18px rgba(14,21,47,0.6)";
+        $shadow.style[boxShadowProp]  = "0 6px 18px rgba(14,21,47,0.6)";
       }
       
       if (!config.persist){
         
-        $target.style.webkitTransform = "rotateX(0deg) rotateY(0deg)";
-        $target.style.mozTransform    = "rotateX(0deg) rotateY(0deg)";
-        $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
+        $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg)";
         
         if (config.shine){
           $shine.style.opacity        = 0;
