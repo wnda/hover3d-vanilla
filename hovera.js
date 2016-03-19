@@ -216,8 +216,8 @@
       
       var w      = $container.offsetWidth,
           h      = $container.offsetHeight,
-          ox     = config.touchEnabled ? e.touches[0].pageX : e.offsetX,
-          oy     = config.touchEnabled ? e.touches[0].pageY : e.offsetY,
+          ox     = config.touchEnabled ? e.touches[0].clientX : e.offsetX,
+          oy     = config.touchEnabled ? e.touches[0].clientY : e.offsetY,
           ax     = config.invert ? -(w / 2 - ox) / sensitivity :  (w / 2 - ox) / sensitivity,
           ay     = config.invert ?  (h / 2 - oy) / sensitivity : -(h / 2 - oy) / sensitivity,
           dy     = oy - h / 2,
