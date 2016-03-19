@@ -179,10 +179,10 @@
         }, 1000);
       } 
       else if (config.hoverClass){
-        $target.className += ' ' + config.hoverInClass;
+        $target.className += ' ' + config.hoverClass;
       } 
       else if (config.hoverInClass){
-        $target.className += ' ' + config.hoverClass;
+        $target.className += ' ' + config.hoverInClass;
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
