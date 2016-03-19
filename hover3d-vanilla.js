@@ -4,7 +4,7 @@
     
     if (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined){
     
-      function touchEnabled(){
+      function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
       }
       
