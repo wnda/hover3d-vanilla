@@ -4,33 +4,39 @@
     
     if (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined){
     
+      function touchEnabled(){
+        return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.msMaxTouchPoints);
+      }
+      
       var config =
         {
-          selector      : null        || options.selector,
-          perspective   : 1000        || options.perspective,
-          sensitivity   : 20          || options.sensitivity,
-          invert        : false       || options.invert,
-          scale         : false       || options.scale,
-          shadow        : false       || options.shadow,
-          shine         : false       || options.shine,
-          persist       : false       || options.persist,
-          position      : false       || options.position,
-          transition    : false       || options.transition,
-          hoverInClass  : false       || options.hoverInClass,
-          hoverOutClass : false       || options.hoverOutClass,
-          hoverClass    : false       || options.hoverClass
+          selector      : null    || options.selector,
+          perspective   : 1000    || options.perspective,
+          sensitivity   : 20      || options.sensitivity,
+          invert        : false   || options.invert,
+          scale         : false   || options.scale,
+          shadow        : false   || options.shadow,
+          shine         : false   || options.shine,
+          persist       : false   || options.persist,
+          position      : false   || options.position,
+          transition    : false   || options.transition,
+          hoverInClass  : false   || options.hoverInClass,
+          hoverOutClass : false   || options.hoverOutClass,
+          hoverClass    : false   || options.hoverClass,
+          touchEnabled  : touch() || options.touch
         };
-     
-      var $targets = document.querySelectorAll(config.selector),
-          i     = $targets.length,
-          j     = 0;
-      
+
+      var $targets     = document.querySelectorAll(config.selector),
+          i            = $targets.length,
+          j            = 0;
+  
       for( ; i > j; j++){
         var $target    = $targets[j],
             $container = $target.parentNode;
-            
+  
         handleHover($target, $container,config);
       }
+
     } else {
       console.warn("Your browser does not appear to support CSS 3D transformation");
       return;
