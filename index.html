@@ -146,67 +146,67 @@ font-weight: 700
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="one">
-        hover3d({<br>&nbsp;&nbsp;selector: "#one"<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#one"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="two">
-        hover3d({<br>&nbsp;&nbsp;selector: "#two",<br>&nbsp;&nbsp;perspective: 500<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#two",<br>&nbsp;&nbsp;perspective: 500<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="three">
-        hover3d({<br>&nbsp;&nbsp;selector: "#three",<br>&nbsp;&nbsp;sensitivity: 10<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#three",<br>&nbsp;&nbsp;sensitivity: 10<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="four">
-        hover3d({<br>&nbsp;&nbsp;selector: "#four",<br>&nbsp;&nbsp;invert: true<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#four",<br>&nbsp;&nbsp;invert: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="five">
-        hover3d({<br>&nbsp;&nbsp;selector: "#five",<br>&nbsp;&nbsp;scale: true<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#five",<br>&nbsp;&nbsp;scale: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="six">
-        hover3d({<br>&nbsp;&nbsp;selector: "#six",<br>&nbsp;&nbsp;shadow: true<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#six",<br>&nbsp;&nbsp;shadow: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="seven">
-        hover3d({<br>&nbsp;&nbsp;selector: "#seven",<br>&nbsp;&nbsp;shine: true<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#seven",<br>&nbsp;&nbsp;shine: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="eight">
-        hover3d({<br>&nbsp;&nbsp;selector: "#eight",<br>&nbsp;&nbsp;persist: true<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#eight",<br>&nbsp;&nbsp;persist: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="nine">
-        hover3d({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;position:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;method: "absolute",<br>&nbsp;&nbsp;&nbsp;&nbsp;zindex: 5<br>&nbsp;&nbsp;}<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;position:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;method: "absolute",<br>&nbsp;&nbsp;&nbsp;&nbsp;zindex: 5<br>&nbsp;&nbsp;}<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="ten">
-        hover3d({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;transition:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;prop: "transform,<br>&nbsp;&nbsp;&nbsp;&nbsp;background-color",<br>&nbsp;&nbsp;&nbsp;&nbsp;duration:"0.5s",<br>&nbsp;&nbsp;&nbsp;&nbsp;timing:"ease"<br>&nbsp;&nbsp;}<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;transition:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;prop: "transform,<br>&nbsp;&nbsp;&nbsp;&nbsp;background-color",<br>&nbsp;&nbsp;&nbsp;&nbsp;duration:"0.5s",<br>&nbsp;&nbsp;&nbsp;&nbsp;timing:"ease"<br>&nbsp;&nbsp;}<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="eleven">
-        hover3d({<br>&nbsp;&nbsp;selector: "#eleven",<br>&nbsp;&nbsp;hoverInClass: "hover-in"<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#eleven",<br>&nbsp;&nbsp;hoverInClass: "hover-in"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="twelve">
-        hover3d({<br>&nbsp;&nbsp;selector: "#twelve",<br>&nbsp;&nbsp;hoverOutClass: "hover-out"<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#twelve",<br>&nbsp;&nbsp;hoverOutClass: "hover-out"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="thirteen">
-        hover3d({<br>&nbsp;&nbsp;selector: "#thirteen",<br>&nbsp;&nbsp;hoverClass: "hovering"<br>});
+        hovera({<br>&nbsp;&nbsp;selector: "#thirteen",<br>&nbsp;&nbsp;hoverClass: "hovering"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
@@ -219,19 +219,19 @@ font-weight: 700
 <script>!function(){"use strict";var a=document.getElementsByClassName('contents'),i=a.length,j=0;for( ; i > j; j++){var b=Math.floor(Math.random()*900)+100,c="#222"+b;a[j].style.backgroundColor=c;}}();</script>
 <script src="hovera.js"></script>
 <script>
-hover3d({selector: "#one",      position: { method: "absolute", zindex: 5 }                      });
-hover3d({selector: "#two",      position: { method: "absolute", zindex: 5 }, perspective:   500  });
-hover3d({selector: "#three",    position: { method: "absolute", zindex: 5 }, sensitivity:   10   });
-hover3d({selector: "#four",     position: { method: "absolute", zindex: 5 }, invert:        true });
-hover3d({selector: "#five",     position: { method: "absolute", zindex: 5 }, scale:         true });
-hover3d({selector: "#six",      position: { method: "absolute", zindex: 5 }, shadow:        true });
-hover3d({selector: "#seven",    position: { method: "absolute", zindex: 5 }, shine:         true });
-hover3d({selector: "#eight",    position: { method: "absolute", zindex: 5 }, persist:       true });
-hover3d({selector: "#nine",     position: { method: "absolute", zindex: 5 }                      });
-hover3d({selector: "#ten",      position: { method: "absolute", zindex: 5 }, transition:    { prop: "transform, background-color", duration:"0.5s", timing:"ease" } });
-hover3d({selector: "#eleven",   position: { method: "absolute", zindex: 5 }, hoverInClass:  "hover-in"  });
-hover3d({selector: "#twelve",   position: { method: "absolute", zindex: 5 }, hoverOutClass: "hover-out" });
-hover3d({selector: "#thirteen", position: { method: "absolute", zindex: 5 }, hoverClass:    "hovering"  });	
-hover3d({selector: "#fourteen", position: { method: "absolute", zindex: 5 }, touch:         false       });
+hovera({selector: "#one",      position: { method: "absolute", zindex: 5 }                      });
+hovera({selector: "#two",      position: { method: "absolute", zindex: 5 }, perspective:   500  });
+hovera({selector: "#three",    position: { method: "absolute", zindex: 5 }, sensitivity:   10   });
+hovera({selector: "#four",     position: { method: "absolute", zindex: 5 }, invert:        true });
+hovera({selector: "#five",     position: { method: "absolute", zindex: 5 }, scale:         true });
+hovera({selector: "#six",      position: { method: "absolute", zindex: 5 }, shadow:        true });
+hovera({selector: "#seven",    position: { method: "absolute", zindex: 5 }, shine:         true });
+hovera({selector: "#eight",    position: { method: "absolute", zindex: 5 }, persist:       true });
+hovera({selector: "#nine",     position: { method: "absolute", zindex: 5 }                      });
+hovera({selector: "#ten",      position: { method: "absolute", zindex: 5 }, transition:    { prop: "transform, background-color", duration:"0.5s", timing:"ease" } });
+hovera({selector: "#eleven",   position: { method: "absolute", zindex: 5 }, hoverInClass:  "hover-in"  });
+hovera({selector: "#twelve",   position: { method: "absolute", zindex: 5 }, hoverOutClass: "hover-out" });
+hovera({selector: "#thirteen", position: { method: "absolute", zindex: 5 }, hoverClass:    "hovering"  });	
+hovera({selector: "#fourteen", position: { method: "absolute", zindex: 5 }, touch:         false       });
 </script>
 </html>
