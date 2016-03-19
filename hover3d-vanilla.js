@@ -95,7 +95,7 @@
     }
     
     if (config.position && typeof config.position === "object"){
-      $target.style.position = config.position.type;
+      $target.style.position = config.position.method;
       $target.style.zIndex   = config.position.zindex;
     } else {
       $target.style.position = "relative";
