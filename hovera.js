@@ -113,14 +113,14 @@
     }
     
     function getUnit(t){
-      if(typeof t !== "number"){
+      if (typeof t !== "number"){
       	console.warn("Please provide a numeric value");
       	return "0.2s";
       }
       else if (t > 1 && t <= 50){
       	return "0."+t+"s";
       }
-      else if(t > 50){
+      else if (t > 50){
       	return t+"ms";
       }
       else {
@@ -150,7 +150,6 @@
       $target.style[transitionPropertyProp]      = config.transition.prop;
       $target.style[transitionDurationProp]      = getUnit(config.transition.duration);
       $target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
-      $target.style[transitionDelayProp]         = getUnit(config.transition.delay);
     } 
     else {
       $target.style[willChangeProp]              = "transform";
@@ -173,9 +172,8 @@
       if (config.transition && typeof config.transition === "object"){
         $shadow.style[willChangeProp]              = "box-shadow,transform";
         $shadow.style[transitionPropertyProp]      = "box-shadow";
-        $shadow.style[transitionDurationProp]      = config.transition.duration;
-        $shadow.style[transitionTimingProp]        = config.transition.timing;
-        $shadow.style[transitionDelayProp]         = config.transition.delay;
+        $shadow.style[transitionDurationProp]      = getUnit(config.transition.duration);
+        $shadow.style[transitionTimingProp]        = getTFunc(config.transition.timing);
       }
       else {
         $shadow.style[willChangeProp]              = "box-shadow,transform";
@@ -200,9 +198,8 @@
       if (config.transition && typeof config.transition === "object"){
         $shine.style[willChangeProp]              = "opacity,transform";
         $shine.style[transitionPropertyProp]      = "opacity";
-        $shine.style[transitionDurationProp]      = config.transition.duration;
-        $shine.style[transitionTimingProp]        = config.transition.timing;
-        $shine.style[transitionDelayProp]         = config.transition.delay;
+        $shine.style[transitionDurationProp]      = getUnit(config.transition.duration);
+        $shine.style[transitionTimingProp]        = getTFunc(config.transition.timing);
       }
       else {
         $shine.style[willChangeProp]              = "box-shadow,transform";
