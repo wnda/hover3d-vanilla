@@ -90,14 +90,18 @@
       $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
     
     // Handle Chrome Mobile bug
-    if (!config.touchEnabled && !window.chrome){
+    if (config.touchEnabled && window.chrome){
+      $target.style[backfaceVisProp]         = "initial";
+    } 
+    else {
       $target.style[backfaceVisProp]         = "hidden";
     }
     
     if (config.position && typeof config.position === "object"){
       $target.style.position = config.position.method;
       $target.style.zIndex   = config.position.zindex;
-    } else {
+    } 
+    else {
       $target.style.position = "relative";
     }
     
@@ -179,13 +183,13 @@
         }, 1000);
       } 
       else if (config.hoverClass){
+        $target.className += ' ' + config.hoverClass;
+      } 
+      else if (config.hoverInClass){
         $target.className += ' ' + config.hoverInClass;
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
-      } 
-      else if (config.hoverInClass){
-        $target.className += ' ' + config.hoverClass;
       }
     }
       
