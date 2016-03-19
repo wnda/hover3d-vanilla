@@ -78,7 +78,7 @@
         backfaceVisProp          = getProp(bfcvis),
         willChangeProp           = getProp(wllChng),
         transitionPropertyProp   = getProp(trnstnPrp),
-        transitionDuraProp       = getProp(trnstnDrt),
+        transitionDurationProp   = getProp(trnstnDrt),
         transitionTimingProp     = getProp(trnstnTf),
         transitionDelayProp      = getProp(trnstnDl),
         boxShadowProp            = getProp(bxShdw);
