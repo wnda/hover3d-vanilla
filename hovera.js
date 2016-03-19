@@ -141,7 +141,7 @@
       	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
       	} 
       	else {
-      	  console.warn("Bad input: expected four numbers");
+      	  console.warn("Bad input: expected numbers");
       	  return "none";
       	}
       }
