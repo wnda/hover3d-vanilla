@@ -10,15 +10,15 @@ Usage
 Key           |     Default     |  Expects           | Example
 --------------|-----------------|--------------------|--------------------------
 selector      |     null        | `string`           | `.content-block,#search-box`
-perspective   |     false       | `number`           | `1000`
-sensitivity   |     false       | `number`           | `20`
+perspective   |     false       | *`number`*         | `1000`
+sensitivity   |     false       | *`number`*         | `20`
 invert        |     false       | `boolean`          | `false`
 scale         |     false       | `boolean`          | `true`
 shadow        |     false       | `boolean`          | `true`
 shine         |     false       | `boolean`          | `true`
 persist       |     false       | `boolean`          | `false`
-position      |     false       | `{ object }`       | `{`<br>`method: "absolute",`<br>`zindex: 5`<br>`}`
-transition    |     false       | `{ object }`       | `{`<br>`property: "transform, background-color",`<br>`duration: "0.2",`<br>`timing: "cubic-bezier(0.3,1,0.2,1)"`<br>`}`
+position      |     false       | `{object}`         | `{`<br>&nbsp;&nbsp;`method: "absolute",`<br>&nbsp;&nbsp;`zindex: 5`<br>`}`
+transition    |     false       | `{object}`         | `{`<br>&nbsp;&nbsp;`property: "transform, background-color",`<br>&nbsp;&nbsp;`duration: "0.2",`<br>&nbsp;&nbsp;`timing: "cubic-bezier(0.3,1,0.2,1)"`<br>`}`
 hoverInClass  |     false       | `"string"`         | `hover-in`
 hoverOutClass |     false       | `"string"`         | `hover-out`
 hoverClass    |     false       | `"string"`         | `hovering`
