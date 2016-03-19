@@ -115,14 +115,14 @@
     if (config.transition && typeof config.transition === "object"){
       $target.style[willChangeProp]              = config.transition.prop;
       $target.style[transitionPropertyProp]      = config.transition.prop;
-      $target.style[transitionDurationProp]      = config.transition.duration;
+      $target.style[transitionDurationProp]      = config.transition.duration + "s";
       $target.style[transitionTimingProp]        = config.transition.timing;
       $target.style[transitionDelayProp]         = config.transition.delay;
     } 
     else {
       $target.style[willChangeProp]              = "transform";
       $target.style[transitionPropertyProp]      = "transform";
-      $target.style[transitionDurationProp]      = "0.2s";
+      $target.style[transitionDurationProp]      = 0.2 + "s";
       $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
       $target.style[transitionDelayProp]         = 0;
     }
