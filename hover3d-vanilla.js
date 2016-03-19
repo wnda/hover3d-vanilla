@@ -92,12 +92,16 @@
       $container.style[perspectiveProp] = config.perspective;
       $target.style[perspectiveProp]    = config.perspective;
     } 
+    else if(config.perspective && typeof config.perspective === "number"){
+      $container.style[perspectiveProp] = config.perspective + "px";
+      $target.style[perspectiveProp]    = config.perspective + "px";
+    }
     else {
       $container.style[perspectiveProp] = "1000px";
       $target.style[perspectiveProp]    = "1000px";
     }
     
-    if (config.sensitivity && typeof config.sensitivity === "integer"){
+    if (config.sensitivity && typeof config.sensitivity === "number"){
       sensitivity = config.sensitivity;
     } 
     else {
