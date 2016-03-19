@@ -10,7 +10,7 @@ Usage
 Key           |     Default     |  Expects         | If not configured 
 --------------|-----------------|------------------|--------------------------
 selector      |     null        | string           | N/A (this must be configured)
-perspective   |     false       | string or number | `perspective: 1000px`
+perspective   |     false       | number           | `perspective: 1000px`
 sensitivity   |     false       | number           | 20 (internal property)
 invert        |     false       | boolean          | no inversion
 scale         |     false       | boolean          | no scaling transformation
