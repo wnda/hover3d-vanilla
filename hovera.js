@@ -2,7 +2,7 @@
   "use strict";
   function hover3d(options){
 
-//    if (document.addEventListener && (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined)){
+    if (document.addEventListener){
     
       function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
@@ -36,12 +36,11 @@
   
         handleHover($target, $container,config);
       }
-
-//    } else {
-  //    console.warn("hover3d-vanilla is incompatible with your browser.");
-    //  return;
-    //}
-    
+    } 
+    else {
+      console.warn("hover3d-vanilla is incompatible with your browser.");
+      return;
+    }
   }
     
   function handleHover($target, $container, config){
