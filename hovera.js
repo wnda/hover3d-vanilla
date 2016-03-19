@@ -1,6 +1,6 @@
 !function(){
   "use strict";
-  function hover3d(options){
+  function hovera(options){
 
     if (document.addEventListener){
     
