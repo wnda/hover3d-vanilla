@@ -76,11 +76,7 @@
         boxShadowProp            = getProp(bxShdw),
         sensitivity              = 0;
       
-    if (config.perspective && typeof config.perspective === "string"){
-      $container.style[perspectiveProp] = config.perspective;
-      $target.style[perspectiveProp]    = config.perspective;
-    } 
-    else if(config.perspective && typeof config.perspective === "number"){
+    if(config.perspective && typeof config.perspective === "number"){
       $container.style[perspectiveProp] = config.perspective + "px";
       $target.style[perspectiveProp]    = config.perspective + "px";
     }
