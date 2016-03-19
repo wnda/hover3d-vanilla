@@ -90,14 +90,18 @@
       $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
     
     // Handle Chrome Mobile bug
-    if (!config.touchEnabled && !window.chrome){
+    if (config.touchEnabled && window.chrome){
+      $target.style[backfaceVisProp]         = "initial";
+    } 
+    else {
       $target.style[backfaceVisProp]         = "hidden";
     }
     
     if (config.position && typeof config.position === "object"){
       $target.style.position = config.position.method;
       $target.style.zIndex   = config.position.zindex;
-    } else {
+    } 
+    else {
       $target.style.position = "relative";
     }
     
