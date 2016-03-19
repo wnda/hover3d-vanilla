@@ -84,10 +84,6 @@
         boxShadowProp            = getProp(bxShdw),
         sensitivity              = 0;
       
-    $container.style[transformStyleProp]   = "preserve-3d";
-    $target.style[transformStyleProp]      = "preserve-3d";
-    $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg)";
-    
     if (config.perspective && typeof config.perspective === "string"){
       $container.style[perspectiveProp] = config.perspective;
       $target.style[perspectiveProp]    = config.perspective;
@@ -100,6 +96,10 @@
       $container.style[perspectiveProp] = "1000px";
       $target.style[perspectiveProp]    = "1000px";
     }
+    
+    $container.style[transformStyleProp]   = "preserve-3d";
+    $target.style[transformStyleProp]      = "preserve-3d";
+    $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg) translateZ(0)";
     
     if (config.sensitivity && typeof config.sensitivity === "number"){
       sensitivity = config.sensitivity;
@@ -227,10 +227,10 @@
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
       
       if (config.scale){
-        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
+        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05) translateZ(0)";
       }
       else {
-        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) translateZ(0)";
       }
       
       if (config.shadow){
@@ -250,7 +250,7 @@
       }
       
       if (!config.persist){
-        $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg)";
+        $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg) translateZ(0)";
   
         if (config.shine){
           $shine.style.opacity        = 0;
