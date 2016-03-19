@@ -130,7 +130,7 @@
     
     function getTFunc(tf){
       var tfl = tf.length;
-      if (typeof tf !== "array"){
+      if (tf.constructor !== Array){
       	console.warn("Bad input");
       	return "cubic-bezier(0.3,1,0.2,1)";
       }
@@ -149,7 +149,7 @@
       $target.style[willChangeProp]              = config.transition.prop;
       $target.style[transitionPropertyProp]      = config.transition.prop;
       $target.style[transitionDurationProp]      = getUnit(config.transition.duration);
-      $target.style[transitionTimingProp]        = config.transition.timing;
+      $target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
       $target.style[transitionDelayProp]         = getUnit(config.transition.delay);
     } 
     else {
