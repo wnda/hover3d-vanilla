@@ -5,7 +5,7 @@
     if (document.body.style.webkitPerspective !== undefined || document.body.style.mozPerspective !== undefined || document.body.style.perspective !== undefined){
     
       function touchEnabled(){
-        return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.msMaxTouchPoints);
+        return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
       }
       
       var config =
@@ -78,7 +78,6 @@
       $target.style.backfaceVisibility       = "hidden";
     }
     
-    // Enable the user to specify that the target element is absolute or fixed position
     if (config.position && typeof config.position === "object"){
       $target.style.position = config.position.type;
       $target.style.zIndex   = config.position.zindex;
@@ -86,7 +85,6 @@
       $target.style.position = "relative";
     }
     
-    // Important: check that the variable passed in userConfig is an array
     if (config.transition && typeof config.transition === "object"){
       
       $target.style.willChange                     = config.transition.prop;
@@ -120,9 +118,7 @@
       $target.style.transitionProperty             = "transform";
       $target.style.transitionDuration             = "0.2s";
       $target.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
-      // Do not set a delay by default:
-      // $target.style.transitionDelay          = "0";
-
+    
     }
     
     if (config.shadow){
@@ -166,9 +162,7 @@
         $shadow.style.transitionProperty             = "box-shadow";
         $shadow.style.transitionDuration             = "0.2s";
         $shadow.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
-        // Do not set a delay by default:
-        // $shadow.style.transitionDelay          = "0";
-        
+
       }
       
       $target.appendChild($shadow);
@@ -220,12 +214,11 @@
         $shine.style.transitionProperty             = "opacity";
         $shine.style.transitionDuration             = "0.2s";
         $shine.style.transitionTimingFunction       = "cubic-bezier(0.3,1,0.2,1)";
-        // Do not set a delay by default:
-        // $shine.style.transitionDelay          = "0";
-        
+
       }
       
       $target.appendChild($shine);
+      
     }
     
     function enter(){
@@ -250,14 +243,16 @@
       
     }
       
-    function move(event){
-           
+    function move(e){
+      
       var w      = $container.offsetWidth,
           h      = $container.offsetHeight,
-          ax     = config.invert ? -(w / 2 - event.offsetX) / config.sensitivity :  (w / 2 - event.offsetX) / config.sensitivity,
-          ay     = config.invert ?  (h / 2 - event.offsetY) / config.sensitivity : -(h / 2 - event.offsetY) / config.sensitivity,
-          dy     = event.offsetY - h / 2,
-          dx     = event.offsetX - w / 2,
+          ox     = config.touchEnabled ? e.touches[0].offsetX : e.offsetX,
+          oy     = config.touchEnabled ? e.touches[0].offsetY : e.offsetY,
+          ax     = config.invert ? -(w / 2 - ox) / config.sensitivity :  (w / 2 - ox) / config.sensitivity,
+          ay     = config.invert ?  (h / 2 - oy) / config.sensitivity : -(h / 2 - oy) / config.sensitivity,
+          dy     = oy - h / 2,
+          dx     = ox - w / 2,
           theta  = Math.atan2(dy,dx),
           ang    = theta * 180 / Math.PI - 90,
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
@@ -279,8 +274,9 @@
       
       if (config.shine){
         $shine.style.opacity         = 1;
-        $shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ event.offsetY / h * 0.5 +') 0%,transparent 80%)';
+        $shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ oy / h * 0.5 +') 0%,transparent 80%)';
       }
+      
     }
     
     function leave(){
@@ -297,9 +293,9 @@
         $target.style.transform       = "rotateX(0deg) rotateY(0deg)";
         
         if (config.shine){
-          $shine.style.opacity  = 0;
-          
+          $shine.style.opacity        = 0;
         }
+        
       }
       
       if (config.hoverClass && config.hoverOutClass){
@@ -323,14 +319,28 @@
       
     }
     
-    if(document.addEventListener){
+    if(config.touchEnabled){
+
+      $container.addEventListener('touchstart', function(){
+        return enter();
+      });
+      
+      $container.addEventListener('touchmove', function(e){
+        return move(e);
+      });
+      
+      $container.addEventListener('touchend', function(){
+        return leave();
+      });
+      
+    } else if(document.addEventListener){
       
       $container.addEventListener("mouseenter", function(){
         return enter();
       });
     
-      $container.addEventListener("mousemove", function(event){
-        return move(event);
+      $container.addEventListener("mousemove", function(e){
+        return move(e);
       });
       
       $container.addEventListener("mouseleave", function(){
@@ -339,10 +349,10 @@
     
     } else {
       
-      // Also, any other browser which does not support addEventListener
-      // is unlikely to support CSS transforms.
       console.warn("hover3d is incompatible with your browser");
+      
     }
+    
   }
   
   // Expose lib
