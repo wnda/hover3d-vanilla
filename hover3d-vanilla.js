@@ -180,12 +180,12 @@
       } 
       else if (config.hoverClass){
         $target.className += ' ' + config.hoverInClass;
-        setTimeout(function(){
-          $target.className = removeClass($target.className,config.hoverInClass);
-        }, 1000);
       } 
       else if (config.hoverInClass){
         $target.className += ' ' + config.hoverClass;
+        setTimeout(function(){
+          $target.className = removeClass($target.className,config.hoverInClass);
+        }, 1000);
       }
     }
       
