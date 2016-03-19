@@ -113,7 +113,11 @@
     }
     
     function getUnit(t){
-      if(t > 1 && t <= 50){
+      if(typeof t !== "number"){
+      	console.warn("Please provide a numeric value");
+      	return "0.2s";
+      }
+      else if (t > 1 && t <= 50){
       	return "0."+t+"s";
       }
       else if(t > 50){
@@ -124,19 +128,35 @@
       }
     }
     
+    function getTFunc(tf){
+      var tfl = tf.length;
+      if (typeof tf !== "array"){
+      	console.warn("Bad input");
+      	return "cubic-bezier(0.3,1,0.2,1)";
+      }
+      else if (tfl === 4){
+      	// we need to check that each member of the array is a number
+      	// future business
+      	return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
+      }
+      else{
+      	console.warn("Bad input");
+      	return "cubic-bezier(0.3,1,0.2,1)";
+      }
+    }
+    
     if (config.transition && typeof config.transition === "object"){
       $target.style[willChangeProp]              = config.transition.prop;
       $target.style[transitionPropertyProp]      = config.transition.prop;
       $target.style[transitionDurationProp]      = getUnit(config.transition.duration);
       $target.style[transitionTimingProp]        = config.transition.timing;
-      $target.style[transitionDelayProp]         = config.transition.delay;
+      $target.style[transitionDelayProp]         = getUnit(config.transition.delay);
     } 
     else {
       $target.style[willChangeProp]              = "transform";
       $target.style[transitionPropertyProp]      = "transform";
-      $target.style[transitionDurationProp]      = 0.2 + "s";
+      $target.style[transitionDurationProp]      = "0.2s";
       $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
-      $target.style[transitionDelayProp]         = 0;
     }
     
     if (config.shadow){
