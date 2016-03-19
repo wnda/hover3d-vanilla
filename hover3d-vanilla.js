@@ -23,7 +23,7 @@
           hoverInClass  : false   || options.hoverInClass,
           hoverOutClass : false   || options.hoverOutClass,
           hoverClass    : false   || options.hoverClass,
-          touchEnabled  : touch() || options.touch
+          touchEnabled  : touch()
         };
 
       var $targets     = document.querySelectorAll(config.selector),
