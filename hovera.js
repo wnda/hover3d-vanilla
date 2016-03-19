@@ -49,6 +49,45 @@
         return null;
     }
     
+    function getUnit(t){
+      if (typeof t !== "number"){
+      	console.warn("Please provide a numeric value");
+      	return "0.2s";
+      }
+      else if (t > 1 && t <= 50){
+      	return "0."+t+"s";
+      }
+      else if (t > 50){
+      	return t+"ms";
+      }
+      else {
+      	return t+"s";
+      }
+    }
+    
+    function getTFunc(tf){
+      var tfl = tf.length;
+      if (tf.constructor !== Array){
+      	console.warn("Bad input: expected array");
+      	return "none";
+      }
+      else if (tfl === 4){
+      	// we need to check that each member of the array is a number
+      	// future business
+      	if (typeof tf[0] === "number" && typeof tf[1] === "number" && typeof tf[2] === "number" && typeof tf[3] === "number"){
+      	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
+      	} 
+      	else {
+      	  console.warn("Bad input: expected numbers");
+      	  return "none";
+      	}
+      }
+      else{
+      	console.warn("Bad input: expected four values");
+      	return "none";
+      }
+    }
+    
     function removeClass(cssClasses, cssClass){
       var rxp = new RegExp(cssClass + '\\s*', 'gi');
       return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
@@ -110,45 +149,6 @@
     } 
     else {
       $target.style.position = "relative";
-    }
-    
-    function getUnit(t){
-      if (typeof t !== "number"){
-      	console.warn("Please provide a numeric value");
-      	return "0.2s";
-      }
-      else if (t > 1 && t <= 50){
-      	return "0."+t+"s";
-      }
-      else if (t > 50){
-      	return t+"ms";
-      }
-      else {
-      	return t+"s";
-      }
-    }
-    
-    function getTFunc(tf){
-      var tfl = tf.length;
-      if (tf.constructor !== Array){
-      	console.warn("Bad input: expected array");
-      	return "none";
-      }
-      else if (tfl === 4){
-      	// we need to check that each member of the array is a number
-      	// future business
-      	if (typeof tf[0] === "number" && typeof tf[1] === "number" && typeof tf[2] === "number" && typeof tf[3] === "number"){
-      	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
-      	} 
-      	else {
-      	  console.warn("Bad input: expected numbers");
-      	  return "none";
-      	}
-      }
-      else{
-      	console.warn("Bad input: expected four values");
-      	return "none";
-      }
     }
     
     if (config.transition && typeof config.transition === "object"){
