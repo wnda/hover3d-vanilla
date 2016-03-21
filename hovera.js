@@ -103,6 +103,7 @@
         trnstnTf                 = ["transitionTimingFunction","webkitTransitionTimingFunction","mozTransitionTimingFunction"],
         trnstnDl                 = ["transitionDelay","webkitTransitionDelay","mozTransitionDelay"],
         bxShdw                   = ["boxShadow","webkitBoxShadow","mozBoxShadow"],
+        usrslct                  = ["userSelect","webkitUserSelect","mozUserSelect"],
         perspectiveProp          = getProp(persp),
         transformStyleProp       = getProp(trsfrmstyle),
         transformProp            = getProp(trsfrm),
@@ -113,6 +114,7 @@
         transitionTimingProp     = getProp(trnstnTf),
         transitionDelayProp      = getProp(trnstnDl),
         boxShadowProp            = getProp(bxShdw),
+        userSelectProp           = getProp(usrslct),
         sensitivity              = 0;
       
     if(config.perspective && typeof config.perspective === "number"){
@@ -125,7 +127,9 @@
     }
     
     $container.style[transformStyleProp]   = "preserve-3d";
+    $container.style[userSelectProp]       = "none";
     $target.style[transformStyleProp]      = "preserve-3d";
+    $target.style[userSelectProp]          = "none";
     $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg) translateZ(0)";
     
     if (config.sensitivity && typeof config.sensitivity === "number"){
