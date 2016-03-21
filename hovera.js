@@ -1,6 +1,6 @@
 !function(){
   "use strict";
-  function hovera(options){
+  function pivot(options){
     
       function touch(){
         return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
@@ -76,7 +76,7 @@
       	// future business
       	if (typeof tf[0] === "number" && typeof tf[1] === "number" && typeof tf[2] === "number" && typeof tf[3] === "number"){
       	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
-      	} 
+      	}
       	else {
       	  console.warn("Bad input: expected numbers");
       	  return "none";
@@ -134,7 +134,7 @@
     
     if (config.sensitivity && typeof config.sensitivity === "number"){
       sensitivity = config.sensitivity;
-    } 
+    }
     else {
       sensitivity = 20;
     }
@@ -142,7 +142,7 @@
     // Handle Chrome Mobile bug
     if (config.touchEnabled && window.chrome){
       $target.style[backfaceVisProp]         = "initial";
-    } 
+    }
     else {
       $target.style[backfaceVisProp]         = "hidden";
     }
@@ -150,7 +150,7 @@
     if (config.position && typeof config.position === "object"){
       $target.style.position = config.position.method;
       $target.style.zIndex   = config.position.zindex;
-    } 
+    }
     else {
       $target.style.position = "relative";
     }
@@ -160,7 +160,7 @@
       $target.style[transitionPropertyProp]      = config.transition.prop;
       $target.style[transitionDurationProp]      = getUnit(config.transition.duration);
       $target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
-    } 
+    }
     else {
       $target.style[willChangeProp]              = "transform";
       $target.style[transitionPropertyProp]      = "transform";
@@ -177,7 +177,7 @@
       $shadow.style.bottom           = 0;
       $shadow.style.right            = 0;
       $shadow.style.zIndex           = 1;
-      $shadow.style[boxShadowProp] = "0 6px 18px rgba(14,21,47,0.6)";  
+      $shadow.style[boxShadowProp] = "0 6px 18px rgba(14,21,47,0.6)";
 
       if (config.transition && typeof config.transition === "object"){
         $shadow.style[willChangeProp]              = "box-shadow,transform";
@@ -227,10 +227,10 @@
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
-      } 
+      }
       else if (config.hoverClass){
         $target.className += ' ' + config.hoverClass;
-      } 
+      }
       else if (config.hoverInClass){
         $target.className += ' ' + config.hoverInClass;
         setTimeout(function(){
@@ -322,7 +322,7 @@
         }
         return leave();
       });
-    } 
+    }
     else {
       $container.addEventListener("mouseenter", function(){
         return enter();
@@ -337,5 +337,5 @@
   }
   
   // Expose lib
-  window.hovera=hovera;
+  window.pivot=pivot;
 }();
