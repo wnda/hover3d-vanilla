@@ -2,9 +2,9 @@
   "use strict";
   function pivot(options){
     
-      function touch(){
-        return !!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints);
-      }
+      var touch = function (){
+        return !!("ontouchstart" in window) || !!("onmsgesturechange" in window) || !!(navigator.MaxTouchPoints);
+      };
       
       var config =
         {
@@ -21,7 +21,7 @@
           hoverInClass  : null    || options.hoverInClass,
           hoverOutClass : null    || options.hoverOutClass,
           hoverClass    : null    || options.hoverClass,
-          touchEnabled  : touch()
+          touchEnabled  : touch
         };
 
       var $targets     = document.querySelectorAll(config.selector),
@@ -32,7 +32,7 @@
         var $target    = $targets[j],
             $container = $target.parentNode;
   
-        handleHover($target, $container,config);
+        handleHover($target, $container, config);
       }
   }
     
@@ -89,8 +89,8 @@
     }
     
     function removeClass(cssClasses, cssClass){
-      var rxp = new RegExp(cssClass + '\\s*', 'gi');
-      return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+      var rxp = new RegExp(cssClass + "\\s*", "gi");
+      return cssClasses.replace(rxp, "").replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
     }
     
     var persp                    = ["perspective","webkitPerspective","mozPerspective"],
@@ -195,7 +195,7 @@
     }
     
     if (config.shine){
-      var $shine            = document.createElement('div');
+      var $shine            = document.createElement("div");
       $shine.className      = "shine";
       $shine.style.position = "absolute";
       $shine.style.top      = 0;
@@ -223,16 +223,16 @@
     function enter(){
       
       if (config.hoverClass && config.hoverInClass){
-        $target.className += ' ' + config.hoverClass + ' ' + config.hoverInClass;
+        $target.className += " " + config.hoverClass + " " + config.hoverInClass;
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
       }
       else if (config.hoverClass){
-        $target.className += ' ' + config.hoverClass;
+        $target.className += " " + config.hoverClass;
       }
       else if (config.hoverInClass){
-        $target.className += ' ' + config.hoverInClass;
+        $target.className += " " + config.hoverInClass;
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverInClass);
         }, 1000);
@@ -267,7 +267,7 @@
 
       if (config.shine){
         $shine.style.opacity         = 1;
-        $shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ oy / h * 0.5 +') 0%,transparent 80%)';
+        $shine.style.backgroundImage = "linear-gradient("+angle+"deg,rgba(230,230,230,"+ oy / h * 0.5 +") 0%,transparent 80%)";
       }
     }
     
@@ -286,7 +286,7 @@
       }
       
       if (config.hoverClass && config.hoverOutClass){
-        $target.className += ' ' + config.hoverOutClass;
+        $target.className += " " + config.hoverOutClass;
         $target.className = removeClass($target.className,config.hoverClass);
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverOutClass);
@@ -296,7 +296,7 @@
         $target.className = removeClass($target.className,config.hoverClass);
       }
       else if (config.hoverOutClass){
-        $target.className += ' ' + config.hoverOutClass;
+        $target.className += " " + config.hoverOutClass;
         setTimeout(function(){
           $target.className = removeClass($target.className,config.hoverOutClass);
         }, 1000);
