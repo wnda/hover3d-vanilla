@@ -127,8 +127,10 @@
     }
     
     $container.style[transformStyleProp]   = "preserve-3d";
+    $container.style.cursor                = "initial";
     $container.style[userSelectProp]       = "none";
     $target.style[transformStyleProp]      = "preserve-3d";
+    $target.style.cursor                   = "initial";
     $target.style[userSelectProp]          = "none";
     $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg) translateZ(0)";
     
