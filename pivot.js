@@ -169,7 +169,7 @@
     }
     
     if (config.shadow){
-      var $shadow                    = document.createElement('div');
+      var $shadow                    = document.createElement("div");
       $shadow.className              = "shadow";
       $shadow.style.position         = "absolute";
       $shadow.style.top              = 0;
