@@ -1,4 +1,4 @@
-hovera-js
+Pivot.js
 =========
 Apple TV 3D hover effect in vanilla JS
 
