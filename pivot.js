@@ -21,7 +21,7 @@
           hoverInClass  : null    || options.hoverInClass,
           hoverOutClass : null    || options.hoverOutClass,
           hoverClass    : null    || options.hoverClass,
-          touchEnabled  : touch();
+          touchEnabled  : touch()
         };
 
       var $targets     = document.querySelectorAll(config.selector),
