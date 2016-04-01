@@ -3,7 +3,7 @@
   function pivot(options){
     
       function touch (){
-        return !!("ontouchstart" in window) || !!("onmsgesturechange" in window) || !!(navigator.MaxTouchPoints);
+        return !!("ontouchstart" in window) || !!("onmsgesturechange" in window);
       }
       
       var config =
