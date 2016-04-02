@@ -72,8 +72,6 @@
       	return "none";
       }
       else if (tfl === 4){
-      	// we need to check that each member of the array is a number
-      	// future business
       	if (typeof tf[0] === "number" && typeof tf[1] === "number" && typeof tf[2] === "number" && typeof tf[3] === "number"){
       	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
       	}
@@ -82,7 +80,7 @@
       	  return "none";
       	}
       }
-      else{
+      else {
       	console.warn("Bad input: expected four values");
       	return "none";
       }
@@ -117,7 +115,7 @@
         userSelectProp           = getProp(usrslct),
         sensitivity              = 0;
       
-    if(config.perspective && typeof config.perspective === "number"){
+    if (config.perspective && typeof config.perspective === "number"){
       $container.style[perspectiveProp] = config.perspective + "px";
       $target.style[perspectiveProp]    = config.perspective + "px";
     }
@@ -303,7 +301,7 @@
       }
     }
     
-    if(config.touchEnabled){
+    if (config.touchEnabled){
       $container.addEventListener("touchstart", function(){
         if (window.preventScroll){
           window.preventScroll = true;
@@ -312,8 +310,8 @@
       });
       $container.addEventListener("touchmove", function(e){
         if (window.preventScroll){
-						e.preventDefault();
-				}
+	  e.preventDefault();
+	}
         return move(e);
       });
       $container.addEventListener("touchend", function(){
