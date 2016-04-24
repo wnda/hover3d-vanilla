@@ -124,9 +124,9 @@
       $target.style[perspectiveProp]    = "1000px";
     }
     
-    $container.style[transformStyleProp]   = "preserve-3d";
+    $container.style[transformStyleProp]   = "flat";
     $container.style[userSelectProp]       = "none";
-    $target.style[transformStyleProp]      = "preserve-3d";
+    $target.style[transformStyleProp]      = "flat";
     $target.style[userSelectProp]          = "none";
     $target.style[transformProp]           = "rotateY(0deg) rotateX(0deg) translateZ(0)";
     
@@ -136,12 +136,14 @@
     else {
       sensitivity = 20;
     }
-      
-    // Handle Chrome Mobile bug
-    if (config.touchEnabled && window.chrome){
-      $target.style[backfaceVisProp]         = "initial";
+
+    if (config.touchEnabled){
+      $container.style[transformStyleProp]   = "preserve-3d";
+      $target.style[transformStyleProp]      = "preserve-3d";
     }
     else {
+      $container.style[transformStyleProp]   = "flat";
+      $container.style[transformStyleProp]   = "flat";
       $target.style[backfaceVisProp]         = "hidden";
     }
     
