@@ -8,19 +8,19 @@
       
       var config =
         {
-          selector      : null    || options.selector,
-          perspective   : null    || options.perspective,
-          sensitivity   : null    || options.sensitivity,
-          invert        : false   || options.invert,
-          scale         : false   || options.scale,
-          shadow        : false   || options.shadow,
-          shine         : false   || options.shine,
-          persist       : false   || options.persist,
-          position      : null    || options.position,
-          transition    : null    || options.transition,
-          hoverInClass  : null    || options.hoverInClass,
-          hoverOutClass : null    || options.hoverOutClass,
-          hoverClass    : null    || options.hoverClass,
+          selector      : options.selector      || null,
+          perspective   : options.perspective   || null,
+          sensitivity   : options.sensitivity   || null,
+          invert        : options.invert        || false,
+          scale         : options.scale         || false,
+          shadow        : options.shadow        || false,
+          shine         : options.shine         || false,
+          persist       : options.persist       || false,
+          position      : options.position      || null,
+          transition    : options.transition    || null,
+          hoverInClass  : options.hoverInClass  || null,
+          hoverOutClass : options.hoverOutClass || null,
+          hoverClass    : options.hoverClass    || null,
           touchEnabled  : touch()
         };
 
