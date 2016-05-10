@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" dir="ltr">
+<head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,shrink-to-fit=no"/>
 <title>pivot.js &middot; a performant JS lib for recreating the Apple TV 3D rotation effect</title>
@@ -17,13 +18,11 @@ if(window.location.host.indexOf("js.org"||"amdouglas.com"||"github.io")>-1&&wind
 <style type="text/css">
 <!--/*--><![CDATA[/*><!--*/
 @charset "UTF-8";
-@font-face{font-family:'SofiaPro';font-display:fallback;font-weight:400;font-style:normal;font-variant:normal;src:url("https://dev.amdouglas.com/picuse-concept/SofiaProRegular.woff") format("woff")}
-@font-face{font-family:'SofiaPro';font-display:fallback;font-weight:700;font-style:normal;font-variant:normal;src:url("https://dev.amdouglas.com/picuse-concept/SofiaProBold.woff") format("woff")}
 :root,html,body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.27;
-  font-family: "SofiaPro",Roboto, -apple-system, caption, sans-serif;
+  font-family: Roboto, -apple-system, caption, sans-serif;
   overflow-x: hidden;
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased
@@ -139,6 +138,15 @@ font-weight: 700
 }
 
 #ten:hover{background-color:crimson !important}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<style scoped>
+<!--/*--><![CDATA[/*><!--*/
+@font-face{font-family:"SofiaPro";src:url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProLight.woff2) format('woff2'),url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProLight.woff) format('woff');font-weight:400;font-style:normal;font-variant:normal;font-display:optional}
+@font-face{font-family:"SofiaPro";src:url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProBold.woff2) format('woff2'),url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProBold.woff) format('woff');font-weight:700;font-style:normal;font-variant:normal;font-display:optional}
+html,body,*,:before,:after{font-family:"SofiaPro",Roboto,-apple-system,sans-serif}
 /*]]>*/-->
 </style>
 
@@ -287,4 +295,5 @@ pivot({selector: "#fourteen", position: { method: "absolute", zindex: 5 }, touch
 (function(){window.GoogleAnalyticsObject="ga";window.ga=window.ga||function(){(window.ga.q=window.ga.q||[]).push(arguments)},window.ga.l=1*new Date();ga("create","UA-70873652-6","auto");ga("send","pageview");})();
 //--><!]]>
 </script>
+</body>
 </html>
