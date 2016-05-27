@@ -103,7 +103,7 @@
     $target.style[transformStyleProp]    = "preserve-3d" || "flat" || "";
     $container.style[userSelectProp]     = "none";
     $target.style[userSelectProp]        = "none";
-    $target.style[transformProp]         = "rotateY(0deg) rotateX(0deg) translateZ(0)";
+    $target.style[transformProp]         = "rotateY(0deg) rotateX(0deg)";
 
     if (config.sensitivity && typeof config.sensitivity === "number"){
       sensitivity = config.sensitivity;
@@ -137,6 +137,16 @@
       $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
     }
 
+    if (config.child3D && typeof config.child3D === "number"){
+      var p=$target.children.length,
+          q=0;
+      for ( ; p > q; q++) {
+        if((config.shadow || config.shine) && ($target.children[q].className !== ($shadow.className || $shine.className))){
+          $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
+        }
+      }
+    }
+
     if (config.shadow){
       var $shadow                    = document.createElement("div");
       $shadow.className              = "shadow";
@@ -146,7 +156,6 @@
       $shadow.style.bottom           = "5%";
       $shadow.style.right            = "5%";
       $shadow.style.zIndex           = 1;
-      $shadow.style[transformProp]   = "translateZ(-2px)";
       $shadow.style[boxShadowProp]   = "0 8px 30px rgba(14,21,47,0.6)";
 
       if (config.transition && typeof config.transition === "object"){
@@ -190,14 +199,6 @@
       $target.appendChild($shine);
     }
 
-    if (config.child3D && typeof config.child3D === "number"){
-      var p=$target.children.length,
-          q=0;
-      for ( ; p > q; q++) {
-        $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
-      }
-    }
-
     function enter(){
 
       if (config.hoverClass && config.hoverInClass){
@@ -233,10 +234,10 @@
           angle  = ang < 0 ? angle = ang + 360 : angle = ang;
 
       if (config.scale){
-        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05) translateZ(0)";
+        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
       }
       else {
-        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) translateZ(0)";
+        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
       }
 
       if (config.shadow){
@@ -256,7 +257,7 @@
       }
 
       if (!config.persist){
-        $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg) translateZ(0)";
+        $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg)";
 
         if (config.shine){
           $shine.style.opacity        = 0;
