@@ -16,7 +16,6 @@
       for( ; i > j; j++){
         var $target    = $targets[j],
             $container = $target.parentNode;
-
         handleHover($target, $container, config, touchEnabled);
       }
   }
