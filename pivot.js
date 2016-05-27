@@ -27,7 +27,7 @@
     function getProp(props) {
       var i = props.length,
           j = 0;
-        for ( ; i > j; j++) {
+        for ( ; i > j; j++){
             if (typeof document.body.style[props[j]] !== "undefined") {
                 return props[j];
             }
@@ -190,7 +190,11 @@
     }
 
     if (config.child3D && typeof config.child3D === "number"){
-      $target.children[0].style[transformProp] = "translateZ("+config.child3D+"px)";
+      var p=$target.children.length,
+          q=0;
+      for ( ; p > q; q++) {
+        $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
+      }
     }
 
     function enter(){
@@ -310,5 +314,5 @@
   }
 
   window.pivot=pivot;
-  
+
 }());
