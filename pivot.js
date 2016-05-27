@@ -193,8 +193,10 @@
       var p=$target.children.length,
           q=0;
       for ( ; p > q; q++) {
-        if((config.shadow || config.shine) && ($target.children[q].className !== ($shadow.className || $shine.className))){
-          $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
+        if(!config.shadow || $target.children[q].className !== $shadow.className){
+          if(!config.shine || $target.children[q].className !== $shine.className){
+            $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
+          }
         }
       }
     }
