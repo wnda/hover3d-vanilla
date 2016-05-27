@@ -4,7 +4,7 @@
 
   function pivot(config){
 
-      function touch (){
+      function touch(){
         return !!("ontouchstart" in window) || !!("onmsgesturechange" in window) || !!(navigator.MaxTouchPoints);
       }
 
