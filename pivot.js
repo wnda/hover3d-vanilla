@@ -145,6 +145,7 @@
       $shadow.style.bottom           = "5%";
       $shadow.style.right            = "5%";
       $shadow.style.zIndex           = 1;
+      $shadow.style[transformProp]   = "translateZ(-2px)";
       $shadow.style[boxShadowProp]   = "0 8px 30px rgba(14,21,47,0.6)";
 
       if (config.transition && typeof config.transition === "object"){
@@ -187,7 +188,7 @@
       }
       $target.appendChild($shine);
     }
-    
+
     if (config.child3D && typeof config.child3D === "number"){
       var p=$target.children.length,
           q=0;
