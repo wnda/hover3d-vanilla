@@ -141,12 +141,13 @@
       var $shadow                    = document.createElement("div");
       $shadow.className              = "shadow";
       $shadow.style.position         = "absolute";
-      $shadow.style.top              = 0;
-      $shadow.style.left             = 0;
-      $shadow.style.bottom           = 0;
-      $shadow.style.right            = 0;
+      $shadow.style.top              = "5%";
+      $shadow.style.left             = "5%";
+      $shadow.style.bottom           = "5%";
+      $shadow.style.right            = "5%";
       $shadow.style.zIndex           = 1;
-      $shadow.style[boxShadowProp]   = "0 6px 18px rgba(14,21,47,0.6)";
+      $shadow.style[transformProp]   = "translateZ(-2px)";
+      $shadow.style[boxShadowProp]   = "0 8px 30px rgba(14,21,47,0.6)";
 
       if (config.transition && typeof config.transition === "object"){
         $shadow.style[willChangeProp]              = "box-shadow,transform";
@@ -251,7 +252,7 @@
     function leave(){
 
       if (config.shadow){
-        $shadow.style[boxShadowProp]  = "0 6px 18px rgba(14,21,47,0.6)";
+        $shadow.style[boxShadowProp]  = "0 8px 30px rgba(14,21,47,0.6)";
       }
 
       if (!config.persist){
