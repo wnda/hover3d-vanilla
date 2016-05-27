@@ -137,16 +137,6 @@
       $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
     }
 
-    if (config.child3D && typeof config.child3D === "number"){
-      var p=$target.children.length,
-          q=0;
-      for ( ; p > q; q++) {
-        if((config.shadow || config.shine) && ($target.children[q].className !== ($shadow.className || $shine.className))){
-          $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
-        }
-      }
-    }
-
     if (config.shadow){
       var $shadow                    = document.createElement("div");
       $shadow.className              = "shadow";
@@ -197,6 +187,16 @@
         $shine.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
       }
       $target.appendChild($shine);
+    }
+    
+    if (config.child3D && typeof config.child3D === "number"){
+      var p=$target.children.length,
+          q=0;
+      for ( ; p > q; q++) {
+        if((config.shadow || config.shine) && ($target.children[q].className !== ($shadow.className || $shine.className))){
+          $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
+        }
+      }
     }
 
     function enter(){
