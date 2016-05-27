@@ -8,9 +8,8 @@
         return !!("ontouchstart" in window) || !!("onmsgesturechange" in window) || !!(navigator.MaxTouchPoints);
       }
 
-      var touchEnabled = config.touchEnabled || touch();
-
-      var $targets     = document.querySelectorAll(config.selector),
+      var touchEnabled = config.touchEnabled || touch(),
+          $targets     = document.querySelectorAll(config.selector),
           i            = $targets.length,
           j            = 0;
 
