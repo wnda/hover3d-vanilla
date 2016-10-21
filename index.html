@@ -142,14 +142,21 @@ font-weight: 700
 </style>
 </head>
 <body>
-<style type="text/css" scoped="scoped">
-<!--/*--><![CDATA[/*><!--*/
-@font-face{font-family:"SofiaPro";src:url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProLight.woff2) format('woff2'),url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProLight.woff) format('woff');font-weight:400;font-style:normal;font-variant:normal;font-display:optional}
-@font-face{font-family:"SofiaPro";src:url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProBold.woff2) format('woff2'),url(https://cdn.rawgit.com/wnda/morrigan/master/assets/fonts/SofiaProBold.woff) format('woff');font-weight:700;font-style:normal;font-variant:normal;font-display:optional}
-html,body,*,:before,:after{font-family:"SofiaPro",Roboto,-apple-system,sans-serif}
-/*]]>*/-->
-</style>
-
+  <style scoped="scoped">
+    @font-face {
+      font-family: 'Cabin';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Cabin Regular'), local('Cabin-Regular'), url(https://fonts.gstatic.com/s/cabin/v9/kJXt72Gt1LyFMZcEKAAvlKCWcynf_cDxXwCLxiixG1c.woff) format('woff');
+    }
+    @font-face {
+      font-family: 'Cabin';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Cabin Bold'), local('Cabin-Bold'), url(https://fonts.gstatic.com/s/cabin/v9/haOjnueK8Or1ztuuRtr8dnYhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+    }
+    :root,html,body{font-family:'Cabin',sans-serif}
+    </style>
 <div class="block">
   <div class="grid">
     <div class="cell cell-xs-12 cell-header">
