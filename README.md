@@ -5,7 +5,7 @@ Apple TV 3D hover effect in vanilla JS
 Usage
 -----
     <script src="pivot.js"></script>
-    <script>pivot({ options });</script>
+    <script>pivot.init({ options });</script>
 
 Key           |     Default     |  Expects           | Example
 --------------|-----------------|--------------------|--------------------------
