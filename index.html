@@ -180,67 +180,67 @@ font-weight: 700
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="one">
-        pivot({<br>&nbsp;&nbsp;selector: "#one"<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#one"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="two">
-        pivot({<br>&nbsp;&nbsp;selector: "#two",<br>&nbsp;&nbsp;perspective: 500<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#two",<br>&nbsp;&nbsp;perspective: 500<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="three">
-        pivot({<br>&nbsp;&nbsp;selector: "#three",<br>&nbsp;&nbsp;sensitivity: 10<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#three",<br>&nbsp;&nbsp;sensitivity: 10<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="four">
-        pivot({<br>&nbsp;&nbsp;selector: "#four",<br>&nbsp;&nbsp;invert: true<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#four",<br>&nbsp;&nbsp;invert: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="five">
-        pivot({<br>&nbsp;&nbsp;selector: "#five",<br>&nbsp;&nbsp;scale: true<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#five",<br>&nbsp;&nbsp;scale: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="six">
-        pivot({<br>&nbsp;&nbsp;selector: "#six",<br>&nbsp;&nbsp;shadow: true<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#six",<br>&nbsp;&nbsp;shadow: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="seven">
-        pivot({<br>&nbsp;&nbsp;selector: "#seven",<br>&nbsp;&nbsp;shine: true<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#seven",<br>&nbsp;&nbsp;shine: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="eight">
-        pivot({<br>&nbsp;&nbsp;selector: "#eight",<br>&nbsp;&nbsp;persist: true<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#eight",<br>&nbsp;&nbsp;persist: true<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="nine">
-        pivot({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;position:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;method: "absolute",<br>&nbsp;&nbsp;&nbsp;&nbsp;zindex: 5<br>&nbsp;&nbsp;}<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;position:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;method: "absolute",<br>&nbsp;&nbsp;&nbsp;&nbsp;zindex: 5<br>&nbsp;&nbsp;}<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="ten">
-        pivot({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;transition:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;prop: "transform,<br>&nbsp;&nbsp;&nbsp;&nbsp;background-color",<br>&nbsp;&nbsp;&nbsp;&nbsp;duration:"0.5s",<br>&nbsp;&nbsp;&nbsp;&nbsp;timing:[0.4,1,0.3,1]<br>&nbsp;&nbsp;}<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#ten",<br>&nbsp;&nbsp;transition:<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;prop: "transform,<br>&nbsp;&nbsp;&nbsp;&nbsp;background-color",<br>&nbsp;&nbsp;&nbsp;&nbsp;duration:"0.5s",<br>&nbsp;&nbsp;&nbsp;&nbsp;timing:[0.4,1,0.3,1]<br>&nbsp;&nbsp;}<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="eleven">
-        pivot({<br>&nbsp;&nbsp;selector: "#eleven",<br>&nbsp;&nbsp;hoverInClass: "hover-in"<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#eleven",<br>&nbsp;&nbsp;hoverInClass: "hover-in"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="twelve">
-        pivot({<br>&nbsp;&nbsp;selector: "#twelve",<br>&nbsp;&nbsp;hoverOutClass: "hover-out"<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#twelve",<br>&nbsp;&nbsp;hoverOutClass: "hover-out"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
       <div class="contents" id="thirteen">
-        pivot({<br>&nbsp;&nbsp;selector: "#thirteen",<br>&nbsp;&nbsp;hoverClass: "hovering"<br>});
+        pivot.init({<br>&nbsp;&nbsp;selector: "#thirteen",<br>&nbsp;&nbsp;hoverClass: "hovering"<br>});
       </div>
     </div>
     <div class="cell cell-xs-6 cell-sm-4 cell-md-3">
@@ -267,7 +267,7 @@ font-weight: 700
     	   Github: <a href="https://github.com/wnda/pivot/">https://github.com/wnda/pivot/</a>
     	 </p>
     	 <p>
-    	   Author: <a href="https://amdouglas.com">A. M. Douglas</a>
+    	   Author: <a href="https://www.amdouglas.com">A. M. Douglas</a>
     	 </p>
     </div>
   </div>
@@ -280,20 +280,20 @@ font-weight: 700
 <script type="text/javascript" src="https://rawgit.com/wnda/pivot/master/pivot.js"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
-pivot({selector: "#one",      position: { method: "absolute", zindex: 5 }                      });
-pivot({selector: "#two",      position: { method: "absolute", zindex: 5 }, perspective:   500  });
-pivot({selector: "#three",    position: { method: "absolute", zindex: 5 }, sensitivity:   10   });
-pivot({selector: "#four",     position: { method: "absolute", zindex: 5 }, invert:        true });
-pivot({selector: "#five",     position: { method: "absolute", zindex: 5 }, scale:         true });
-pivot({selector: "#six",      position: { method: "absolute", zindex: 5 }, shadow:        true });
-pivot({selector: "#seven",    position: { method: "absolute", zindex: 5 }, shine:         true });
-pivot({selector: "#eight",    position: { method: "absolute", zindex: 5 }, persist:       true });
-pivot({selector: "#nine",     position: { method: "absolute", zindex: 5 }                      });
-pivot({selector: "#ten",      position: { method: "absolute", zindex: 5 }, transition:    { prop: "transform, background-color", duration:0.5, timing:[0.4,1,0.3,1] } });
-pivot({selector: "#eleven",   position: { method: "absolute", zindex: 5 }, hoverInClass:  "hover-in"  });
-pivot({selector: "#twelve",   position: { method: "absolute", zindex: 5 }, hoverOutClass: "hover-out" });
-pivot({selector: "#thirteen", position: { method: "absolute", zindex: 5 }, hoverClass:    "hovering"  });	
-pivot({selector: "#fourteen", position: { method: "absolute", zindex: 5 }, touch:         false       });
+pivot.init({selector: '#one',      position: { method: 'absolute', zindex: 5 }                      });
+pivot.init({selector: '#two',      position: { method: 'absolute', zindex: 5 }, perspective:   500  });
+pivot.init({selector: '#three',    position: { method: 'absolute', zindex: 5 }, sensitivity:   10   });
+pivot.init({selector: '#four',     position: { method: 'absolute', zindex: 5 }, invert:        true });
+pivot.init({selector: '#five',     position: { method: 'absolute', zindex: 5 }, scale:         true });
+pivot.init({selector: '#six',      position: { method: 'absolute', zindex: 5 }, shadow:        true });
+pivot.init({selector: '#seven',    position: { method: 'absolute', zindex: 5 }, shine:         true });
+pivot.init({selector: '#eight',    position: { method: 'absolute', zindex: 5 }, persist:       true });
+pivot.init({selector: '#nine',     position: { method: 'absolute', zindex: 5 }                      });
+pivot.init({selector: '#ten',      position: { method: 'absolute', zindex: 5 }, transition:    { prop: 'transform, background-color', duration:0.5, timing:[0.4,1,0.3,1] } });
+pivot.init({selector: '#eleven',   position: { method: 'absolute', zindex: 5 }, hoverInClass:  'hover-in'  });
+pivot.init({selector: '#twelve',   position: { method: 'absolute', zindex: 5 }, hoverOutClass: 'hover-out' });
+pivot.init({selector: '#thirteen', position: { method: 'absolute', zindex: 5 }, hoverClass:    'hovering'  });
+pivot.init({selector: '#fourteen', position: { method: 'absolute', zindex: 5 }, touch:         false       });
 //--><!]]>
 </script>
 <script type="text/javascript" src="https://www.google-analytics.com/analytics.js"></script>
