@@ -1,8 +1,8 @@
-;(function(){
+;(function (win, doc) {
 
   'use strict';
 
-  window.pivot = {
+  win.pivot = {
     'init': init
   };
 
@@ -13,12 +13,12 @@
     var _container;
     var i = 0;
     var j = 0;
-    var _touch = (!!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints));
+    var _touch = (!!('ontouchstart' in win) || !!('onmsgesturechange' in win) || !!(navigator.MaxTouchPoints));
 
     if (typeof config === 'undefined' || typeof config !== 'object') { return; }
     if ('touch' in config) { _touch = config.touch; }
     if ('selector' in config) {
-      _targets = document.querySelectorAll(config.selector);
+      _targets = doc.querySelectorAll(config.selector);
     }
 
     if (_targets.length > 0) {
@@ -96,7 +96,7 @@
     }
 
     if (config.shadow) {
-      _shadow                        = document.createElement('div');
+      _shadow                        = doc.createElement('div');
       _shadow.className              = 'shadow';
       _shadow.style.position         = 'absolute';
       _shadow.style.top              = '5%';
@@ -124,7 +124,7 @@
     }
 
     if (config.shine) {
-      _shine                = document.createElement('div');
+      _shine                = doc.createElement('div');
       _shine.className      = 'shine';
       _shine.style.position = 'absolute';
       _shine.style.top      = 0;
@@ -247,17 +247,17 @@
     if (touch) {
 
       container.addEventListener('touchstart', function () {
-        if (window.preventScroll) { window.preventScroll = true; }
+        if (win.preventScroll) { win.preventScroll = true; }
         return enter();
       });
 
       container.addEventListener('touchmove', function (e) {
-        if (window.preventScroll) { e.preventDefault(); }
+        if (win.preventScroll) { e.preventDefault(); }
         return move(e);
       });
 
       container.addEventListener('touchend', function () {
-        if (window.preventScroll) { window.preventScroll = false; }
+        if (win.preventScroll) { win.preventScroll = false; }
         return leave();
       });
 
@@ -282,7 +282,7 @@
     var j = 0;
 
     for ( ; i > j; j++) {
-      if (typeof document.body.style[props[j]] !== 'undefined') {
+      if (typeof doc.body.style[props[j]] !== 'undefined') {
         return props[j];
       }
     }
@@ -334,4 +334,4 @@
     return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
   }
 
-}());
+})(window, document);
