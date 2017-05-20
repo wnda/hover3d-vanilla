@@ -1,321 +1,337 @@
 ;(function(){
 
-  "use strict";
+  'use strict';
 
-  function pivot(config){
+  window.pivot = {
+    'init': init
+  };
 
-      function touch(){
-        return !!("ontouchstart" in window) || !!("onmsgesturechange" in window) || !!(navigator.MaxTouchPoints);
+  function init (config) {
+
+    var _targets;
+    var _target;
+    var _container;
+    var i = 0;
+    var j = 0;
+    var _touch = (!!('ontouchstart' in window) || !!('onmsgesturechange' in window) || !!(navigator.MaxTouchPoints));
+
+    if (typeof config === 'undefined' || typeof config !== 'object') { return; }
+    if ('touch' in config) { _touch = config.touch; }
+    if ('selector' in config) {
+      _targets = document.querySelectorAll(config.selector);
+    }
+
+    if (_targets.length > 0) {
+      i = _targets.length;
+      for ( ; i > j; j++) {
+        _target    = _targets[j];
+        _container = _target.parentNode;
+        handleHover(_target, _container, config, _touch);
       }
-
-      var touchEnabled = config.touchEnabled || touch(),
-          $targets     = document.querySelectorAll(config.selector),
-          i            = $targets.length,
-          j            = 0;
-
-      for( ; i > j; j++){
-        var $target    = $targets[j],
-            $container = $target.parentNode;
-        handleHover($target, $container, config, touchEnabled);
-      }
+    }
   }
 
-  function handleHover($target, $container, config, touchEnabled){
+  function handleHover(target, container, config, touch){
 
-    function getProp(props) {
-      var i = props.length,
-          j = 0;
-        for ( ; i > j; j++){
-            if (typeof document.body.style[props[j]] !== "undefined") {
-                return props[j];
-            }
-        }
-        return null;
+    var _shadow;
+    var _shine;
+    var sensitivity              = 0;
+    var perspectiveProp          = getProp(['perspective','webkitPerspective','mozPerspective']);
+    var transformStyleProp       = getProp(['transformStyle','webkitTransformStyle','mozTransformStyle']);
+    var transformProp            = getProp(['transform','webkitTransform','mozTransform']);
+    var backfaceVisProp          = getProp(['backfaceVisibility','webkitBackfaceVisibility','mozBackfaceVisibility']);
+    var willChangeProp           = getProp(['willChange']);
+    var boxShadowProp            = getProp(['boxShadow','webkitBoxShadow','mozBoxShadow']);
+    var userSelectProp           = getProp(['userSelect','webkitUserSelect','mozUserSelect']);
+    var transitionPropertyProp   = getProp(['transitionProperty','webkitTransitionProperty','mozTransitionProperty']);
+    var transitionDurationProp   = getProp(['transitionDuration','webkitTransitionDuration','mozTransitionDuration']);
+    var transitionDelayProp      = getProp(['transitionDelay','webkitTransitionDelay','mozTransitionDelay']);
+    var transitionTimingProp     = getProp(['transitionTimingFunction','webkitTransitionTimingFunction','mozTransitionTimingFunction']);
+
+    if (config.perspective && typeof config.perspective === 'number') {
+      container.style[perspectiveProp]  = config.perspective + 'px';
+      target.style[perspectiveProp]     = config.perspective + 'px';
+
+    } else {
+      container.style[perspectiveProp]  = '1000px';
+      target.style[perspectiveProp]     = '1000px';
     }
 
-    function getUnit(t){
-      if (typeof t !== "number"){
-      	console.warn("Please provide a numeric value");
-      	return "0.2s";
-      }
-      else if (t > 1 && t <= 50){
-      	return "0."+t+"s";
-      }
-      else if (t > 50){
-      	return t+"ms";
-      }
-      else {
-      	return t+"s";
-      }
-    }
+    container.style[transformStyleProp] = 'preserve-3d' || 'flat' || '';
+    target.style[transformStyleProp]    = 'preserve-3d' || 'flat' || '';
+    container.style[userSelectProp]     = 'none';
+    target.style[userSelectProp]        = 'none';
+    target.style[transformProp]         = 'rotateY(0deg) rotateX(0deg)';
 
-    function getTFunc(tf){
-      var tfl = tf.length;
-      if (tf.constructor !== Array){
-      	console.warn("Bad input: expected array");
-      	return "none";
-      }
-      else if (tfl === 4){
-      	if (typeof tf[0] === "number" && typeof tf[1] === "number" && typeof tf[2] === "number" && typeof tf[3] === "number"){
-      	  return "cubic-bezier("+tf[0]+","+tf[1]+","+tf[2]+","+tf[3]+")";
-      	}
-      	else {
-      	  console.warn("Bad input: expected numbers");
-      	  return "none";
-      	}
-      }
-      else {
-      	console.warn("Bad input: expected four values");
-      	return "none";
-      }
-    }
-
-    function removeClass(cssClasses, cssClass){
-      var rxp = new RegExp(cssClass + "\\s*", "gi");
-      return cssClasses.replace(rxp, "").replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
-    }
-
-    var perspectiveProp          = getProp(["perspective","webkitPerspective","mozPerspective"]),
-        transformStyleProp       = getProp(["transformStyle","webkitTransformStyle","mozTransformStyle"]),
-        transformProp            = getProp(["transform","webkitTransform","mozTransform"]),
-        backfaceVisProp          = getProp(["backfaceVisibility","webkitBackfaceVisibility","mozBackfaceVisibility"]),
-        willChangeProp           = getProp(["willChange"]),
-        transitionPropertyProp   = getProp(["transitionProperty","webkitTransitionProperty","mozTransitionProperty"]),
-        transitionDurationProp   = getProp(["transitionDuration","webkitTransitionDuration","mozTransitionDuration"]),
-        transitionTimingProp     = getProp(["transitionTimingFunction","webkitTransitionTimingFunction","mozTransitionTimingFunction"]),
-        transitionDelayProp      = getProp(["transitionDelay","webkitTransitionDelay","mozTransitionDelay"]),
-        boxShadowProp            = getProp(["boxShadow","webkitBoxShadow","mozBoxShadow"]),
-        userSelectProp           = getProp(["userSelect","webkitUserSelect","mozUserSelect"]),
-        sensitivity              = 0;
-
-    if (config.perspective && typeof config.perspective === "number"){
-      $container.style[perspectiveProp] = config.perspective + "px";
-      $target.style[perspectiveProp]    = config.perspective + "px";
-    }
-    else {
-      $container.style[perspectiveProp] = "1000px";
-      $target.style[perspectiveProp]    = "1000px";
-    }
-
-    $container.style[transformStyleProp] = "preserve-3d" || "flat" || "";
-    $target.style[transformStyleProp]    = "preserve-3d" || "flat" || "";
-    $container.style[userSelectProp]     = "none";
-    $target.style[userSelectProp]        = "none";
-    $target.style[transformProp]         = "rotateY(0deg) rotateX(0deg)";
-
-    if (config.sensitivity && typeof config.sensitivity === "number"){
+    if (config.sensitivity && typeof config.sensitivity === 'number') {
       sensitivity = config.sensitivity;
-    }
-    else {
+
+    } else {
       sensitivity = 20;
     }
 
-    if (touchEnabled){
-      $target.style[backfaceVisProp] = "hidden";
+    if (touch){
+      target.style[backfaceVisProp] = 'hidden';
     }
 
-    if (config.position && typeof config.position === "object"){
-      $target.style.position = config.position.method;
-      $target.style.zIndex   = config.position.zindex;
-    }
-    else {
-      $target.style.position = "relative";
+    if (config.position && typeof config.position === 'object'){
+      target.style.position = config.position.method;
+      target.style.zIndex   = config.position.zindex;
+
+    } else {
+      target.style.position = 'relative';
     }
 
-    if (config.transition && typeof config.transition === "object"){
-      $target.style[willChangeProp]              = config.transition.prop;
-      $target.style[transitionPropertyProp]      = config.transition.prop;
-      $target.style[transitionDurationProp]      = getUnit(config.transition.duration);
-      $target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
-    }
-    else {
-      $target.style[willChangeProp]              = "transform";
-      $target.style[transitionPropertyProp]      = "transform";
-      $target.style[transitionDurationProp]      = "0.2s";
-      $target.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
+    if (config.transition && typeof config.transition === 'object'){
+      target.style[willChangeProp]              = config.transition.prop;
+      target.style[transitionPropertyProp]      = config.transition.prop;
+      target.style[transitionDurationProp]      = getUnit(config.transition.duration);
+      target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
+
+    } else {
+      target.style[willChangeProp]              = 'transform';
+      target.style[transitionPropertyProp]      = 'transform';
+      target.style[transitionDurationProp]      = '0.2s';
+      target.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
     }
 
-    if (config.shadow){
-      var $shadow                    = document.createElement("div");
-      $shadow.className              = "shadow";
-      $shadow.style.position         = "absolute";
-      $shadow.style.top              = "5%";
-      $shadow.style.left             = "5%";
-      $shadow.style.bottom           = "5%";
-      $shadow.style.right            = "5%";
-      $shadow.style.zIndex           = 1;
-      $shadow.style[transformProp]   = "translateZ(-2px)";
-      $shadow.style[boxShadowProp]   = "0 8px 30px rgba(14,21,47,0.6)";
+    if (config.shadow) {
+      _shadow                        = document.createElement('div');
+      _shadow.className              = 'shadow';
+      _shadow.style.position         = 'absolute';
+      _shadow.style.top              = '5%';
+      _shadow.style.left             = '5%';
+      _shadow.style.bottom           = '5%';
+      _shadow.style.right            = '5%';
+      _shadow.style.zIndex           = 1;
+      _shadow.style[transformProp]   = 'translateZ(-2px)';
+      _shadow.style[boxShadowProp]   = '0 8px 30px rgba(14,21,47,0.6)';
 
-      if (config.transition && typeof config.transition === "object"){
-        $shadow.style[willChangeProp]              = "box-shadow,transform";
-        $shadow.style[transitionPropertyProp]      = "box-shadow";
-        $shadow.style[transitionDurationProp]      = getUnit(config.transition.duration);
-        $shadow.style[transitionTimingProp]        = getTFunc(config.transition.timing);
+      if (config.transition && typeof config.transition === 'object') {
+        _shadow.style[willChangeProp]              = 'box-shadow,transform';
+        _shadow.style[transitionPropertyProp]      = 'box-shadow';
+        _shadow.style[transitionDurationProp]      = getUnit(config.transition.duration);
+        _shadow.style[transitionTimingProp]        = getTFunc(config.transition.timing);
+
+      } else {
+        _shadow.style[willChangeProp]              = 'box-shadow,transform';
+        _shadow.style[transitionPropertyProp]      = 'box-shadow';
+        _shadow.style[transitionDurationProp]      = '0.2s';
+        _shadow.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
       }
-      else {
-        $shadow.style[willChangeProp]              = "box-shadow,transform";
-        $shadow.style[transitionPropertyProp]      = "box-shadow";
-        $shadow.style[transitionDurationProp]      = "0.2s";
-        $shadow.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
-      }
-      $target.appendChild($shadow);
+
+      target.appendChild(_shadow);
     }
 
-    if (config.shine){
-      var $shine            = document.createElement("div");
-      $shine.className      = "shine";
-      $shine.style.position = "absolute";
-      $shine.style.top      = 0;
-      $shine.style.left     = 0;
-      $shine.style.bottom   = 0;
-      $shine.style.right    = 0;
-      $shine.style.zIndex   = 9;
-      $shine.style.opacity  = 0;
+    if (config.shine) {
+      _shine                = document.createElement('div');
+      _shine.className      = 'shine';
+      _shine.style.position = 'absolute';
+      _shine.style.top      = 0;
+      _shine.style.left     = 0;
+      _shine.style.bottom   = 0;
+      _shine.style.right    = 0;
+      _shine.style.zIndex   = 9;
+      _shine.style.opacity  = 0;
 
-      if (config.transition && typeof config.transition === "object"){
-        $shine.style[willChangeProp]              = "opacity,transform";
-        $shine.style[transitionPropertyProp]      = "opacity";
-        $shine.style[transitionDurationProp]      = getUnit(config.transition.duration);
-        $shine.style[transitionTimingProp]        = getTFunc(config.transition.timing);
+      if (config.transition && typeof config.transition === 'object') {
+        _shine.style[willChangeProp]              = 'opacity,transform';
+        _shine.style[transitionPropertyProp]      = 'opacity';
+        _shine.style[transitionDurationProp]      = getUnit(config.transition.duration);
+        _shine.style[transitionTimingProp]        = getTFunc(config.transition.timing);
+
+      } else {
+        _shine.style[willChangeProp]              = 'box-shadow,transform';
+        _shine.style[transitionPropertyProp]      = 'box-shadow';
+        _shine.style[transitionDurationProp]      = '0.2s';
+        _shine.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
       }
-      else {
-        $shine.style[willChangeProp]              = "box-shadow,transform";
-        $shine.style[transitionPropertyProp]      = "box-shadow";
-        $shine.style[transitionDurationProp]      = "0.2s";
-        $shine.style[transitionTimingProp]        = "cubic-bezier(0.3,1,0.2,1)";
-      }
-      $target.appendChild($shine);
+
+      target.appendChild(_shine);
     }
 
-    if (config.child3D && typeof config.child3D === "number"){
-      var p=$target.children.length,
-          q=0;
-      for ( ; p > q; q++) {
-        if(!config.shadow || $target.children[q].className !== $shadow.className){
-          if(!config.shine || $target.children[q].className !== $shine.className){
-            $target.children[q].style[transformProp] = "translateZ("+config.child3D+"px)";
+    if (config.child3D && typeof config.child3D === 'number') {
+      var p = _target.children.length;
+      var q = 0;
+
+      for (; p > q; q++) {
+        if (!config.shadow || target.children[q].className !== _shadow.className) {
+          if (!config.shine || target.children[q].className !== _shine.className) {
+            target.children[q].style[transformProp] = 'translateZ(' + config.child3D + 'px)';
           }
         }
       }
     }
 
-    function enter(){
-
-      if (config.hoverClass && config.hoverInClass){
-        $target.className  += " " + config.hoverClass + " " + config.hoverInClass;
+    function enter () {
+      if (config.hoverClass && config.hoverInClass) {
+        target.className  += ' ' + config.hoverClass + ' ' + config.hoverInClass;
         setTimeout(function(){
-          $target.className = removeClass($target.className,config.hoverInClass);
+          target.className = removeClass(target.className, config.hoverInClass);
         }, 1000);
-      }
-      else if (config.hoverClass){
-        $target.className += " " + config.hoverClass;
-      }
-      else if (config.hoverInClass){
-        $target.className += " " + config.hoverInClass;
-        setTimeout(function(){
-          $target.className = removeClass($target.className,config.hoverInClass);
+
+      } else if (config.hoverClass) {
+        target.className += ' ' + config.hoverClass;
+
+      } else if (config.hoverInClass) {
+        target.className += ' ' + config.hoverInClass;
+        setTimeout(function () {
+          target.className = removeClass(target.className,config.hoverInClass);
         }, 1000);
       }
     }
 
-    function move(e){
-
-      var w      = $container.offsetWidth,
-          h      = $container.offsetHeight,
-          rect   = $target.getBoundingClientRect(),
-          ox     = touchEnabled ? e.touches[0].clientX - rect.left : e.offsetX,
-          oy     = touchEnabled ? e.touches[0].clientY - rect.top  : e.offsetY,
-          ax     = config.invert ? -(w / 2 - ox) / sensitivity :  (w / 2 - ox) / sensitivity,
-          ay     = config.invert ?  (h / 2 - oy) / sensitivity : -(h / 2 - oy) / sensitivity,
-          dy     = oy - h / 2,
-          dx     = ox - w / 2,
-          theta  = Math.atan2(dy,dx),
-          ang    = theta * 180 / Math.PI - 90,
-          angle  = ang < 0 ? angle = ang + 360 : angle = ang;
+    function move (e) {
+      var w      = container.offsetWidth;
+      var h      = container.offsetHeight;
+      var rect   = target.getBoundingClientRect();
+      var ox     = touch ? e.touches[0].clientX - rect.left : e.offsetX;
+      var oy     = touch ? e.touches[0].clientY - rect.top  : e.offsetY;
+      var ax     = config.invert ? -(w / 2 - ox) / sensitivity :  (w / 2 - ox) / sensitivity;
+      var ay     = config.invert ?  (h / 2 - oy) / sensitivity : -(h / 2 - oy) / sensitivity;
+      var dy     = oy - h / 2;
+      var dx     = ox - w / 2;
+      var theta  = Math.atan2(dy,dx);
+      var ang    = theta * 180 / Math.PI - 90;
+      var angle  = ang < 0 ? angle = ang + 360 : angle = ang;
 
       if (config.scale){
-        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg) scale3d(1.05,1.05,1.05)";
-      }
-      else {
-        $target.style[transformProp] = "rotateY(" + ax + "deg) rotateX(" + ay + "deg)";
+        target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg) scale3d(1.05,1.05,1.05)';
+
+      } else {
+        target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg)';
       }
 
       if (config.shadow){
-        $shadow.style[boxShadowProp] = "0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)";
+        _shadow.style[boxShadowProp] = '0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)';
       }
 
       if (config.shine){
-        $shine.style.opacity         = 1;
-        $shine.style.backgroundImage = "linear-gradient("+angle+"deg,rgba(230,230,230,"+ oy / h * 0.5 +") 0%,transparent 80%)";
+        _shine.style.opacity         = 1;
+        _shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ oy / h * 0.5 +') 0%,transparent 80%)';
       }
     }
 
-    function leave(){
-
+    function leave () {
       if (config.shadow){
-        $shadow.style[boxShadowProp]  = "0 8px 30px rgba(14,21,47,0.6)";
+        _shadow.style[boxShadowProp]  = '0 8px 30px rgba(14,21,47,0.6)';
       }
 
       if (!config.persist){
-        $target.style[transformProp]  = "rotateX(0deg) rotateY(0deg)";
+        target.style[transformProp]  = 'rotateX(0deg) rotateY(0deg)';
 
         if (config.shine){
-          $shine.style.opacity        = 0;
+          _shine.style.opacity        = 0;
         }
       }
 
       if (config.hoverClass && config.hoverOutClass){
-        $target.className += " " + config.hoverOutClass;
-        $target.className = removeClass($target.className,config.hoverClass);
+        target.className += ' ' + config.hoverOutClass;
+        target.className = removeClass(target.className, config.hoverClass);
         setTimeout(function(){
-          $target.className = removeClass($target.className,config.hoverOutClass);
+          target.className = removeClass(target.className, config.hoverOutClass);
         }, 1000);
-      }
-      else if (config.hoverClass){
-        $target.className = removeClass($target.className,config.hoverClass);
-      }
-      else if (config.hoverOutClass){
-        $target.className += " " + config.hoverOutClass;
-        setTimeout(function(){
-          $target.className = removeClass($target.className,config.hoverOutClass);
+
+      } else if (config.hoverClass) {
+        target.className = removeClass(_target.className, config.hoverClass);
+
+      } else if (config.hoverOutClass) {
+        target.className += ' ' + config.hoverOutClass;
+        setTimeout(function() {
+          target.className = removeClass(target.className, config.hoverOutClass);
         }, 1000);
+
       }
     }
 
-    if (touchEnabled){
-      $container.addEventListener("touchstart", function(){
-        if (window.preventScroll){
-          window.preventScroll = true;
-        }
+    if (touch) {
+
+      container.addEventListener('touchstart', function () {
+        if (window.preventScroll) { window.preventScroll = true; }
         return enter();
       });
-      $container.addEventListener("touchmove", function(e){
-        if (window.preventScroll){
-	        e.preventDefault();
-	      }
+
+      container.addEventListener('touchmove', function (e) {
+        if (window.preventScroll) { e.preventDefault(); }
         return move(e);
       });
-      $container.addEventListener("touchend", function(){
-        if (window.preventScroll){
-          window.preventScroll = false;
-        }
+
+      container.addEventListener('touchend', function () {
+        if (window.preventScroll) { window.preventScroll = false; }
         return leave();
       });
-    }
-    else {
-      $container.addEventListener("mouseenter", function(){
+
+    } else {
+
+      container.addEventListener('mouseenter', function () {
         return enter();
       });
-      $container.addEventListener("mousemove", function(e){
+
+      container.addEventListener('mousemove', function (e) {
         return move(e);
       });
-      $container.addEventListener("mouseleave", function(){
+
+      container.addEventListener('mouseleave', function () {
         return leave();
       });
     }
   }
 
-  window.pivot=pivot;
+  function getProp(props) {
+    var i = props.length;
+    var j = 0;
+
+    for ( ; i > j; j++) {
+      if (typeof document.body.style[props[j]] !== 'undefined') {
+        return props[j];
+      }
+    }
+
+    return null;
+  }
+
+  function getUnit (t) {
+    if (typeof t !== 'number') {
+    	console.warn('Please provide a numeric value');
+    	return '0.2s';
+
+    } else if (t > 1 && t <= 50){
+    	return '0.' + t + 's';
+
+    } else if (t > 50){
+    	return t + 'ms';
+
+    } else {
+    	return t + 's';
+    }
+  }
+
+  function getTFunc (tf) {
+    var tfl = tf.length;
+
+    if (tf.constructor !== Array) {
+    	console.warn('Bad input: expected array');
+    	return 'none';
+
+    } else if (tfl === 4) {
+
+    	if (typeof tf[0] === 'number' && typeof tf[1] === 'number' && typeof tf[2] === 'number' && typeof tf[3] === 'number'){
+    	  return 'cubic-bezier('+tf[0]+','+tf[1]+','+tf[2]+','+tf[3]+')';
+
+    	} else {
+    	  console.warn('Bad input: expected numbers');
+    	  return 'none';
+    	}
+
+    } else {
+    	console.warn('Bad input: expected four values');
+    	return 'none';
+    }
+  }
+
+  function removeClass (cssClasses, cssClass) {
+    var rxp = new RegExp(cssClass + '\\s*', 'gi');
+    return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  }
 
 }());
