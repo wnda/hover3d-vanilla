@@ -233,7 +233,7 @@
         }, 1000);
 
       } else if (config.hoverClass) {
-        target.className = removeClass(_target.className, config.hoverClass);
+        target.className = removeClass(target.className, config.hoverClass);
 
       } else if (config.hoverOutClass) {
         target.className += ' ' + config.hoverOutClass;
