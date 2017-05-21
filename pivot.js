@@ -21,7 +21,6 @@
     if ('selector' in config) { _targets = doc.querySelectorAll(config.selector); }
 
     if (_targets.length > 0) {
-
       i = _targets.length;
 
       for (; i > j; j++) {
