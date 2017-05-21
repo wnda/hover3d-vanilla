@@ -36,17 +36,17 @@
     var _shadow;
     var _shine;
     var sensitivity                     = 0;
-    var perspectiveProp                 = getProp(['perspective','webkitPerspective','mozPerspective']);
-    var transformStyleProp              = getProp(['transformStyle','webkitTransformStyle','mozTransformStyle']);
-    var transformProp                   = getProp(['transform','webkitTransform','mozTransform']);
-    var backfaceVisProp                 = getProp(['backfaceVisibility','webkitBackfaceVisibility','mozBackfaceVisibility']);
+    var perspectiveProp                 = getProp(['perspective', 'webkitPerspective', 'mozPerspective']);
+    var transformStyleProp              = getProp(['transformStyle', 'webkitTransformStyle', 'mozTransformStyle']);
+    var transformProp                   = getProp(['transform', 'webkitTransform', 'mozTransform']);
+    var backfaceVisProp                 = getProp(['backfaceVisibility', 'webkitBackfaceVisibility', 'mozBackfaceVisibility']);
     var willChangeProp                  = getProp(['willChange']);
-    var boxShadowProp                   = getProp(['boxShadow','webkitBoxShadow','mozBoxShadow']);
-    var userSelectProp                  = getProp(['userSelect','webkitUserSelect','mozUserSelect']);
-    var transitionPropertyProp          = getProp(['transitionProperty','webkitTransitionProperty','mozTransitionProperty']);
-    var transitionDurationProp          = getProp(['transitionDuration','webkitTransitionDuration','mozTransitionDuration']);
-    var transitionDelayProp             = getProp(['transitionDelay','webkitTransitionDelay','mozTransitionDelay']);
-    var transitionTimingProp            = getProp(['transitionTimingFunction','webkitTransitionTimingFunction','mozTransitionTimingFunction']);
+    var boxShadowProp                   = getProp(['boxShadow', 'webkitBoxShadow', 'mozBoxShadow']);
+    var userSelectProp                  = getProp(['userSelect', 'webkitUserSelect', 'mozUserSelect']);
+    var transitionPropertyProp          = getProp(['transitionProperty', 'webkitTransitionProperty', 'mozTransitionProperty']);
+    var transitionDurationProp          = getProp(['transitionDuration', 'webkitTransitionDuration', 'mozTransitionDuration']);
+    var transitionDelayProp             = getProp(['transitionDelay', 'webkitTransitionDelay', 'mozTransitionDelay']);
+    var transitionTimingProp            = getProp(['transitionTimingFunction', 'webkitTransitionTimingFunction', 'mozTransitionTimingFunction']);
 
     if (config.perspective && typeof config.perspective === 'number') {
       container.style[perspectiveProp]  = config.perspective + 'px';
