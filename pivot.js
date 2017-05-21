@@ -20,9 +20,9 @@
     if ('selector' in config) { _targets = doc.querySelectorAll(config.selector); }
 
     if (_targets.length > 0) {
-      
+
       i = _targets.length;
-      
+
       for (; i > j; j++) {
         _target    = _targets[j];
         _container = _target.parentNode;
@@ -313,14 +313,14 @@
       if (typeof tf[0] === 'number' && typeof tf[1] === 'number' && typeof tf[2] === 'number' && typeof tf[3] === 'number'){
         return 'cubic-bezier('+tf[0]+','+tf[1]+','+tf[2]+','+tf[3]+')';
 
-    	} else {
+      } else {
         console.warn('Bad input: expected numbers');
         return 'none';
-    	}
+      }
 
     } else {
-    	console.warn('Bad input: expected four values');
-    	return 'none';
+      console.warn('Bad input: expected four values');
+      return 'none';
     }
   }
 
