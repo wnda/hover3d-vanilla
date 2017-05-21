@@ -190,7 +190,7 @@
       var dy     = oy - (h / 2);
       var dx     = ox - (w / 2);
       var theta  = Math.atan2(dy, dx);
-      var ang    = theta * 180 / Math.PI - 90;
+      var ang    = (theta * (180 / Math.PI)) - 90;
       var angle  = ang < 0 ? angle = ang + 360 : angle = ang;
 
       if (config.scale) {
