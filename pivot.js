@@ -81,10 +81,10 @@
     }
 
     if (config.transition && typeof config.transition === 'object') {
-      target.style[willChangeProp]              = config.transition.prop;
-      target.style[transitionPropertyProp]      = config.transition.prop;
-      target.style[transitionDurationProp]      = getUnit(config.transition.duration);
-      target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
+      target.style[willChangeProp]                 = config.transition.prop;
+      target.style[transitionPropertyProp]         = config.transition.prop;
+      target.style[transitionDurationProp]         = getUnit(config.transition.duration);
+      target.style[transitionTimingProp]           = getTFunc(config.transition.timing);
 
     } else {
       target.style[willChangeProp]                 = 'transform';
