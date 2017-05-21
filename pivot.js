@@ -106,13 +106,13 @@
       _shadow.style[boxShadowProp]                 = '0 8px 30px rgba(14,21,47,0.6)';
 
       if (config.transition && typeof config.transition === 'object') {
-        _shadow.style[willChangeProp]              = 'box-shadow,transform';
+        _shadow.style[willChangeProp]              = 'box-shadow, transform';
         _shadow.style[transitionPropertyProp]      = 'box-shadow';
         _shadow.style[transitionDurationProp]      = getUnit(config.transition.duration);
         _shadow.style[transitionTimingProp]        = getTFunc(config.transition.timing);
 
       } else {
-        _shadow.style[willChangeProp]              = 'box-shadow,transform';
+        _shadow.style[willChangeProp]              = 'box-shadow, transform';
         _shadow.style[transitionPropertyProp]      = 'box-shadow';
         _shadow.style[transitionDurationProp]      = '0.2s';
         _shadow.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
@@ -133,13 +133,13 @@
       _shine.style.opacity                        = 0;
 
       if (config.transition && typeof config.transition === 'object') {
-        _shine.style[willChangeProp]              = 'opacity,transform';
+        _shine.style[willChangeProp]              = 'opacity, transform';
         _shine.style[transitionPropertyProp]      = 'opacity';
         _shine.style[transitionDurationProp]      = getUnit(config.transition.duration);
         _shine.style[transitionTimingProp]        = getTFunc(config.transition.timing);
 
       } else {
-        _shine.style[willChangeProp]              = 'box-shadow,transform';
+        _shine.style[willChangeProp]              = 'box-shadow, transform';
         _shine.style[transitionPropertyProp]      = 'box-shadow';
         _shine.style[transitionDurationProp]      = '0.2s';
         _shine.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
