@@ -35,18 +35,18 @@
 
     var _shadow;
     var _shine;
-    var sensitivity              = 0;
-    var perspectiveProp          = getProp(['perspective','webkitPerspective','mozPerspective']);
-    var transformStyleProp       = getProp(['transformStyle','webkitTransformStyle','mozTransformStyle']);
-    var transformProp            = getProp(['transform','webkitTransform','mozTransform']);
-    var backfaceVisProp          = getProp(['backfaceVisibility','webkitBackfaceVisibility','mozBackfaceVisibility']);
-    var willChangeProp           = getProp(['willChange']);
-    var boxShadowProp            = getProp(['boxShadow','webkitBoxShadow','mozBoxShadow']);
-    var userSelectProp           = getProp(['userSelect','webkitUserSelect','mozUserSelect']);
-    var transitionPropertyProp   = getProp(['transitionProperty','webkitTransitionProperty','mozTransitionProperty']);
-    var transitionDurationProp   = getProp(['transitionDuration','webkitTransitionDuration','mozTransitionDuration']);
-    var transitionDelayProp      = getProp(['transitionDelay','webkitTransitionDelay','mozTransitionDelay']);
-    var transitionTimingProp     = getProp(['transitionTimingFunction','webkitTransitionTimingFunction','mozTransitionTimingFunction']);
+    var sensitivity                     = 0;
+    var perspectiveProp                 = getProp(['perspective','webkitPerspective','mozPerspective']);
+    var transformStyleProp              = getProp(['transformStyle','webkitTransformStyle','mozTransformStyle']);
+    var transformProp                   = getProp(['transform','webkitTransform','mozTransform']);
+    var backfaceVisProp                 = getProp(['backfaceVisibility','webkitBackfaceVisibility','mozBackfaceVisibility']);
+    var willChangeProp                  = getProp(['willChange']);
+    var boxShadowProp                   = getProp(['boxShadow','webkitBoxShadow','mozBoxShadow']);
+    var userSelectProp                  = getProp(['userSelect','webkitUserSelect','mozUserSelect']);
+    var transitionPropertyProp          = getProp(['transitionProperty','webkitTransitionProperty','mozTransitionProperty']);
+    var transitionDurationProp          = getProp(['transitionDuration','webkitTransitionDuration','mozTransitionDuration']);
+    var transitionDelayProp             = getProp(['transitionDelay','webkitTransitionDelay','mozTransitionDelay']);
+    var transitionTimingProp            = getProp(['transitionTimingFunction','webkitTransitionTimingFunction','mozTransitionTimingFunction']);
 
     if (config.perspective && typeof config.perspective === 'number') {
       container.style[perspectiveProp]  = config.perspective + 'px';
@@ -87,23 +87,23 @@
       target.style[transitionTimingProp]        = getTFunc(config.transition.timing);
 
     } else {
-      target.style[willChangeProp]              = 'transform';
-      target.style[transitionPropertyProp]      = 'transform';
-      target.style[transitionDurationProp]      = '0.2s';
-      target.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
+      target.style[willChangeProp]                 = 'transform';
+      target.style[transitionPropertyProp]         = 'transform';
+      target.style[transitionDurationProp]         = '0.2s';
+      target.style[transitionTimingProp]           = 'cubic-bezier(0.3,1,0.2,1)';
     }
 
     if (config.shadow) {
-      _shadow                        = doc.createElement('div');
-      _shadow.className              = 'shadow';
-      _shadow.style.position         = 'absolute';
-      _shadow.style.top              = '5%';
-      _shadow.style.left             = '5%';
-      _shadow.style.bottom           = '5%';
-      _shadow.style.right            = '5%';
-      _shadow.style.zIndex           = 1;
-      _shadow.style[transformProp]   = 'translateZ(-2px)';
-      _shadow.style[boxShadowProp]   = '0 8px 30px rgba(14,21,47,0.6)';
+      _shadow                                      = doc.createElement('div');
+      _shadow.className                            = 'shadow';
+      _shadow.style.position                       = 'absolute';
+      _shadow.style.top                            = '5%';
+      _shadow.style.left                           = '5%';
+      _shadow.style.bottom                         = '5%';
+      _shadow.style.right                          = '5%';
+      _shadow.style.zIndex                         = 1;
+      _shadow.style[transformProp]                 = 'translateZ(-2px)';
+      _shadow.style[boxShadowProp]                 = '0 8px 30px rgba(14,21,47,0.6)';
 
       if (config.transition && typeof config.transition === 'object') {
         _shadow.style[willChangeProp]              = 'box-shadow,transform';
@@ -122,15 +122,15 @@
     }
 
     if (config.shine) {
-      _shine                = doc.createElement('div');
-      _shine.className      = 'shine';
-      _shine.style.position = 'absolute';
-      _shine.style.top      = 0;
-      _shine.style.left     = 0;
-      _shine.style.bottom   = 0;
-      _shine.style.right    = 0;
-      _shine.style.zIndex   = 9;
-      _shine.style.opacity  = 0;
+      _shine                                      = doc.createElement('div');
+      _shine.className                            = 'shine';
+      _shine.style.position                       = 'absolute';
+      _shine.style.top                            = 0;
+      _shine.style.left                           = 0;
+      _shine.style.bottom                         = 0;
+      _shine.style.right                          = 0;
+      _shine.style.zIndex                         = 9;
+      _shine.style.opacity                        = 0;
 
       if (config.transition && typeof config.transition === 'object') {
         _shine.style[willChangeProp]              = 'opacity,transform';
