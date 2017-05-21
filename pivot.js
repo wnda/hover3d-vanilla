@@ -90,7 +90,7 @@
       target.style[willChangeProp]                 = 'transform';
       target.style[transitionPropertyProp]         = 'transform';
       target.style[transitionDurationProp]         = '0.2s';
-      target.style[transitionTimingProp]           = 'cubic-bezier(0.3,1,0.2,1)';
+      target.style[transitionTimingProp]           = 'cubic-bezier(0.3, 1, 0.2, 1)';
     }
 
     if (config.shadow) {
@@ -103,7 +103,7 @@
       _shadow.style.right                          = '5%';
       _shadow.style.zIndex                         = 1;
       _shadow.style[transformProp]                 = 'translateZ(-2px)';
-      _shadow.style[boxShadowProp]                 = '0 8px 30px rgba(14,21,47,0.6)';
+      _shadow.style[boxShadowProp]                 = '0 8px 30px rgba(14, 21, 47, 0.6)';
 
       if (config.transition && typeof config.transition === 'object') {
         _shadow.style[willChangeProp]              = 'box-shadow, transform';
@@ -115,7 +115,7 @@
         _shadow.style[willChangeProp]              = 'box-shadow, transform';
         _shadow.style[transitionPropertyProp]      = 'box-shadow';
         _shadow.style[transitionDurationProp]      = '0.2s';
-        _shadow.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
+        _shadow.style[transitionTimingProp]        = 'cubic-bezier(0.3, 1, 0.2, 1)';
       }
 
       target.appendChild(_shadow);
@@ -142,7 +142,7 @@
         _shine.style[willChangeProp]              = 'box-shadow, transform';
         _shine.style[transitionPropertyProp]      = 'box-shadow';
         _shine.style[transitionDurationProp]      = '0.2s';
-        _shine.style[transitionTimingProp]        = 'cubic-bezier(0.3,1,0.2,1)';
+        _shine.style[transitionTimingProp]        = 'cubic-bezier(0.3, 1, 0.2, 1)';
       }
 
       target.appendChild(_shine);
@@ -194,25 +194,25 @@
       var angle  = ang < 0 ? angle = ang + 360 : angle = ang;
 
       if (config.scale) {
-        target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg) scale3d(1.05,1.05,1.05)';
+        target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg) scale3d(1.05, 1.05, 1.05)';
 
       } else {
         target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg)';
       }
 
       if (config.shadow) {
-        _shadow.style[boxShadowProp] = '0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)';
+        _shadow.style[boxShadowProp] = '0 24px 48px rgba(14, 21, 47, 0.4), 0 12px 24px rgba(14, 21, 47, 0.4)';
       }
 
       if (config.shine) {
         _shine.style.opacity         = 1;
-        _shine.style.backgroundImage = 'linear-gradient(' + angle + 'deg,rgba(230,230,230,' + oy / h * 0.5 +') 0%,transparent 80%)';
+        _shine.style.backgroundImage = 'linear-gradient(' + angle + 'deg, rgba(230, 230, 230, ' + oy / h * 0.5 +') 0%, transparent 80%)';
       }
     }
 
     function leave () {
       if (config.shadow) {
-        _shadow.style[boxShadowProp]  = '0 8px 30px rgba(14,21,47,0.6)';
+        _shadow.style[boxShadowProp]  = '0 8px 30px rgba(14, 21, 47, 0.6)';
       }
 
       if (!config.persist) {
@@ -310,8 +310,8 @@
 
     } else if (tfl === 4) {
 
-      if (typeof tf[0] === 'number' && typeof tf[1] === 'number' && typeof tf[2] === 'number' && typeof tf[3] === 'number'){
-        return 'cubic-bezier('+tf[0]+','+tf[1]+','+tf[2]+','+tf[3]+')';
+      if (typeof tf[0] === 'number' && typeof tf[1] === 'number' && typeof tf[2] === 'number' && typeof tf[3] === 'number') {
+        return 'cubic-bezier(' + tf[0] + ', ' + tf[1] + ', ' + tf[2] + ', ' + tf[3] + ')';
 
       } else {
         console.warn('Bad input: expected numbers');
