@@ -73,11 +73,11 @@
     if (touch) { target.style[backfaceVisProp] = 'hidden'; }
 
     if (config.position && typeof config.position === 'object') {
-      target.style.position = config.position.method;
-      target.style.zIndex   = config.position.zindex;
+      target.style.position             = config.position.method;
+      target.style.zIndex               = config.position.zindex;
 
     } else {
-      target.style.position = 'relative';
+      target.style.position             = 'relative';
     }
 
     if (config.transition && typeof config.transition === 'object') {
