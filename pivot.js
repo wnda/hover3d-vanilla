@@ -5,6 +5,8 @@
   win.pivot = {
     'init': init
   };
+  
+  var _prevent_scroll = false;
 
   function init (config) {
 
@@ -243,17 +245,17 @@
 
     if (touch) {
       container.addEventListener('touchstart', function () {
-        if (win.preventScroll) { win.preventScroll = true; }
+        if (!_prevent_scroll) { _prevent_scroll = true; }
         return enter();
       });
 
       container.addEventListener('touchmove', function (e) {
-        if (win.preventScroll) { e.preventDefault(); }
+        if (!!_prevent_scroll) { e.preventDefault(); }
         return move(e);
       });
 
       container.addEventListener('touchend', function () {
-        if (win.preventScroll) { win.preventScroll = false; }
+        if (!!_prevent_scroll) { win.preventScroll = false; }
         return leave();
       });
 
