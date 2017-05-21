@@ -23,7 +23,7 @@
       
       i = _targets.length;
       
-      for ( ; i > j; j++) {
+      for (; i > j; j++) {
         _target    = _targets[j];
         _container = _target.parentNode;
         handleHover(_target, _container, config, _touch);
