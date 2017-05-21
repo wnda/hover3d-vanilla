@@ -185,11 +185,11 @@
       var rect   = target.getBoundingClientRect();
       var ox     = touch ? e.touches[0].clientX - rect.left : e.offsetX;
       var oy     = touch ? e.touches[0].clientY - rect.top  : e.offsetY;
-      var ax     = config.invert ? -(w / 2 - ox) / sensitivity :  (w / 2 - ox) / sensitivity;
-      var ay     = config.invert ?  (h / 2 - oy) / sensitivity : -(h / 2 - oy) / sensitivity;
-      var dy     = oy - h / 2;
-      var dx     = ox - w / 2;
-      var theta  = Math.atan2(dy,dx);
+      var ax     = config.invert ? -((w / 2) - ox) / sensitivity :  ((w / 2) - ox) / sensitivity;
+      var ay     = config.invert ?  ((h / 2) - oy) / sensitivity : -((h / 2) - oy) / sensitivity;
+      var dy     = oy - (h / 2);
+      var dx     = ox - (w / 2);
+      var theta  = Math.atan2(dy, dx);
       var ang    = theta * 180 / Math.PI - 90;
       var angle  = ang < 0 ? angle = ang + 360 : angle = ang;
 
