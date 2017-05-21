@@ -291,13 +291,13 @@
       return '0.2s';
 
     } else if (t > 1 && t <= 50) {
-    	return '0.' + t + 's';
+      return '0.' + t + 's';
 
     } else if (t > 50) {
-    	return t + 'ms';
+      return t + 'ms';
 
     } else {
-    	return t + 's';
+      return t + 's';
     }
   }
 
