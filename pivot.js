@@ -56,8 +56,8 @@
       target.style[perspectiveProp]     = '1000px';
     }
 
-    container.style[transformStyleProp] = 'preserve-3d' || 'flat' || '';
-    target.style[transformStyleProp]    = 'preserve-3d' || 'flat' || '';
+    container.style[transformStyleProp] = 'preserve-3d';
+    target.style[transformStyleProp]    = 'preserve-3d';
     container.style[userSelectProp]     = 'none';
     target.style[userSelectProp]        = 'none';
     target.style[transformProp]         = 'rotateY(0deg) rotateX(0deg)';
