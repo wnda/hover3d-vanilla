@@ -287,8 +287,8 @@
 
   function getUnit (t) {
     if (typeof t !== 'number') {
-    	console.warn('Please provide a numeric value');
-    	return '0.2s';
+      console.warn('Please provide a numeric value');
+      return '0.2s';
 
     } else if (t > 1 && t <= 50) {
     	return '0.' + t + 's';
