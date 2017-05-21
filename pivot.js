@@ -329,5 +329,28 @@
     var rxp = new RegExp(cssClass + '\\s*', 'gi');
     return cssClasses.replace(rxp, '').replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
   }
+  
+  function rebounce (func) {
+    var scheduled, context, args, i, j;
+    return function () {
+      context = this;
+      args = [];
+      i = arguments.length;
+      j = 0;
+
+      for (; j < i; ++j) {
+        args[j] = arguments[j];
+      }
+
+      if (!!scheduled) {
+        win.cancelAnimationFrame(scheduled);
+      }
+
+      scheduled = win.requestAnimationFrame(function () {
+        func.apply(context, args);
+        scheduled = null;
+      });
+    }
+  }
 
 })(window, document);
