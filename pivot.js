@@ -17,9 +17,7 @@
 
     if (typeof config === 'undefined' || typeof config !== 'object') { return; }
     if ('touch' in config) { _touch = config.touch; }
-    if ('selector' in config) {
-      _targets = doc.querySelectorAll(config.selector);
-    }
+    if ('selector' in config) { _targets = doc.querySelectorAll(config.selector); }
 
     if (_targets.length > 0) {
       
