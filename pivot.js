@@ -22,7 +22,9 @@
     }
 
     if (_targets.length > 0) {
+      
       i = _targets.length;
+      
       for ( ; i > j; j++) {
         _target    = _targets[j];
         _container = _target.parentNode;
@@ -70,11 +72,9 @@
       sensitivity = 20;
     }
 
-    if (touch){
-      target.style[backfaceVisProp] = 'hidden';
-    }
+    if (touch) { target.style[backfaceVisProp] = 'hidden'; }
 
-    if (config.position && typeof config.position === 'object'){
+    if (config.position && typeof config.position === 'object') {
       target.style.position = config.position.method;
       target.style.zIndex   = config.position.zindex;
 
@@ -82,7 +82,7 @@
       target.style.position = 'relative';
     }
 
-    if (config.transition && typeof config.transition === 'object'){
+    if (config.transition && typeof config.transition === 'object') {
       target.style[willChangeProp]              = config.transition.prop;
       target.style[transitionPropertyProp]      = config.transition.prop;
       target.style[transitionDurationProp]      = getUnit(config.transition.duration);
@@ -166,7 +166,7 @@
     function enter () {
       if (config.hoverClass && config.hoverInClass) {
         target.className  += ' ' + config.hoverClass + ' ' + config.hoverInClass;
-        setTimeout(function(){
+        setTimeout(function () {
           target.className = removeClass(target.className, config.hoverInClass);
         }, 1000);
 
@@ -195,40 +195,40 @@
       var ang    = theta * 180 / Math.PI - 90;
       var angle  = ang < 0 ? angle = ang + 360 : angle = ang;
 
-      if (config.scale){
+      if (config.scale) {
         target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg) scale3d(1.05,1.05,1.05)';
 
       } else {
         target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg)';
       }
 
-      if (config.shadow){
+      if (config.shadow) {
         _shadow.style[boxShadowProp] = '0 24px 48px rgba(14,21,47,0.4), 0 12px 24px rgba(14,21,47,0.4)';
       }
 
-      if (config.shine){
+      if (config.shine) {
         _shine.style.opacity         = 1;
         _shine.style.backgroundImage = 'linear-gradient('+angle+'deg,rgba(230,230,230,'+ oy / h * 0.5 +') 0%,transparent 80%)';
       }
     }
 
     function leave () {
-      if (config.shadow){
+      if (config.shadow) {
         _shadow.style[boxShadowProp]  = '0 8px 30px rgba(14,21,47,0.6)';
       }
 
-      if (!config.persist){
+      if (!config.persist) {
         target.style[transformProp]  = 'rotateX(0deg) rotateY(0deg)';
 
-        if (config.shine){
+        if (config.shine) {
           _shine.style.opacity        = 0;
         }
       }
 
-      if (config.hoverClass && config.hoverOutClass){
+      if (config.hoverClass && config.hoverOutClass) {
         target.className += ' ' + config.hoverOutClass;
         target.className = removeClass(target.className, config.hoverClass);
-        setTimeout(function(){
+        setTimeout(function () {
           target.className = removeClass(target.className, config.hoverOutClass);
         }, 1000);
 
@@ -237,7 +237,7 @@
 
       } else if (config.hoverOutClass) {
         target.className += ' ' + config.hoverOutClass;
-        setTimeout(function() {
+        setTimeout(function () {
           target.className = removeClass(target.className, config.hoverOutClass);
         }, 1000);
 
@@ -295,10 +295,10 @@
     	console.warn('Please provide a numeric value');
     	return '0.2s';
 
-    } else if (t > 1 && t <= 50){
+    } else if (t > 1 && t <= 50) {
     	return '0.' + t + 's';
 
-    } else if (t > 50){
+    } else if (t > 50) {
     	return t + 'ms';
 
     } else {
