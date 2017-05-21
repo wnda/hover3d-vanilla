@@ -305,17 +305,17 @@
     var tfl = tf.length;
 
     if (tf.constructor !== Array) {
-    	console.warn('Bad input: expected array');
-    	return 'none';
+      console.warn('Bad input: expected array');
+      return 'none';
 
     } else if (tfl === 4) {
 
-    	if (typeof tf[0] === 'number' && typeof tf[1] === 'number' && typeof tf[2] === 'number' && typeof tf[3] === 'number'){
-    	  return 'cubic-bezier('+tf[0]+','+tf[1]+','+tf[2]+','+tf[3]+')';
+      if (typeof tf[0] === 'number' && typeof tf[1] === 'number' && typeof tf[2] === 'number' && typeof tf[3] === 'number'){
+        return 'cubic-bezier('+tf[0]+','+tf[1]+','+tf[2]+','+tf[3]+')';
 
     	} else {
-    	  console.warn('Bad input: expected numbers');
-    	  return 'none';
+        console.warn('Bad input: expected numbers');
+        return 'none';
     	}
 
     } else {
