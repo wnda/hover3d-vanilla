@@ -9,7 +9,6 @@
   var _prevent_scroll = false;
 
   function init (config) {
-
     var _touch = (!!('ontouchstart' in win) || !!('onmsgesturechange' in win) || !!(navigator.MaxTouchPoints));
     var _targets;
     var _target;
