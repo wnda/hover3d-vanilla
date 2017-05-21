@@ -33,8 +33,7 @@
     }
   }
 
-  function handleHover(target, container, config, touch){
-
+  function handleHover (target, container, config, touch) {
     var _shadow;
     var _shine;
     var sensitivity                     = 0;
@@ -274,7 +273,7 @@
     }
   }
 
-  function getProp(props) {
+  function getProp (props) {
     var i = props.length;
     var j = 0;
 
