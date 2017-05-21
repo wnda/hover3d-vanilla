@@ -238,12 +238,10 @@
         setTimeout(function () {
           target.className = removeClass(target.className, config.hoverOutClass);
         }, 1000);
-
       }
     }
 
     if (touch) {
-
       container.addEventListener('touchstart', function () {
         if (win.preventScroll) { win.preventScroll = true; }
         return enter();
@@ -260,7 +258,6 @@
       });
 
     } else {
-
       container.addEventListener('mouseenter', function () {
         return enter();
       });
