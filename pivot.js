@@ -193,7 +193,7 @@
       var dx     = ox - (w / 2);
       var theta  = Math.atan2(dy, dx);
       var ang    = (theta * (180 / Math.PI)) - 90;
-      var angle  = ang < 0 ? angle = ang + 360 : angle = ang;
+      var angle  = ang < 0 ? ang + 360 : ang;
 
       if (config.scale) {
         target.style[transformProp] = 'rotateY(' + ax + 'deg) rotateX(' + ay + 'deg) scale3d(1.05, 1.05, 1.05)';
