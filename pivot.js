@@ -8,12 +8,12 @@
 
   function init (config) {
 
+    var _touch = (!!('ontouchstart' in win) || !!('onmsgesturechange' in win) || !!(navigator.MaxTouchPoints));
     var _targets;
     var _target;
     var _container;
     var i = 0;
     var j = 0;
-    var _touch = (!!('ontouchstart' in win) || !!('onmsgesturechange' in win) || !!(navigator.MaxTouchPoints));
 
     if (typeof config === 'undefined' || typeof config !== 'object') { return; }
     if ('touch' in config) { _touch = config.touch; }
