@@ -1,0 +1,25 @@
+{
+  "name": "pivot",
+  "version": "1.0.0",
+  "description": "apple tv 3D effect in vanilla JS",
+  "main": "pivot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaPo/pivot.git"
+  },
+  "keywords": [
+    "apple-tv-3d",
+    "apple-tv",
+    "vanilla-js",
+    "parallax"
+  ],
+  "author": "wnda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaPo/pivot/issues"
+  },
+  "homepage": "https://github.com/DaPo/pivot#readme"
+}
